@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image"; // Import for custom logos
 
-const DoubleScrollingLogos = () => {
+const Sponsors = () => {
   return (
     <section className="bg-black py-12">
       {/* Heading */}
@@ -124,4 +124,4 @@ const LogoItemsBottom = () => (
   </>
 );
 
-export default DoubleScrollingLogos;
+export default Sponsors;

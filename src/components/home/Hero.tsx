@@ -1,107 +1,66 @@
-"use client"
-import WorldMap from "../ui/WorldMap"
-import { motion } from "motion/react"
+"use client";
+
+import EncryptButton from "../ui/EncryptBtn"; // Adjust the import path as needed
 
 export default function Hero() {
   return (
-    <section id="home">
-    <div className="py-40 bg-black w-full">
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="font-bold text-xl md:text-4xl text-white">
-          Remote{" "}
-          <span className="text-neutral-400">
-            {"Connectivity".split("").map((word, idx) => (
-              <motion.span
-                key={idx}
-                className="inline-block"
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: idx * 0.04 }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </span>
-        </p>
-        <p className="text-sm md:text-lg text-neutral-400 max-w-2xl mx-auto py-4">
-          Break free from traditional boundaries. Work from anywhere, at the comfort of your own studio apartment.
-          Perfect for Nomads and Travellers.
-        </p>
+    <div
+      className="relative text-white py-20 flex flex-col items-center text-center mt-40 min-h-screen justify-center overflow-hidden bg-black"
+    >
+      <div className="absolute inset-0 flex justify-center items-center">
+        <div className="w-[70%] h-[60%] bg-blue-300/16 blur-3xl rounded-full"></div>
       </div>
-      <WorldMap
-        dots={[
-          {
-            start: {
-              lat: 64.2008,
-              lng: -149.4937,
-            }, // Alaska (Fairbanks)
-            end: {
-              lat: 34.0522,
-              lng: -118.2437,
-            }, // Los Angeles
-          },
-          {
-            start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
-            end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-          },
-          {
-            start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-            end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
-          },
-          {
-            start: { lat: 51.5074, lng: -0.1278 }, // London
-            end: { lat: 28.6139, lng: 77.209 }, // New Delhi
-          },
-          {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
-          },
-          {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
-          },
-          // New connections within India
-          {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: 19.076, lng: 72.8777 }, // Mumbai
-          },
-          {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: 12.9716, lng: 77.5946 }, // Bangalore
-          },
-          {
-            start: { lat: 19.076, lng: 72.8777 }, // Mumbai
-            end: { lat: 12.9716, lng: 77.5946 }, // Bangalore
-          },
-          {
-            start: { lat: 19.076, lng: 72.8777 }, // Mumbai
-            end: { lat: 22.5726, lng: 88.3639 }, // Kolkata
-          },
-          {
-            start: { lat: 12.9716, lng: 77.5946 }, // Bangalore
-            end: { lat: 13.0827, lng: 80.2707 }, // Chennai
-          },
-          {
-            start: { lat: 17.385, lng: 78.4867 }, // Hyderabad
-            end: { lat: 12.9716, lng: 77.5946 }, // Bangalore
-          },
-          {
-            start: { lat: 17.385, lng: 78.4867 }, // Hyderabad
-            end: { lat: 22.5726, lng: 88.3639 }, // Kolkata
-          },
-          // International connections from Indian cities
-          {
-            start: { lat: 19.076, lng: 72.8777 }, // Mumbai
-            end: { lat: 25.2048, lng: 55.2708 }, // Dubai
-          },
-          {
-            start: { lat: 12.9716, lng: 77.5946 }, // Bangalore
-            end: { lat: 1.3521, lng: 103.8198 }, // Singapore
-          },
-        ]}
-      />
-    </div>
-    </section>
-  )
-}
+      <h1 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+        <span className="text-[#c8ceee]">ENCRYPTED. EFFICIENT. EFFORTLESS.</span><span className="text-gray-300"></span>
+      </h1>
+      <p className="mt-4 text-lg text-gray-400 max-w-2xl relative">
+        The modern payroll platform that moves at the speed of your business.
+        <br /> 
+      </p>
 
+      <div className="mt-6 flex flex-col md:flex-row items-center gap-4 relative">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          className="w-full md:w-96 px-6 py-3 rounded-full bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        {/* Fixed Shape Oval Box */}
+        <div className="flex items-center justify-center w-64 h-12 border-brandBlue/[8%] rounded-full border p-[0.31rem]">
+          <EncryptButton
+            TARGET_TEXT="Join the waitlist"
+            className="w-full h-full flex items-center justify-center bg-transparent text-white font-semibold transition-all hover:text-blue-300"
+          >
+            JOIN WAITLIST
+          </EncryptButton>
+        </div>
+      </div>
+
+      <div className="mt-24 w-full max-w-5xl relative">
+        <img
+          src="/images/dashboard.png" // Replace with actual image path
+          alt="Preview"
+          className="rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+        />
+      </div>
+
+      {/* Styled JSX */}
+      <style jsx>{`
+        h1 {
+          font-family: 'JetBrains Mono', monospace;
+        }
+        p {
+          font-family: 'JetBrains Mono', monospace;
+        }
+        input {
+          font-family: 'JetBrains Mono', monospace;
+        }
+        button {
+          font-family: 'JetBrains Mono', monospace;
+        }
+        .hover\:text-blue-300:hover {
+          color: #93c5fd; /* Tailwind's blue-300 color */
+        }
+      `}</style>
+    </div>
+  );
+}

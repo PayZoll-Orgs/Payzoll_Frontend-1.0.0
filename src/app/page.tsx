@@ -1,9 +1,10 @@
-import Hero from "@/components/home/Heromain";
-import SecrectSection from "@/components/home/Featuresmain";
-import  Features  from "@/components/home/Working";
+import Hero from "@/components/home/Hero";
+import Features from "@/components/home/Features";
+import  Working  from "@/components/home/Working";
 import Agent from "@/components/home/PayzollAgent";
-import ScrollingTestimonials from "@/components/home/Testimonial";
-import DoubleScrollingLogos from "@/components/home/Sponsors";
+import Testimonial from "@/components/home/Testimonial";
+
+import Sponsors from "@/components/home/Sponsors";
 
 
 
@@ -12,13 +13,14 @@ export default function Home() {
     <>
     
      <Hero/>
-     <DoubleScrollingLogos/>
-   <SecrectSection/>
+     <Sponsors/>
+   
     
     
     <Features/>
+    <Working/>
     <Agent/>
-    <ScrollingTestimonials/>
+  <Testimonial/>
  
     </>
   );

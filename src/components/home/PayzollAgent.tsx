@@ -1,3 +1,4 @@
+"use client";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -7,7 +8,12 @@ export default function Home() {
       {/* Left Content */}
       <div className="w-full md:w-1/2 space-y-6 md:pr-8 text-center md:text-left">
         <div className="flex items-center justify-center md:justify-start gap-3">
-          <h1 className="text-4xl md:text-5xl font-bold">Use Payzoll Agent</h1>
+        <div className="text-brandBlue/80 flex flex-col ">
+      <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+  <span className="text-[#c8ceee]">USE PAYZOLL AGENT</span>
+  <span className="text-gray-300"></span>
+  </h2>
+      </div>
           <span className="bg-blue-900 text-blue-400 text-xs px-3 py-1 rounded-full font-medium">LIVE</span>
         </div>
 
@@ -36,7 +42,6 @@ export default function Home() {
         <div className="relative w-full max-w-md aspect-rectangle">
           <video
             src="/images/counter.mp4"
-            alt="Agent demonstration"
             className="w-full h-full object-cover rounded-lg"
             autoPlay
             loop
@@ -45,6 +50,13 @@ export default function Home() {
           />
         </div>
       </div>
+
+      {/* Styled JSX */}
+      <style jsx>{`
+        * {
+          font-family: 'JetBrains Mono', monospace;
+        }
+      `}</style>
     </div>
   );
 }

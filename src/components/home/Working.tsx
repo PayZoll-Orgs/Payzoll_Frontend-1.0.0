@@ -9,7 +9,7 @@ interface Step {
   bgHighlight: string;
 }
 
-const Features: React.FC = () => {
+const Working: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -60,7 +60,7 @@ const Features: React.FC = () => {
 
   return (
     <section
-      id="features"
+      id="Working"
       className="py-24 bg-black relative overflow-hidden font-jetbrains"
     >
       {/* Animated background elements */}
@@ -81,16 +81,12 @@ const Features: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-            Simple{" "}
-            <span className="relative">
-              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Four-Step
-              </span>
-              <span className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 opacity-50" />
-            </span>{" "}
-            Process
-          </h2>
+        <div className="text-brandBlue/80 flex flex-col ">
+      <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+  <span className="text-[#c8ceee]">SIMPLE FOUR-STEP PROCESS</span>
+  <span className="text-gray-300"></span>
+  </h2>
+      </div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Experience seamless payroll management with our enterprise-grade
             blockchain solution
@@ -261,4 +257,4 @@ const Features: React.FC = () => {
   );
 };
 
-export default Features;
+export default Working;

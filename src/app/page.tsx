@@ -5,13 +5,15 @@ import Agent from "@/components/home/PayzollAgent";
 import Testimonial from "@/components/home/Testimonial";
 
 import Sponsors from "@/components/home/Sponsors";
+import Navbar from "@/components/home/Navbar"; // Adjust the path if necessary
+import Footer from "@/components/home/Footer";
 
 
 
 export default function Home() {
   return (
     <>
-    
+    <Navbar />
      <Hero/>
      <Sponsors/>
    
@@ -21,6 +23,7 @@ export default function Home() {
     <Working/>
     <Agent/>
   <Testimonial/>
+  <Footer/>
  
     </>
   );

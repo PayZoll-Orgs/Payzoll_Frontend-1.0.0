@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
 import useMeasure from "react-use-measure";
 import Image from "next/image";
+import Link from "next/link"; // Import Link from next/link
 import { Button } from "../ui/MovingBorder";
 
 const Navbar = () => {
@@ -93,13 +94,15 @@ const Buttons = ({
 }) => (
   <div className="flex items-center gap-4">
     {/* Login Button */}
-    <Button
-      duration={6000}
-      className="text-white font-semibold"
-      containerClassName="w-32 h-10 border-brandBlue/[8%] rounded-full border p-[0.31rem]"
-    >
-      Login
-    </Button>
+    <Link href="/login">
+      <Button
+        duration={6000}
+        className="text-white font-semibold"
+        containerClassName="w-32 h-10 border-brandBlue/[8%] rounded-full border p-[0.31rem]"
+      >
+        Login
+      </Button>
+    </Link>
 
     {/* Mobile Menu Button */}
     <button

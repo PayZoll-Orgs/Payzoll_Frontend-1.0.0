@@ -52,7 +52,7 @@ function SpotlightCard({
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(202, 236, 241, .15), transparent 40%)`
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px,rgb(147, 153, 185), transparent 40%)`
         }}
       />
       {children}

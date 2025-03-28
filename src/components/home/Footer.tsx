@@ -177,9 +177,9 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-8 sm:py-12 flex items-center justify-center">
           <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-cyan-400 tracking-widest flex items-center">
             <span className="text-cyan-400 mr-2 sm:mr-4">&lt;</span>
-            <span className="text-cyan-400 ml-2 sm:ml-4">&gt;</span>
+            
             <span className="overflow-hidden">{displayedText}</span>
-            <span className="text-cyan-400 mr-2 sm:mr-4">&lt;</span>
+           
             <span className="text-cyan-400 ml-2 sm:ml-4">/ &gt;</span>
           </div>
         </div>

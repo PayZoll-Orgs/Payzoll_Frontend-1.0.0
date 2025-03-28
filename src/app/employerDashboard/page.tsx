@@ -2,12 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Sidebar from "@/components/dashboard/Sidebar";
-import QuickActions from "@/components/dashboard/QuickAction";
-import OverviewMetrics from "@/components/dashboard/OverviewMetrics";
-import GraphSection from "@/components/dashboard/GraphSection";
-import BalanceSection from "@/components/dashboard/BalanceSection";
-import RecentActivity from "@/components/dashboard/RecentActivity";
+import Sidebar from "@/components/employerDashboard/Sidebar";
+import QuickActions from "@/components/employerDashboard/QuickAction";
+import OverviewMetrics from "@/components/employerDashboard/OverviewMetrics";
+import GraphSection from "@/components/employerDashboard/GraphSection";
+import BalanceSection from "@/components/employerDashboard/BalanceSection";
+import RecentActivity from "@/components/employerDashboard/RecentActivity";
 
 const EmployerDashboard: React.FC = () => {
   return (

@@ -30,7 +30,7 @@ export default function EmployeeDashboard() {
 
   const handleLogout = () => {
     localStorage.setItem("token", "");
-    router.push("/auth?mode=login");
+    router.push("/login?mode=login");
   };
 
   // Mock data for employee information

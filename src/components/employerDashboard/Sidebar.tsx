@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
@@ -10,15 +10,16 @@ import {
   Award,
   Settings,
   LogOut,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "/employer/dashboard" },
-  { icon: Users, label: "Employees", path: "/employer/employees" },
-  { icon: BadgeDollarSign, label: "Payments", path: "/employer/payments" },
-  { icon: Award, label: "ESOPS/RSU", path: "/employer/esops" },
-  { icon: Settings, label: "Settings", path: "/employer/settings" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/employerDashboard" },
+  { icon: Users, label: "Employees", path: "/employeesDashboard" },
+  { icon: BadgeDollarSign, label: "Payments", path: "/payments" },
+ 
+  { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
 interface SidebarProps {
@@ -30,10 +31,19 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isWalletConnected, onConnectWallet, account }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false); // State to track loading
 
   const handleLogout = () => {
     localStorage.setItem("token", "null");
     router.push("/auth?mode=login");
+  };
+
+  const handlePayZollAgentClick = () => {
+    setIsLoading(true); // Set loading to true when PayZollAgent is clicked
+    setTimeout(() => {
+      setIsLoading(false); // Simulate loading completion after a delay
+      window.open("https://web-agent-client.onrender.com/", "_blank");
+    }, 2000); // Adjust the delay as needed
   };
 
   return (
@@ -46,12 +56,26 @@ const Sidebar: React.FC<SidebarProps> = ({ isWalletConnected, onConnectWallet, a
               PayZoll
             </h1>
           </Link>
-          <Link
-            href="/botintro"
-            className="text-center font-bold bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-indigo-500/20 transition-all"
-          >
-            PayZoll Agent
-          </Link>
+          {isLoading ? (
+            <div className="min-h-[48px] flex items-center justify-center bg-gray-900 text-white">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                className="flex items-center space-x-2"
+              >
+                <Sparkles className="w-6 h-6 text-indigo-400" />
+                <span className="text-sm font-medium">Loading...</span>
+              </motion.div>
+            </div>
+          ) : (
+            <button
+              onClick={handlePayZollAgentClick}
+              className="text-center font-bold bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-indigo-500/20 transition-all"
+            >
+              PayZoll Agent
+            </button>
+          )}
         </div>
 
         {/* Navigation */}

@@ -39,12 +39,12 @@ const QuickPayModal: React.FC<QuickPayModalProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-crypto-card w-full max-w-xl mx-4 rounded-2xl border border-gray-800 overflow-hidden"
+          className="bg-[#14161E] w-full max-w-xl mx-4 rounded-2xl border border-[#3B4058]/20 overflow-hidden"
         >
           {/* Header */}
-          <div className="p-6 border-b border-gray-800">
+          <div className="p-6 border-b border-[#3B4058]/20">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold">Quick Pay</h2>
+              <h2 className="text-xl font-bold text-white">Quick Pay</h2>
               <button
                 onClick={onClose}
                 className="text-gray-400 hover:text-white transition-colors"
@@ -57,18 +57,13 @@ const QuickPayModal: React.FC<QuickPayModalProps> = ({
           {/* Content */}
           <div className="p-6">
             {/* Payment Summary */}
-            <div className="bg-crypto-dark rounded-xl p-6 border border-gray-800 mb-6">
+            <div className="bg-[#1D202D] rounded-xl p-6 border border-[#3B4058]/20 mb-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div
-                    className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 
-                                flex items-center justify-center"
-                  >
-                    <DollarSign className="w-6 h-6 text-white" />
-                  </div>
+                  <DollarSign className="w-10 h-10 text-[#93c5fd]" />
                   <div>
-                    <h3 className="font-semibold">Total Amount</h3>
-                    <div className="text-2xl font-bold text-indigo-400">
+                    <h3 className="font-semibold text-white">Total Amount</h3>
+                    <div className="text-2xl font-bold text-[#93c5fd]">
                       {totalSalary} ETH
                     </div>
                   </div>
@@ -85,17 +80,17 @@ const QuickPayModal: React.FC<QuickPayModalProps> = ({
               </div>
 
               <div className="grid grid-cols-3 gap-4 text-sm">
-                <div className="bg-crypto-card/50 rounded-lg p-3">
+                <div className="bg-[#14161E]/50 rounded-lg p-3">
                   <div className="text-gray-400">Gas Fee (Est.)</div>
                   <div className="font-semibold text-green-400">$0.01</div>
                 </div>
-                <div className="bg-crypto-card/50 rounded-lg p-3">
+                <div className="bg-[#14161E]/50 rounded-lg p-3">
                   <div className="text-gray-400">Processing Time</div>
-                  <div className="font-semibold">~30 seconds</div>
+                  <div className="font-semibold text-white">~30 seconds</div>
                 </div>
-                <div className="bg-crypto-card/50 rounded-lg p-3">
+                <div className="bg-[#14161E]/50 rounded-lg p-3">
                   <div className="text-gray-400">Network</div>
-                  <div className="font-semibold">{network.name}</div>
+                  <div className="font-semibold text-white">{network.name}</div>
                 </div>
               </div>
             </div>
@@ -117,19 +112,19 @@ const QuickPayModal: React.FC<QuickPayModalProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="p-6 border-t border-gray-800">
+          <div className="p-6 border-t border-[#3B4058]/20">
             <div className="flex items-center justify-end space-x-4">
               <button
                 onClick={onClose}
-                className="px-6 py-2 rounded-xl border border-gray-800 text-gray-400
-                         hover:text-white hover:border-gray-700 transition-colors"
+                className="px-6 py-2 rounded-xl border border-[#3B4058]/20 text-gray-400
+                         hover:text-white hover:border-[#3B4058]/50 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={payEmployees}
-                className="px-6 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600
-                         text-white hover:shadow-lg hover:shadow-indigo-500/20 transition-all"
+                className="px-6 py-2 rounded-xl bg-[#93c5fd]
+                         text-white hover:bg-[#93c5fd]/90 transition-all"
               >
                 Confirm & Pay
               </button>

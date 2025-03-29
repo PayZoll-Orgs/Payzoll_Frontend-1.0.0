@@ -27,10 +27,10 @@ const RecentActivity: React.FC = () => {
   ]);
 
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 h-[500px] flex flex-col hover:border-indigo-500/50 transition-all hover:shadow-lg hover:shadow-indigo-500/10 group">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[500px] flex flex-col hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+          <h2 className="text-2xl font-bold text-white">
             Recent Activity
           </h2>
           <p className="text-gray-400 text-sm mt-1">Last 30 days</p>
@@ -39,7 +39,7 @@ const RecentActivity: React.FC = () => {
           <input
             type="text"
             placeholder="Search transactions..."
-            className="bg-crypto-dark border border-gray-800 rounded-xl py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-indigo-500 transition-colors w-48 group-hover:border-indigo-500/50"
+            className="bg-[#1D202D] border border-[#3B4058]/20 rounded-xl py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-[#93c5fd] transition-colors w-48"
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         </div>
@@ -49,22 +49,20 @@ const RecentActivity: React.FC = () => {
         {payrollHistory.map((payroll, index) => (
           <div
             key={index}
-            className="group/item bg-crypto-dark/50 rounded-xl p-4 border border-gray-800 hover:border-indigo-500/50 transition-all hover:bg-crypto-dark/70"
+            className="group/item bg-[#1D202D]/50 rounded-xl p-4 border border-[#3B4058]/20 hover:border-[#3B4058]/50 transition-all"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-red-600 to-orange-600 flex items-center justify-center transform transition-transform group-hover/item:scale-110">
-                  <ArrowUpRight className="w-5 h-5 text-white" />
-                </div>
+                <ArrowUpRight className="w-6 h-6 text-[#93c5fd] transform transition-transform group-hover/item:scale-110" />
                 <div>
-                  <div className="font-semibold group-hover/item:text-white transition-colors">
+                  <div className="font-semibold text-white">
                     Salary Payment
                   </div>
                   <div className="text-sm text-gray-400">{payroll.team}</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="font-semibold group-hover/item:text-white transition-colors">
+                <div className="font-semibold text-white">
                   {payroll.totalAmount?.$numberDecimal || "N/A"}
                 </div>
                 <div className="text-sm text-gray-400">$500</div>
@@ -72,7 +70,7 @@ const RecentActivity: React.FC = () => {
             </div>
             <div className="flex items-center justify-between mt-4 text-sm">
               <span
-                className={`px-3 py-1 rounded-full ${statusColors[payroll.status]} group-hover/item:opacity-90 transition-opacity`}
+                className={`px-3 py-1 rounded-full ${statusColors[payroll.status]}`}
               >
                 {payroll.status.charAt(0).toUpperCase() + payroll.status.slice(1)}
               </span>
@@ -82,9 +80,9 @@ const RecentActivity: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-4 flex justify-between items-center pt-4 border-t border-gray-800 group-hover:border-indigo-500/20">
+      <div className="mt-4 flex justify-between items-center pt-4 border-t border-[#3B4058]/20">
         <div className="text-sm text-gray-400">Showing {payrollHistory.length} transactions</div>
-        <button className="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium">
+        <button className="text-[#93c5fd] hover:text-[#93c5fd]/80 transition-colors text-sm font-medium">
           View All Transactions
         </button>
       </div>

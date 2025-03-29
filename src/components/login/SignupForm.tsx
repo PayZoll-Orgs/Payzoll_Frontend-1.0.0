@@ -60,7 +60,6 @@ const SignupForm: React.FC = () => {
         type="text"
         placeholder="Enter company name"
         icon={<Building2 className="w-5 h-5" />}
-
         error={errors.companyName?.message ? { message: errors.companyName.message } : undefined}
         {...register("companyName", {
           required: "Company name is required",
@@ -121,7 +120,6 @@ const SignupForm: React.FC = () => {
         type={showPassword ? "text" : "password"}
         placeholder="Confirm your password"
         icon={<Lock className="w-5 h-5" />}
-        
         error={errors.confirmPassword?.message ? { message: errors.confirmPassword.message } : undefined}
         {...register("confirmPassword", {
           required: "Please confirm your password",
@@ -134,7 +132,6 @@ const SignupForm: React.FC = () => {
         label="ESOP/RSU Token Name"
         type="text"
         placeholder="Enter token name"
-     
         error={errors.tokenName?.message ? { message: errors.tokenName.message } : undefined}
         {...register("tokenName", {
           required: "Token name is required",
@@ -150,7 +147,6 @@ const SignupForm: React.FC = () => {
         label="ESOP/RSU Token Symbol"
         type="text"
         placeholder="Enter token symbol"
-        
         error={errors.tokenName?.message ? { message: errors.tokenName.message } : undefined}
         {...register("tokenSymbol", {
           required: "Token symbol is required",
@@ -166,7 +162,6 @@ const SignupForm: React.FC = () => {
         label="Initial Supply"
         type="number"
         placeholder="Enter initial supply"
-        
         error={errors.initialSupply?.message ? { message: errors.initialSupply.message } : undefined}
         {...register("initialSupply", {
           required: "Initial supply is required",
@@ -180,8 +175,8 @@ const SignupForm: React.FC = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-xl
-                 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-200 flex items-center justify-center"
+        className="w-full bg-[#93c5fd] text-white py-3 px-4 rounded-xl
+                 hover:bg-[#93c5fd]/90 transition-all duration-200 flex items-center justify-center"
       >
         Create Employer Account
       </button>
@@ -189,11 +184,11 @@ const SignupForm: React.FC = () => {
       {/* Terms & Privacy Notice */}
       <p className="text-sm text-gray-400 text-center">
         By signing up, you agree to our{" "}
-        <a href="#" className="text-indigo-400 hover:text-indigo-300">
+        <a href="#" className="text-[#93c5fd] hover:text-[#93c5fd]/80">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" className="text-indigo-400 hover:text-indigo-300">
+        <a href="#" className="text-[#93c5fd] hover:text-[#93c5fd]/80">
           Privacy Policy
         </a>
       </p>

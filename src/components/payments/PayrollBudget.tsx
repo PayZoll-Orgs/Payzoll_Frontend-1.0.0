@@ -17,9 +17,9 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
   };
 
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold">Payroll Budget</h2>
+        <h2 className="text-xl font-bold text-white">Payroll Budget</h2>
         <button
           className="text-gray-400 hover:text-white transition-colors"
           onClick={fetchAccountBalance}
@@ -29,14 +29,9 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
       </div>
 
       {/* Wallet Balance */}
-      <div className="bg-crypto-dark rounded-xl p-6 border border-gray-800 mb-6">
+      <div className="bg-[#1D202D] rounded-xl p-6 border border-[#3B4058]/20 mb-6">
         <div className="flex items-center space-x-4 mb-4">
-          <div
-            className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 
-                        flex items-center justify-center"
-          >
-            <Wallet className="w-6 h-6 text-white" />
-          </div>
+          <Wallet className="w-10 h-10 text-[#93c5fd]" />
           <div>
             <div className="text-sm text-gray-400">Available Balance</div>
             <div className="text-2xl font-bold text-white">{balance} ETH</div>
@@ -44,11 +39,11 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
         </div>
 
         <div className="grid grid-cols-2 gap-4 text-sm">
-          <div className="bg-crypto-card/50 rounded-lg p-3">
+          <div className="bg-[#14161E]/50 rounded-lg p-3">
             <div className="text-gray-400">Required</div>
-            <div className="font-semibold text-indigo-400">{totalSalary} ETH</div>
+            <div className="font-semibold text-[#93c5fd]">{totalSalary} ETH</div>
           </div>
-          <div className="bg-crypto-card/50 rounded-lg p-3">
+          <div className="bg-[#14161E]/50 rounded-lg p-3">
             <div className="text-gray-400">Surplus</div>
             <div className="font-semibold text-green-400 overflow-x-auto">
               {balance - totalSalary} ETH
@@ -60,11 +55,11 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
       {/* Quick Actions */}
       <div className="grid grid-cols-2 gap-4">
         <button
-          className="group bg-crypto-dark hover:bg-crypto-dark/70 border border-gray-800 
-                         hover:border-indigo-500/50 rounded-xl p-4 transition-all"
+          className="group bg-[#1D202D] hover:bg-[#1D202D]/70 border border-[#3B4058]/20 
+                         hover:border-[#3B4058]/50 rounded-xl p-4 transition-all"
         >
           <div className="flex items-center justify-center space-x-2">
-            <Plus className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" />
+            <Plus className="w-5 h-5 text-[#93c5fd] group-hover:scale-110 transition-transform" />
             <span className="text-gray-400 group-hover:text-white transition-colors">
               Add Funds
             </span>
@@ -72,11 +67,11 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
         </button>
 
         <button
-          className="group bg-crypto-dark hover:bg-crypto-dark/70 border border-gray-800 
-                         hover:border-indigo-500/50 rounded-xl p-4 transition-all"
+          className="group bg-[#1D202D] hover:bg-[#1D202D]/70 border border-[#3B4058]/20 
+                         hover:border-[#3B4058]/50 rounded-xl p-4 transition-all"
         >
           <div className="flex items-center justify-center space-x-2">
-            <ArrowUpRight className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" />
+            <ArrowUpRight className="w-5 h-5 text-[#93c5fd] group-hover:scale-110 transition-transform" />
             <span className="text-gray-400 group-hover:text-white transition-colors">
               Withdraw
             </span>
@@ -85,11 +80,11 @@ const PayrollBudget: React.FC<PayrollBudgetProps> = ({ totalSalary }) => {
       </div>
 
       {/* Connected Wallet */}
-      <div className="mt-6 p-4 bg-crypto-dark/50 rounded-xl border border-gray-800">
+      <div className="mt-6 p-4 bg-[#1D202D]/50 rounded-xl border border-[#3B4058]/20">
         <div className="flex items-center justify-between overflow-x-auto">
           <div>
             <div className="text-sm text-gray-400">Connected Wallet</div>
-            <div className="font-mono text-sm mt-1">N/A</div>
+            <div className="font-mono text-sm mt-1 text-white">N/A</div>
           </div>
         </div>
       </div>

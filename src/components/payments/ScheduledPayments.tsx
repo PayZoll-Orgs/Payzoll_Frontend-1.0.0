@@ -39,13 +39,17 @@ const scheduledPayments: ScheduledPayment[] = [
     status: "scheduled",
   },
 ];
+const statusColors = {
+  scheduled: "text-green-400 bg-green-400/10",
+  pending: "text-yellow-400 bg-yellow-400/10",
+};
 
 const ScheduledPayments: React.FC = () => {
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold">Scheduled Payments</h2>
-        <button className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+        <h2 className="text-xl font-bold text-white">Scheduled Payments</h2>
+        <button className="text-sm text-[#93c5fd] hover:text-[#93c5fd]/80 transition-colors">
           View All
         </button>
       </div>
@@ -57,15 +61,11 @@ const ScheduledPayments: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-crypto-dark/50 rounded-xl p-4 border border-gray-800 hover:border-indigo-500/50 transition-all"
+            className="group bg-[#1D202D]/50 rounded-xl p-4 border border-[#3B4058]/20 hover:border-[#3B4058]/50 transition-all"
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 
-                              flex items-center justify-center transform transition-transform 
-                              group-hover:scale-110">
-                  <Calendar className="w-5 h-5 text-white" />
-                </div>
+                <Calendar className="w-10 h-10 text-[#93c5fd] transform transition-transform group-hover:scale-110" />
                 <div>
                   <h3 className="font-semibold group-hover:text-white transition-colors">
                     {payment.title}
@@ -103,8 +103,8 @@ const ScheduledPayments: React.FC = () => {
         ))}
       </div>
 
-      <button className="w-full mt-4 py-3 rounded-xl bg-crypto-dark border border-gray-800 
-                       text-gray-400 hover:text-white hover:border-indigo-500/50 transition-all">
+      <button className="w-full mt-4 py-3 rounded-xl bg-[#1D202D] border border-[#3B4058]/20 
+                       text-gray-400 hover:text-white hover:border-[#3B4058]/50 transition-all">
         Schedule New Payment
       </button>
     </div>

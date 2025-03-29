@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Users, DollarSign } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 const colorPalette = [
-  "#6366f1", "#8b5cf6", "#a855f7", "#d946ef", "#ec4899",
+  "#93c5fd", "#8b5cf6", "#a855f7", "#d946ef", "#ec4899",
   "#f43f5e", "#f97316", "#fb923c", "#facc15", "#84cc16",
 ];
 
@@ -17,9 +17,9 @@ interface CustomTooltipProps {
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-crypto-dark p-3 rounded-lg border border-gray-800">
+      <div className="bg-[#14161E] p-3 rounded-lg border border-[#3B4058]/20">
         <p className="text-white font-semibold">{payload[0].name}</p>
-        <p className="text-indigo-400">{`${payload[0].value} Employees`}</p>
+        <p className="text-[#93c5fd]">{`${payload[0].value} Employees`}</p>
       </div>
     );
   }
@@ -50,18 +50,16 @@ const OverviewMetrics: React.FC<OverviewMetricsProps> = ({ type }) => {
 
   if (type === "employees") {
     return (
-      <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 h-[420px] hover:border-indigo-500/50 transition-all hover:shadow-lg hover:shadow-indigo-500/10 group">
+      <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[420px] hover:border-[#3B4058]/50 transition-all">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h3 className="text-gray-400 mb-2">Total Employees</h3>
-            <div className="text-4xl font-bold group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+            <div className="text-4xl font-bold text-white">
               {employees.length}
             </div>
             <div className="text-green-400 text-sm mt-1">+12% from last month</div>
           </div>
-          <div className="w-16 h-16 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center transform transition-transform group-hover:scale-110">
-            <Users className="w-8 h-8 text-white" />
-          </div>
+          <Users className="w-10 h-10 text-[#93c5fd]" />
         </div>
         <div className="h-44 relative">
           <ResponsiveContainer width="100%" height="100%">
@@ -79,16 +77,14 @@ const OverviewMetrics: React.FC<OverviewMetricsProps> = ({ type }) => {
     );
   }
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 h-[420px] hover:border-indigo-500/50 transition-all hover:shadow-lg hover:shadow-indigo-500/10 group">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[420px] hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h3 className="text-gray-400 mb-2">Total Amount to be Paid</h3>
           <div className="text-4xl font-bold text-green-400">{totalSalary} ether</div>
           <div className="text-green-400 text-sm mt-1">75% already processed</div>
         </div>
-        <div className="w-16 h-16 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 flex items-center justify-center transform transition-transform group-hover:scale-110">
-          <DollarSign className="w-8 h-8 text-white" />
-        </div>
+        <DollarSign className="w-10 h-10 text-green-400" />
       </div>
     </div>
   );

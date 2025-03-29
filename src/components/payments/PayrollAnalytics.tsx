@@ -19,7 +19,7 @@ const monthlyData = [
 ];
 
 const departmentData = [
-  { name: "Engineering", value: 65000, color: "#6366f1" },
+  { name: "Engineering", value: 65000, color: "#93c5fd" },
   { name: "Marketing", value: 35000, color: "#8b5cf6" },
   { name: "Sales", value: 28000, color: "#a855f7" },
   { name: "HR", value: 12000, color: "#d946ef" },
@@ -32,14 +32,12 @@ const paymentMethodData = [
   { method: "USDC", amount: 25000 }
 ];
 
-
-
 const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-crypto-dark p-3 rounded-lg border border-gray-800">
+      <div className="bg-[#1D202D] p-3 rounded-lg border border-[#3B4058]/20">
         <p className="text-white font-semibold">{label}</p>
-        <p className="text-indigo-400">${(payload[0]?.value ?? 0).toLocaleString()}</p>
+        <p className="text-[#93c5fd]">${(payload[0]?.value ?? 0).toLocaleString()}</p>
       </div>
     );
   }
@@ -48,23 +46,20 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload
 
 const PayrollAnalytics: React.FC = () => {
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
-      <h2 className="text-xl font-bold mb-6">Payroll Analytics</h2>
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
+      <h2 className="text-xl font-bold mb-6 text-white">Payroll Analytics</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Monthly Trend */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-crypto-dark rounded-xl p-4 border border-gray-800"
+          className="bg-[#1D202D] rounded-xl p-4 border border-[#3B4058]/20"
         >
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 
-                          flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-white" />
-            </div>
+            <TrendingUp className="w-10 h-10 text-[#93c5fd]" />
             <div>
-              <h3 className="font-semibold">Monthly Trend</h3>
+              <h3 className="font-semibold text-white">Monthly Trend</h3>
               <p className="text-sm text-gray-400">Last 6 months</p>
             </div>
           </div>
@@ -72,7 +67,7 @@ const PayrollAnalytics: React.FC = () => {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={monthlyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis dataKey="month" stroke="#9ca3af" />
                 <YAxis 
                   stroke="#9ca3af"
@@ -82,7 +77,7 @@ const PayrollAnalytics: React.FC = () => {
                 <Line
                   type="monotone"
                   dataKey="amount"
-                  stroke="#6366f1"
+                  stroke="#93c5fd"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   activeDot={{ r: 8 }}
@@ -97,15 +92,12 @@ const PayrollAnalytics: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-crypto-dark rounded-xl p-4 border border-gray-800"
+          className="bg-[#1D202D] rounded-xl p-4 border border-[#3B4058]/20"
         >
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 
-                          flex items-center justify-center">
-              <PieChartIcon className="w-5 h-5 text-white" />
-            </div>
+            <PieChartIcon className="w-10 h-10 text-purple-400" />
             <div>
-              <h3 className="font-semibold">Department Split</h3>
+              <h3 className="font-semibold text-white">Department Split</h3>
               <p className="text-sm text-gray-400">Current month</p>
             </div>
           </div>

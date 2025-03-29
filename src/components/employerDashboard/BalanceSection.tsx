@@ -40,17 +40,17 @@ const BalanceSection: React.FC = () => {
   const [showAddFunds, setShowAddFunds] = useState<boolean>(false);
 
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 h-[420px] overflow-hidden hover:border-indigo-500/50 transition-all hover:shadow-lg hover:shadow-indigo-500/10 group">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[420px] overflow-hidden hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+          <h2 className="text-2xl font-bold text-white">
             Token Balance
           </h2>
           <p className="text-gray-400 text-sm mt-1">Your token details</p>
         </div>
       </div>
 
-      <div className="bg-crypto-dark/50 rounded-xl p-6 mb-6 border border-gray-800 transition-all">
+      <div className="bg-[#14161E] rounded-xl p-6 mb-6 border border-[#3B4058]/20">
         <div className="flex items-center justify-between mb-2">
           <span className="text-gray-400">Total Coins</span>
           <span className="text-green-400 text-sm">+3.2% this month</span>
@@ -65,13 +65,11 @@ const BalanceSection: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group/item bg-crypto-dark/50 rounded-xl p-4 border border-gray-800 hover:border-indigo-500/50 transition-all hover:bg-crypto-dark/70"
+            className="group/item bg-[#1D202D]/50 rounded-xl p-4 border border-[#3B4058]/20 hover:border-[#3B4058]/50 transition-all"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
-                  <Wallet className="w-5 h-5 text-white" />
-                </div>
+                <Wallet className="w-6 h-6 text-[#93c5fd]" />
                 <div>
                   <div className="font-semibold text-white">{crypto.currency}</div>
                   <div className="text-sm text-gray-400">{crypto.amount} {crypto.currency}</div>
@@ -102,11 +100,11 @@ const BalanceSection: React.FC = () => {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="bg-crypto-card p-6 rounded-2xl border border-gray-800 w-full max-w-md m-4 hover:border-indigo-500/50 transition-all"
+              className="bg-[#14161E] p-6 rounded-2xl border border-[#3B4058]/20 w-full max-w-md m-4 hover:border-[#3B4058]/50 transition-all"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-xl font-bold mb-4">Add Funds</h3>
-              <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl hover:shadow-lg hover:shadow-indigo-500/20 transition-all">
+              <h3 className="text-xl font-bold mb-4 text-white">Add Funds</h3>
+              <button className="w-full bg-[#93c5fd] text-white py-3 rounded-xl hover:bg-[#93c5fd]/90 transition-all">
                 Proceed to Payment
               </button>
             </motion.div>

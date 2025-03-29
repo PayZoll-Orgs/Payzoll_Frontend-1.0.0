@@ -12,6 +12,7 @@ import {
   XCircle,
   Clock,
 } from "lucide-react";
+import "../../styles/gradients.css";
 
 interface Transaction {
   id: number;
@@ -67,20 +68,23 @@ const StatusIcon: React.FC<{ status: string }> = ({ status }) => {
 
 const TransactionsLog: React.FC<{ payrollHistory: Transaction[] }> = ({ payrollHistory }) => {
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold">Transaction History</h2>
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
+      <h2 className="text-xl font-bold mb-6 logo-gradient-text">Transaction Log</h2>
 
-        <div className="flex items-center space-x-4">
-          <button className="flex items-center space-x-2 px-4 py-2 bg-crypto-dark rounded-lg text-gray-400 hover:text-white transition-colors">
-            <Filter className="w-4 h-4" />
-            <span>Filter</span>
-          </button>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-crypto-dark rounded-lg text-gray-400 hover:text-white transition-colors">
-            <Download className="w-4 h-4" />
-            <span>Export</span>
-          </button>
+      <div className="flex justify-between items-center mb-4">
+        <div className="relative flex-1">
+          <input
+            type="text"
+            placeholder="Search transactions..."
+            className="w-full bg-[#1D202D] border border-[#3B4058]/20 text-white rounded-xl py-2 pl-10 pr-4
+                     focus:outline-none focus:ring-2 focus:ring-[#98E4C9]/50 transition-all"
+          />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         </div>
+        <button className="logo-gradient-animated text-white px-4 py-2 rounded-xl ml-4 hover:shadow-lg transition-all">
+          <Download className="w-5 h-5" />
+          Export
+        </button>
       </div>
 
       <div className="space-y-4">
@@ -90,43 +94,16 @@ const TransactionsLog: React.FC<{ payrollHistory: Transaction[] }> = ({ payrollH
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-crypto-dark/50 rounded-xl p-4 border border-gray-800 hover:border-indigo-500/50 transition-all"
+            className={`flex justify-between items-center p-4 rounded-xl border border-[#3B4058]/20 
+                        ${payroll.status === "completed" ? "bg-green-500/10" : payroll.status === "pending" ? "bg-yellow-500/10" : "bg-red-500/10"}`}
           >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center space-x-3">
-                <div
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center transform 
-                              transition-transform group-hover:scale-110 bg-gradient-to-r
-                              from-indigo-600 to-purple-600`}
-                >
-                  <ArrowUpRight className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-semibold group-hover:text-white transition-colors">
-                    {payroll.type}
-                  </h3>
-                  <div className="text-sm text-gray-400">{payroll.recipient}</div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="font-semibold text-gray-300">
-                  {payroll.amount}
-                </div>
-                <div className="text-sm text-gray-400">{payroll.timestamp}</div>
-              </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white">{payroll.amount}</h3>
+              <p className="text-sm text-gray-400">{payroll.timestamp}</p>
             </div>
-
-            <div className="flex items-center justify-between text-sm">
-              <div className="text-gray-400">
-                Tx: <span className="font-mono">{payroll.txHash}</span>
-              </div>
-              <div
-                className={`flex items-center space-x-1 px-2 py-1 rounded-full ${statusColors[payroll.status]}`}
-              >
-                <StatusIcon status={payroll.status} />
-                <span>{payroll.status.charAt(0).toUpperCase() + payroll.status.slice(1)}</span>
-              </div>
-            </div>
+            <span className={`px-2 py-1 rounded-full text-xs ${payroll.status === "completed" ? "bg-green-400/10 text-green-400" : payroll.status === "pending" ? "bg-yellow-400/10 text-yellow-400" : "bg-red-400/10 text-red-400"}`}>
+              {payroll.status.charAt(0).toUpperCase() + payroll.status.slice(1)}
+            </span>
           </motion.div>
         ))}
       </div>

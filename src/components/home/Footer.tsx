@@ -1,211 +1,167 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import {
+  Wallet2,
+  Twitter,
+  Linkedin,
+  Github,
+  Mail,
+  ArrowRight,
+  Globe,
+  Shield,
+  Layers,
+  ChevronUp,
+  Instagram,
+  Send,
+} from "lucide-react";
 
-export default function Footer() {
-  const [visible, setVisible] = useState(false);
-  const [displayedText, setDisplayedText] = useState("");
-  const footerRef = useRef<HTMLElement>(null);
-  const fullText = "PAYZOLL";
+const Footer: React.FC = () => {
+  const [hoverState, setHoverState] = useState({
+    newsletter: false,
+    scrollTop: false,
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+  const [email, setEmail] = useState("");
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmail("");
+    alert("Thank you for subscribing!");
+  };
 
-    return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (visible) {
-      let currentIndex = 0;
-      const interval = setInterval(() => {
-        if (currentIndex <= fullText.length) {
-          setDisplayedText(fullText.substring(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 150);
-
-      return () => clearInterval(interval);
-    }
-  }, [visible]);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <footer
-      ref={footerRef}
-      className="relative text-white py-12 px-4 sm:px-6 md:px-12 bg-cover bg-center before:absolute before:inset-0 before:bg-black/50 before:backdrop-blur-lg"
-      style={{
-        backgroundImage: `url('/images/bg.avif')`,
-      }}
-    >
-      <div className="relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-400 mb-4">
-              Let&apos;s build the future together
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 mb-6">
-              Connect with our network
+    <footer className="relative bg-gradient-to-b from-gray-900 to-black text-gray-300 overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mb-16">
+          <div className="bg-gradient-to-r from-indigo-900/20 via-purple-900/20 to-purple-900/20 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0 md:mr-12">
+                <h3 className="text-2xl font-bold text-white mb-2">Stay updated</h3>
+                <p className="text-gray-300">Get the latest news and updates from PayZoll</p>
+              </div>
+              <form onSubmit={handleSubmit} className="w-full md:w-auto">
+                <div className="flex">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full md:w-64 px-4 py-3 rounded-l-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-4 py-3 rounded-r-lg flex items-center transition-all duration-300"
+                  >
+                    <span className="text-white font-medium">Subscribe</span>
+                    <ArrowRight className="ml-2 h-5 w-5 text-white transition-transform duration-300" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          <div className="space-y-6">
+            <div className="flex items-center">
+              <Wallet2 className="h-8 w-8 text-indigo-500" />
+              <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+                PayZoll
+              </span>
+            </div>
+            <p className="text-gray-400 leading-relaxed">
+              Next-generation crypto payroll platform for the modern workforce.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-600 text-black font-medium py-2 px-6 rounded-md hover:opacity-90 transition-opacity"
-            >
-              <Mail className="h-5 w-5" />
-              Contact Us
-              <ArrowRight className="h-5 w-5" />
-            </Link>
           </div>
-
-          
-
-          {/* CONNECT COLUMN */}
           <div>
-            <h3 className="text-cyan-400 font-medium mb-4">Product</h3>
+            <h3 className="text-white font-semibold mb-6 text-lg">Product</h3>
             <ul className="space-y-3">
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Security
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                 Enterprise 
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                 API
-                </Link>
-              </li>
+              {["Features", "Pricing", "Security", "Enterprise", "API"].map((item, index) => (
+                <li key={index}>
+                  <Link href="#" className="text-gray-400 hover:text-white">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* COMPANY COLUMN */}
           <div>
-            <h3 className="text-cyan-400 font-medium mb-4">Company</h3>
+            <h3 className="text-white font-semibold mb-6 text-lg">Company</h3>
             <ul className="space-y-3">
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Partners
-                </Link>
-              </li>
+              {["About", "Blog", "Careers", "Contact", "Partners"].map((item, index) => (
+                <li key={index}>
+                  <Link href="#" className="text-gray-400 hover:text-white">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* LEGAL COLUMN */}
           <div>
-            <h3 className="text-cyan-400 font-medium mb-4">Legal</h3>
+            <h3 className="text-white font-semibold mb-6 text-lg">Legal</h3>
             <ul className="space-y-3">
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Terms
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Cookie Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Licenses
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-cyan-400 transition-colors">
-                  Compliance
-                </Link>
-              </li>
+              {["Privacy", "Terms", "Cookie Policy", "Licenses", "Compliance"].map((item, index) => (
+                <li key={index}>
+                  <Link href="#" className="text-gray-400 hover:text-white">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-
-        {/* ANIMATED PAYZOLL TEXT */}
-        <div className="border-t border-gray-800 py-8 sm:py-12 flex items-center justify-center">
-          <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-cyan-400 tracking-widest flex items-center">
-            <span className="text-cyan-400 mr-2 sm:mr-4">&lt;</span>
-            
-            <span className="overflow-hidden">{displayedText}</span>
-           
-            <span className="text-cyan-400 ml-2 sm:ml-4">/ &gt;</span>
-          </div>
-        </div>
-
-       {/* COPYRIGHT TEXT */}
-<div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 mt-4 sm:mt-8">
-  {/* Left Side */}
-  <div className="flex items-center">
-    <span className="mr-2">&lt;&gt;</span>
-    <p>© 2025 PayZoll. All Rights Reserved.</p>
-  </div>
-
-  {/* Right Side */}
-  <div className="flex space-x-4">
-    <Link href="/terms" className="hover:text-cyan-400 transition-colors">
-      Terms
-    </Link>
-    <Link href="/privacy" className="hover:text-cyan-400 transition-colors">
-      Privacy
-    </Link>
-    <Link href="/cookies" className="hover:text-cyan-400 transition-colors">
-      Cookies
-    </Link>
+        <div className="mt-16 pt-8 border-t border-gray-800">
+  <h3 className="text-white font-semibold mb-6 text-lg">Contact Us</h3>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    {["Founder", "Support", "Marketing", "HR"].map((role, index) => (
+      <div key={index}>
+        <h4 className="text-white font-medium mb-2">{role}</h4>
+        <a
+          href={`mailto:${role.toLowerCase()}@payzoll.in`}
+          className="text-gray-400 hover:text-white"
+        >
+          {role.toLowerCase()}@payzoll.in
+        </a>
+      </div>
+    ))}
   </div>
 </div>
+
+        <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} PayZoll. All rights reserved.</p>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <Link href="/terms" className="text-gray-400 hover:text-white text-sm">
+              Terms
+            </Link>
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">
+              Privacy
+            </Link>
+            <Link href="/cookies" className="text-gray-400 hover:text-white text-sm">
+              Cookies
+            </Link>
+          </div>
+        </div>
       </div>
+
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-500 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+        aria-label="Back to top"
+      >
+        <ChevronUp className="h-6 w-6 text-white" />
+      </button>
     </footer>
   );
-}
+};
+
+export default Footer;

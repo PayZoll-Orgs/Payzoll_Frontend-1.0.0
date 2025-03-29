@@ -53,15 +53,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function AnalyticsSection() {
   return (
-    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all">
-      <h2 className="text-xl font-bold mb-6 text-[#c8ceee]">Analytics</h2>
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
+      <h2 className="text-xl font-bold mb-6 text-white">Analytics</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
+        <div className="bg-[#14161E] rounded-xl p-4 border border-[#3B4058]/20">
           <div className="flex items-center space-x-3 mb-4">
-            <TrendingUp className="w-6 h-6 text-blue-300" />
+            <TrendingUp className="w-6 h-6 text-[#93c5fd]" />
             <div>
-              <h3 className="font-semibold text-[#c8ceee]">Salary Trends</h3>
+              <h3 className="font-semibold text-white">Salary Trends</h3>
               <p className="text-sm text-gray-400">6-month history</p>
             </div>
           </div>
@@ -75,27 +75,31 @@ export default function AnalyticsSection() {
                 <Tooltip content={<CustomTooltip />} />
                 <Legend />
                 <Bar dataKey="salary" name="Base Salary" fill="#93c5fd" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="bonus" name="Bonus" fill="#c8ceee" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="bonus" name="Bonus" fill="#3B4058" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
+        <div className="bg-[#14161E] rounded-xl p-4 border border-[#3B4058]/20">
           <div className="flex items-center space-x-3 mb-4">
-            <BarChart2 className="w-6 h-6 text-blue-300" />
+            <BarChart2 className="w-6 h-6 text-[#93c5fd]" />
             <div>
-              <h3 className="font-semibold text-[#c8ceee]">Performance Metrics</h3>
+              <h3 className="font-semibold text-white">Performance Metrics</h3>
               <p className="text-sm text-gray-400">Current quarter</p>
             </div>
           </div>
 
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={performanceData} layout="vertical">
+              <BarChart 
+                data={performanceData} 
+                layout="vertical"
+                margin={{ left: 100, right: 20, top: 10, bottom: 10 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                 <XAxis type="number" domain={[0, 100]} stroke="#9ca3af" />
-                <YAxis dataKey="metric" type="category" stroke="#9ca3af" />
+                <YAxis dataKey="metric" type="category" stroke="#9ca3af" width={90} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="value" fill="#93c5fd" radius={[0, 4, 4, 0]}>
                   {performanceData.map((entry, index) => (

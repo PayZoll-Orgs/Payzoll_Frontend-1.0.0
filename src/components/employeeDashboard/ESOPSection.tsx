@@ -41,23 +41,23 @@ export default function ESOPSection({ employeeTokenInfo }: { employeeTokenInfo: 
   };
 
   return (
-    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all">
+    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#c8ceee]">ESOP Overview</h2>
+        <h2 className="text-xl font-bold text-white">ESOP Overview</h2>
         <button
-          className="px-4 py-2 rounded-lg text-[#c8ceee] border border-blue-300/30 hover:bg-blue-300/10 transition-all"
+          className="px-4 py-2 rounded-lg text-white border border-[#3B4058]/30 hover:bg-[#3B4058]/10 transition-all"
         >
           Claim Tokens
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
+        <div className="bg-[#14161E] rounded-xl p-4 border border-[#3B4058]/20">
           <div className="flex items-center space-x-4 mb-4">
-            <Award className="w-6 h-6 text-blue-300" />
+            <Award className="w-6 h-6 text-[#93c5fd]" />
             <div>
               <div className="text-sm text-gray-400">Total Tokens</div>
-              <div className="text-2xl font-bold text-[#c8ceee]">{totalTokens()} ESOP</div>
+              <div className="text-2xl font-bold text-white">{totalTokens()} ESOP</div>
             </div>
           </div>
 
@@ -74,8 +74,8 @@ export default function ESOPSection({ employeeTokenInfo }: { employeeTokenInfo: 
         </div>
       </div>
 
-      <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
-        <h3 className="text-lg font-semibold mb-4 text-[#c8ceee]">Token Price History</h3>
+      <div className="bg-[#14161E] rounded-xl p-4 border border-[#3B4058]/20">
+        <h3 className="text-lg font-semibold mb-4 text-white">Token Price History</h3>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={tokenPriceData}>

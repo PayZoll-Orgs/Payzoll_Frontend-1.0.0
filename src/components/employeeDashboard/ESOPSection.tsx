@@ -41,25 +41,23 @@ export default function ESOPSection({ employeeTokenInfo }: { employeeTokenInfo: 
   };
 
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
+    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-white">ESOP Overview</h2>
+        <h2 className="text-xl font-bold text-[#c8ceee]">ESOP Overview</h2>
         <button
-          className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/20 transition-all"
+          className="px-4 py-2 rounded-lg text-[#c8ceee] border border-blue-300/30 hover:bg-blue-300/10 transition-all"
         >
           Claim Tokens
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center space-x-4 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
-              <Award className="w-5 h-5 text-white" />
-            </div>
+            <Award className="w-6 h-6 text-blue-300" />
             <div>
               <div className="text-sm text-gray-400">Total Tokens</div>
-              <div className="text-2xl font-bold">{totalTokens()} ESOP</div>
+              <div className="text-2xl font-bold text-[#c8ceee]">{totalTokens()} ESOP</div>
             </div>
           </div>
 
@@ -76,8 +74,8 @@ export default function ESOPSection({ employeeTokenInfo }: { employeeTokenInfo: 
         </div>
       </div>
 
-      <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
-        <h3 className="text-lg font-semibold mb-4 text-white">Token Price History</h3>
+      <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
+        <h3 className="text-lg font-semibold mb-4 text-[#c8ceee]">Token Price History</h3>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={tokenPriceData}>
@@ -85,7 +83,7 @@ export default function ESOPSection({ employeeTokenInfo }: { employeeTokenInfo: 
               <XAxis dataKey="date" stroke="#9ca3af" />
               <YAxis stroke="#9ca3af" />
               <Tooltip content={<CustomTooltip />} />
-              <Line type="monotone" dataKey="price" stroke="#6366f1" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 8 }} />
+              <Line type="monotone" dataKey="price" stroke="#93c5fd" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

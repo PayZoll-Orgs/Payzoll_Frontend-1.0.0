@@ -60,28 +60,16 @@ export default function QuickPanel({ isWalletConnected }: { isWalletConnected: b
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
           onClick={action.action}
-          className={`group relative p-4 bg-gray-800 rounded-xl border border-gray-700 
-                     hover:border-indigo-500/50 transition-all duration-300 ${
+          className={`group relative p-4 bg-black rounded-xl border border-brandBlue/[8%] 
+                     hover:border-blue-300/50 transition-all duration-300 ${
                        !isWalletConnected ? "opacity-50 cursor-not-allowed" : ""
                      }`}
           disabled={!isWalletConnected}
         >
-          <div
-            className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300"
-            style={{
-              backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`,
-            }}
-          ></div>
-
-          <div className="flex flex-col items-center space-y-2">
-            <div
-              className={`w-12 h-12 rounded-xl bg-gradient-to-r ${action.color} 
-                           flex items-center justify-center transform group-hover:scale-110 transition-transform`}
-            >
-              <action.icon className="w-6 h-6 text-white" />
-            </div>
+          <div className="flex flex-col items-center space-y-3">
+            <action.icon className="w-7 h-7 text-blue-300 transform group-hover:scale-110 transition-transform" />
             <div className="text-center">
-              <div className="font-semibold group-hover:text-white transition-colors">
+              <div className="font-semibold text-[#c8ceee] group-hover:text-white transition-colors">
                 {action.label}
               </div>
               <div className="text-xs text-gray-400 mt-1">

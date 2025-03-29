@@ -53,17 +53,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function AnalyticsSection() {
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
-      <h2 className="text-xl font-bold mb-6 text-white">Analytics</h2>
+    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all">
+      <h2 className="text-xl font-bold mb-6 text-[#c8ceee]">Analytics</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-white" />
-            </div>
+            <TrendingUp className="w-6 h-6 text-blue-300" />
             <div>
-              <h3 className="font-semibold text-white">Salary Trends</h3>
+              <h3 className="font-semibold text-[#c8ceee]">Salary Trends</h3>
               <p className="text-sm text-gray-400">6-month history</p>
             </div>
           </div>
@@ -76,20 +74,18 @@ export default function AnalyticsSection() {
                 <YAxis stroke="#9ca3af" />
                 <Tooltip content={<CustomTooltip />} />
                 <Legend />
-                <Bar dataKey="salary" name="Base Salary" fill="#6366f1" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="bonus" name="Bonus" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="salary" name="Base Salary" fill="#93c5fd" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="bonus" name="Bonus" fill="#c8ceee" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center">
-              <BarChart2 className="w-5 h-5 text-white" />
-            </div>
+            <BarChart2 className="w-6 h-6 text-blue-300" />
             <div>
-              <h3 className="font-semibold text-white">Performance Metrics</h3>
+              <h3 className="font-semibold text-[#c8ceee]">Performance Metrics</h3>
               <p className="text-sm text-gray-400">Current quarter</p>
             </div>
           </div>
@@ -101,11 +97,11 @@ export default function AnalyticsSection() {
                 <XAxis type="number" domain={[0, 100]} stroke="#9ca3af" />
                 <YAxis dataKey="metric" type="category" stroke="#9ca3af" />
                 <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="value" fill="#a855f7" radius={[0, 4, 4, 0]}>
+                <Bar dataKey="value" fill="#93c5fd" radius={[0, 4, 4, 0]}>
                   {performanceData.map((entry, index) => (
                     <Cell 
                       key={index}
-                      fill={entry.value >= 90 ? '#10b981' : entry.value >= 80 ? '#6366f1' : '#f59e0b'}
+                      fill={entry.value >= 90 ? '#10b981' : entry.value >= 80 ? '#93c5fd' : '#f59e0b'}
                     />
                   ))}
                 </Bar>

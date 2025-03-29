@@ -32,15 +32,13 @@ export default function EmployeeOverview({
   };
 
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all h-[420px] flex flex-col">
-      <h2 className="text-xl font-bold mb-6 text-white">Overview</h2>
+    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all h-[420px] flex flex-col">
+      <h2 className="text-xl font-bold mb-6 text-[#c8ceee]">Overview</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-auto">
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 flex items-center justify-center">
-              <DollarSign className="w-5 h-5 text-white" />
-            </div>
+            <DollarSign className="w-6 h-6 text-green-400" />
             <div className="flex items-center text-green-400 text-sm">
               <ArrowUpRight className="w-4 h-4 mr-1" />
               +12.5%
@@ -48,32 +46,28 @@ export default function EmployeeOverview({
           </div>
           <div className="space-y-1">
             <div className="text-gray-400 text-sm">Total Earnings</div>
-            <div className="text-2xl font-bold">{totalEarning().toFixed(6)} ETH</div>
+            <div className="text-2xl font-bold text-[#c8ceee]">{totalEarning().toFixed(6)} ETH</div>
             <div className="text-sm text-gray-400">≈ 45.5 USD</div>
           </div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
-              <Wallet className="w-5 h-5 text-white" />
-            </div>
+            <Wallet className="w-6 h-6 text-blue-300" />
             <div className="flex items-center text-yellow-400 text-sm">Pending</div>
           </div>
           <div className="space-y-1">
             <div className="text-gray-400 text-sm">Next Payment</div>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-[#c8ceee]">
               {employeeInfo.salary?.$numberDecimal || "0"} ETH
             </div>
             <div className="text-sm text-gray-400">Due in 5 days</div>
           </div>
         </div>
 
-        <div className="bg-gray-900 rounded-xl p-4 border border-gray-700">
+        <div className="bg-black rounded-xl p-4 border border-brandBlue/[8%]">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center">
-              <Award className="w-5 h-5 text-white" />
-            </div>
+            <Award className="w-6 h-6 text-blue-300" />
             <div className="flex items-center text-green-400 text-sm">
               <ArrowUpRight className="w-4 h-4 mr-1" />
               +8.3%
@@ -81,7 +75,7 @@ export default function EmployeeOverview({
           </div>
           <div className="space-y-1">
             <div className="text-gray-400 text-sm">ESOP Tokens</div>
-            <div className="text-2xl font-bold">{totalTokens()}</div>
+            <div className="text-2xl font-bold text-[#c8ceee]">{totalTokens()}</div>
             <div className="text-sm text-gray-400">{totalTokens()} vested</div>
           </div>
         </div>
@@ -91,11 +85,11 @@ export default function EmployeeOverview({
         <div>
           <div className="flex justify-between text-sm mb-2">
             <span className="text-gray-400">Vesting Progress</span>
-            <span className="text-indigo-400">60%</span>
+            <span className="text-blue-300">60%</span>
           </div>
-          <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-black rounded-full overflow-hidden">
             <div
-              className="h-full w-[60%] bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
+              className="h-full w-[60%] bg-gradient-to-r from-blue-500 to-blue-300 rounded-full"
               style={{ transition: "width 1s ease-in-out" }}
             />
           </div>
@@ -106,9 +100,9 @@ export default function EmployeeOverview({
             <span className="text-gray-400">Performance Metrics</span>
             <span className="text-green-400">85%</span>
           </div>
-          <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div className="h-2 bg-black rounded-full overflow-hidden">
             <div
-              className="h-full w-[85%] bg-gradient-to-r from-green-600 to-emerald-600 rounded-full"
+              className="h-full w-[85%] bg-gradient-to-r from-blue-500 to-blue-300 rounded-full"
               style={{ transition: "width 1s ease-in-out" }}
             />
           </div>

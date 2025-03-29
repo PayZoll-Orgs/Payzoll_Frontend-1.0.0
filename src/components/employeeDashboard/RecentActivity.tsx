@@ -27,7 +27,6 @@ export default function RecentActivity({ employeeInfo, employeeTokenInfo }: {
       amount: `${employeeInfo.salary.$numberDecimal} ETH`,
       timestamp: "2 hours ago",
       icon: DollarSign,
-      color: "from-green-600 to-emerald-600",
     },
     {
       id: 2,
@@ -36,7 +35,6 @@ export default function RecentActivity({ employeeInfo, employeeTokenInfo }: {
       amount: `${totalTokens()} ESOP`,
       timestamp: "2 hours ago",
       icon: Award,
-      color: "from-purple-600 to-pink-600",
     },
     {
       id: 3,
@@ -45,13 +43,12 @@ export default function RecentActivity({ employeeInfo, employeeTokenInfo }: {
       amount: "ETH → USDC",
       timestamp: "2 days ago",
       icon: ArrowLeftRight,
-      color: "from-blue-600 to-indigo-600",
     },
   ];
 
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all h-[420px] flex flex-col">
-      <h2 className="text-xl font-bold mb-6 text-white">Recent Activity</h2>
+    <div className="bg-black border border-brandBlue/[8%] rounded-xl p-6 hover:border-blue-300/50 transition-all h-[420px] flex flex-col">
+      <h2 className="text-xl font-bold mb-6 text-[#c8ceee]">Recent Activity</h2>
 
       <div className="space-y-4 flex-1 overflow-y-auto custom-scrollbar">
         {activities.map((activity, index) => (
@@ -60,19 +57,13 @@ export default function RecentActivity({ employeeInfo, employeeTokenInfo }: {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-gray-900/50 rounded-xl p-4 border border-gray-700 hover:border-indigo-500/50 transition-all"
+            className="group bg-black/50 rounded-xl p-4 border border-brandBlue/[8%] hover:border-blue-300/50 transition-all"
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-3">
-                <div
-                  className={`w-10 h-10 rounded-lg bg-gradient-to-r ${activity.color} 
-                              flex items-center justify-center transform transition-transform 
-                              group-hover:scale-110`}
-                >
-                  <activity.icon className="w-5 h-5 text-white" />
-                </div>
+                <activity.icon className="w-6 h-6 text-blue-300 transform transition-transform group-hover:scale-110" />
                 <div>
-                  <div className="font-semibold group-hover:text-white transition-colors">
+                  <div className="font-semibold text-[#c8ceee] group-hover:text-white transition-colors">
                     {activity.title}
                   </div>
                   <div className="text-sm text-gray-400">{activity.amount}</div>
@@ -90,8 +81,8 @@ export default function RecentActivity({ employeeInfo, employeeTokenInfo }: {
       </div>
 
       <button
-        className="w-full mt-4 py-3 rounded-xl bg-gray-900 border border-gray-700 
-                       text-gray-400 hover:text-white hover:border-indigo-500/50 transition-all"
+        className="w-full mt-4 py-3 rounded-xl bg-black border border-brandBlue/[8%] 
+                       text-gray-400 hover:text-[#c8ceee] hover:border-blue-300/50 transition-all"
       >
         View All Activity
       </button>

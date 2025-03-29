@@ -17,15 +17,14 @@ const SettingsHeader: React.FC = () => {
         <span className="text-white">Settings</span>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-            Account Settings
+          <h1 className="text-3xl font-bold logo-gradient-text">
+            Settings
           </h1>
-          <p className="text-gray-400 mt-1">
-            Manage your account preferences and configurations
-          </p>
+          <p className="text-gray-400 mt-1">Manage your account preferences and configurations</p>
         </div>
+
 
         <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 
                       flex items-center justify-center">

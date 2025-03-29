@@ -81,9 +81,9 @@ const TransactionsLog: React.FC<{ payrollHistory: Transaction[] }> = ({ payrollH
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         </div>
-        <button className="logo-gradient-animated text-white px-4 py-2 rounded-xl ml-4 hover:shadow-lg transition-all">
+        <button className="bg-[#1D202D] text-white px-4 py-2 rounded-xl flex items-center space-x-2 ml-4">
           <Download className="w-5 h-5" />
-          Export
+          <span className="font-bold logo-gradient-text">Export</span>
         </button>
       </div>
 

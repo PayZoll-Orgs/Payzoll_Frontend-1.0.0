@@ -47,7 +47,7 @@ const Logo = () => (
 const Links = () => (
   <div className="hidden items-center gap-2 md:flex">
     <GlassLink text="Home" link="#home" />
-    <GlassLink text="Features" link="#features" />
+    <GlassLink text="Features" link="/Features" />
     <GlassLink text="How it Works" link="#howitworks" />
     <GlassLink text="Pricing" link="#pricing" />
   </div>
@@ -127,7 +127,7 @@ const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
       <div ref={ref} className="flex flex-col items-start px-4 pb-4">
         <div className="flex flex-col items-start gap-4 pl-4">
           <TextLink text="Home" link="#home" />
-          <TextLink text="Features" link="#features" />
+          <TextLink text="Features" link="/Features" />
           <TextLink text="How it Works" link="#howitworks" />
           <TextLink text="Pricing" link="#pricing" />
         </div>

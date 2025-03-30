@@ -43,24 +43,21 @@ const PaymentsPage: React.FC = () => {
     <div className="min-h-screen bg-crypto-dark text-white flex">
       <Sidebar isWalletConnected={false} onConnectWallet={() => console.log("Todo")} account={undefined} />
       <main className="flex-1 ml-64 p-8 relative">
-        <div className="max-w-[1600px] mx-auto space-y-6">
+        <div className="max-w-[1600px] my-0 mx-auto">
           <PaymentsHeader onQuickPay={() => setShowQuickPayModal(true)} />
           <PaymentsOverview
             employees={employees.length}
             totalSalary={totalSalary.toString()}
             totalSalaryPaid={payrollHistory.reduce((sum, item) => sum + parseFloat(item.totalAmount.$numberDecimal || "0"), 0)}
           />
-          <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-12 lg:col-span-8 space-y-6">
-              <PaymentOptions />
+          
+            <div className="col-span-12 mt-0 lg:col-span-8 space-y-6">
+             
               <TransactionsLog payrollHistory={payrollHistory} />
             </div>
-            <div className="col-span-12 lg:col-span-4 space-y-6">
-              <PayrollBudget totalSalary={totalSalary} />
-              <ScheduledPayments />
-            </div>
-          </div>
-          <PayrollAnalytics />
+            
+     
+         
         </div>
       </main>
       <QuickPayModal

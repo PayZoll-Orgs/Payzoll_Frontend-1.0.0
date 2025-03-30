@@ -3,11 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
+  LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps,ResponsiveContainer, Legend
 } from "recharts";
 
-import { TrendingUp, PieChart as PieChartIcon, BarChart2 } from "lucide-react";
+import { TrendingUp, PieChart as PieChartIcon} from "lucide-react";
 
 const monthlyData = [
   { month: "Jan", amount: 125000 },

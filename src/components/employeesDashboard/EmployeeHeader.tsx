@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { UserPlus, Search, Home } from "lucide-react";
-import Link from "next/link";
+
 
 interface EmployeeHeaderProps {
   onAddEmployee: () => void;
@@ -15,18 +15,18 @@ const EmployeeHeader: React.FC<EmployeeHeaderProps> = ({ onAddEmployee, onSearch
     <div className="mb-8">
       {/* Breadcrumbs */}
       <div className="flex items-center space-x-2 text-sm text-gray-400 mb-4">
-        <Link href="/dashboard" className="hover:text-white transition-colors flex items-center">
+        
           <Home className="w-4 h-4 mr-1" />
-          Dashboard
-        </Link>
+         
+     
         <span>/</span>
-        <span className="text-white">Employees</span>
+        <span className="text-white">Management</span>
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-            Employee Management
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+             Management
           </h1>
           <p className="text-gray-400 mt-1">Manage your workforce and payroll efficiently</p>
         </div>

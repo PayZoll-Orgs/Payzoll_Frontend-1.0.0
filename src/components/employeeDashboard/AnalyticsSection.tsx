@@ -1,14 +1,9 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
-  LineChart,
-  Line,
   BarChart,
   Bar,
-  PieChart,
-  Pie,
   Cell,
   XAxis,
   YAxis,
@@ -17,7 +12,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { TrendingUp, PieChart as PieChartIcon, BarChart2 } from "lucide-react";
+import { TrendingUp, PieChart as BarChart2 } from "lucide-react";
 
 const salaryData = [
   { month: "Jan", salary: 12500, bonus: 0 },

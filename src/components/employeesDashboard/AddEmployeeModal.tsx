@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Briefcase, Wallet, PhoneCall, Mail } from "lucide-react";
 
@@ -22,6 +22,8 @@ interface EmployeeData {
 }
 
 const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, onAddEmployee }) => {
+  const [errors, setErrors] = useState<Partial<EmployeeData>>({});
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -37,11 +39,17 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, on
       status: formData.get("status") as string,
     };
 
-    if (Object.values(employeeData).some((value) => !value.trim())) {
-      alert("Please fill out all fields.");
+    const newErrors: Partial<EmployeeData> = {};
+    Object.entries(employeeData).forEach(([key, value]) => {
+      if (!value.trim()) newErrors[key as keyof EmployeeData] = "This field is required";
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
+    setErrors({});
     onAddEmployee(employeeData);
     onClose();
   };
@@ -50,21 +58,8 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, on
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-        onClick={onClose}
-      >
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
-          onClick={(e) => e.stopPropagation()}
-          className="bg-crypto-card w-full max-w-xl mx-4 rounded-2xl border border-gray-800 overflow-hidden"
-        >
-          {/* Header */}
+      <motion.div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={onClose}>
+        <motion.div className="bg-crypto-card w-full max-w-xl mx-4 rounded-2xl border border-gray-800 overflow-hidden" onClick={(e) => e.stopPropagation()}>
           <div className="p-6 border-b border-gray-800 flex items-center justify-between">
             <h2 className="text-xl font-bold">Add New Employee</h2>
             <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
@@ -72,33 +67,24 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, on
             </button>
           </div>
 
-          {/* Form */}
           <form className="p-6 space-y-6" onSubmit={handleSubmit}>
-            {/* Personal Information */}
             <div className="grid grid-cols-2 gap-4">
-              <InputField label="First Name" name="firstName" icon={User} placeholder="John" />
-              <InputField label="Last Name" name="lastName" icon={User} placeholder="Doe" />
+              <InputField label="First Name" name="firstName" icon={User} placeholder="John" error={errors.firstName} />
+              <InputField label="Last Name" name="lastName" icon={User} placeholder="Doe" error={errors.lastName} />
             </div>
-            
-            {/* Work Information */}
             <div className="grid grid-cols-2 gap-4">
-              <InputField label="Designation" name="designation" icon={Briefcase} placeholder="Senior Developer" />
-              <InputField label="Email" name="email" icon={Mail} type="email" placeholder="john@abc.com" />
+              <InputField label="Designation" name="designation" icon={Briefcase} placeholder="Senior Developer" error={errors.designation} />
+              <InputField label="Email" name="email" icon={Mail} type="email" placeholder="john@abc.com" error={errors.email} />
             </div>
-            
-            {/* Payment Information */}
             <div className="grid grid-cols-2 gap-4">
-              <InputField label="Wallet Address" name="walletAddress" icon={Wallet} placeholder="0x..." />
-              <InputField label="Monthly Salary (ETH)" name="monthlySalary" placeholder="0.00" type="number" />
+              <InputField label="Wallet Address" name="walletAddress" icon={Wallet} placeholder="0x..." error={errors.walletAddress} />
+              <InputField label="Monthly Salary (ETH)" name="monthlySalary" type="number" placeholder="0.00" error={errors.monthlySalary} />
             </div>
-            
-            {/* Additional Information */}
             <div className="grid grid-cols-2 gap-4">
-              <InputField label="Phone Number" name="phoneNumber" icon={PhoneCall} placeholder="+1234567890" />
-              <SelectField label="Employee Status" name="status" options={["Active", "Pending", "On Leave"]} />
+              <InputField label="Phone Number" name="phoneNumber" icon={PhoneCall} placeholder="+1234567890" error={errors.phoneNumber} />
+              <SelectField label="Employee Status" name="status" options={["Active", "Pending", "On Leave"]} error={errors.status} />
             </div>
 
-            {/* Action Buttons */}
             <div className="flex justify-end space-x-4 pt-4 border-t border-gray-800">
               <button type="button" onClick={onClose} className="px-6 py-2 rounded-xl border border-gray-800 text-gray-400 hover:text-white transition-colors">Cancel</button>
               <button type="submit" className="px-6 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white transition-colors">Add Employee</button>
@@ -112,36 +98,41 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, on
 
 interface InputFieldProps {
   label: string;
-  name: string;
+  name: keyof EmployeeData;
   icon?: React.ComponentType<{ className: string }>;
   placeholder?: string;
   type?: string;
+  error?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, name, icon: Icon, placeholder, type = "text" }) => (
+const InputField: React.FC<InputFieldProps> = ({ label, name, icon: Icon, placeholder, type = "text", error }) => (
   <div>
     <label className="block text-sm text-gray-400 mb-1">{label}</label>
     <div className="relative">
       {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />}
-      <input type={type} name={name} className="w-full bg-crypto-dark border border-gray-800 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-indigo-500 transition-colors" placeholder={placeholder} />
+      <input type={type} name={name} className={`w-full bg-crypto-dark border ${error ? "border-red-500" : "border-gray-800"} rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-indigo-500 transition-colors`} placeholder={placeholder} />
     </div>
+    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
   </div>
 );
 
 interface SelectFieldProps {
   label: string;
-  name: string;
+  name: keyof EmployeeData;
   options: string[];
+  error?: string;
 }
 
-const SelectField: React.FC<SelectFieldProps> = ({ label, name, options }) => (
+const SelectField: React.FC<SelectFieldProps> = ({ label, name, options, error }) => (
   <div>
     <label className="block text-sm text-gray-400 mb-1">{label}</label>
-    <select name={name} className="w-full bg-crypto-dark border border-gray-800 rounded-xl py-2 px-4 focus:outline-none focus:border-indigo-500 transition-colors">
+    <select name={name} className={`w-full bg-crypto-dark border ${error ? "border-red-500" : "border-gray-800"} rounded-xl py-2 px-4 focus:outline-none focus:border-indigo-500 transition-colors`}>
+      <option value="">Select an option</option>
       {options.map((option) => (
         <option key={option} value={option.toLowerCase()}>{option}</option>
       ))}
     </select>
+    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
   </div>
 );
 

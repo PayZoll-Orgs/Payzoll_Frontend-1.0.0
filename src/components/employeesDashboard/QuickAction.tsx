@@ -17,12 +17,7 @@ interface QuickActionsProps {
 }
 
 const actions = [
-  {
-    icon: UserPlus,
-    label: "Add Employee",
-    actionKey: "onAddEmployee",
-    color: "from-indigo-600 to-purple-600",
-  },
+ 
   {
     icon: Upload,
     label: "Bulk Upload",
@@ -35,18 +30,7 @@ const actions = [
     actionKey: "exportData",
     color: "from-green-600 to-emerald-600",
   },
-  {
-    icon: FileSpreadsheet,
-    label: "Download Template",
-    actionKey: "downloadTemplate",
-    color: "from-orange-600 to-red-600",
-  },
-  {
-    icon: Send,
-    label: "Send Invites",
-    actionKey: "sendInvites",
-    color: "from-purple-600 to-pink-600",
-  },
+  
   {
     icon: Wallet,
     label: "Bulk Payment",
@@ -71,7 +55,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
 
   return (
     <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
-      <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
+      <h3 className="text-xl font-bold mb-6">Audit Logs</h3>
       
       <div className="space-y-3">
         {actions.map((action, index) => (
@@ -97,7 +81,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
       </div>
 
       {/* Help Section */}
-      <div className="mt-6 p-4 bg-crypto-dark/50 rounded-xl border border-gray-800">
+      {/* <div className="mt-6 p-4 bg-crypto-dark/50 rounded-xl border border-gray-800">
         <h4 className="text-sm font-semibold mb-2">Need Help?</h4>
         <p className="text-sm text-gray-400">
           Check our documentation for detailed guides on employee management.
@@ -105,7 +89,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
         <button className="mt-3 text-indigo-400 text-sm hover:text-indigo-300 transition-colors">
           View Documentation →
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

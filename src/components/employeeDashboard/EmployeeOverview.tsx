@@ -1,13 +1,11 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Wallet,
   DollarSign,
   Award,
   ArrowUpRight,
-  ArrowDownRight,
 } from "lucide-react";
 
 export default function EmployeeOverview({

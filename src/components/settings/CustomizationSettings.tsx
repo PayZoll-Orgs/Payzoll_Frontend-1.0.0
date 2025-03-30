@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Palette, Sun, Moon, Layout, Grid, Sliders, Check } from "lucide-react";
+import {  Sun, Moon, Check } from "lucide-react";
 
 const colors = [
   { id: 1, value: "#6366f1", name: "Indigo" },

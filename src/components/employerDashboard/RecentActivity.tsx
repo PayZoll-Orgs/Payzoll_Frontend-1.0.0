@@ -27,13 +27,13 @@ const RecentActivity: React.FC = () => {
   ]);
 
   return (
-    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[500px] flex flex-col hover:border-[#3B4058]/50 transition-all">
+    <div className="min-w-[1585px] bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[500px] flex flex-col hover:border-[#3B4058]/50 transition-all">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-2xl font-bold text-white">
-            Recent Activity
+            Employee Transaction History
           </h2>
-          <p className="text-gray-400 text-sm mt-1">Last 30 days</p>
+         
         </div>
         <div className="relative">
           <input

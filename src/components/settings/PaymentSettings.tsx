@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Wallet, Clock, DollarSign, Settings, AlertTriangle } from "lucide-react";
+import { Wallet, Clock } from "lucide-react";
 
 const PaymentSettings: React.FC = () => {
   const [recurringPayments, setRecurringPayments] = useState(false);

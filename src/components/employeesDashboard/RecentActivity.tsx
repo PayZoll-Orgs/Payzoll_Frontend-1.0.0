@@ -57,7 +57,7 @@ const activities: Activity[] = [
 
 const RecentActivity: React.FC = () => {
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
+    <div className="w-full bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold">Recent Activity</h3>
         <button className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">

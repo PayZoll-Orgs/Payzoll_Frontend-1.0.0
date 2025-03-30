@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, DollarSign, ArrowUpRight, Clock } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export default function PaymentSection({ employeeHistoryInfo, employeeInfo }: {
   employeeHistoryInfo: { createdAt: string; accountId: string; amount: { $numberDecimal: string } }[];

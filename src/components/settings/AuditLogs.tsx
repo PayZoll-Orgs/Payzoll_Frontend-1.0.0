@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ClipboardList, Search, Filter, Download,
-  User, Wallet, Settings, Shield, Calendar,
+  User, Wallet, Settings, Shield,
   ArrowUpRight
 } from 'lucide-react';
 

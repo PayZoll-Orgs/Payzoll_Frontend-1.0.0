@@ -7,7 +7,6 @@ import {
   UserPlus,
   Building2,
   Calendar,
-  DollarSign,
   ArrowRight,
 } from "lucide-react";
 

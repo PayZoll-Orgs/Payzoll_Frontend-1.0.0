@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Wallet,
   ArrowUpRight,
@@ -41,7 +40,7 @@ const recentTransactions: TransactionProps[] = [
   { id: 2, type: "incoming", amount: "5.0 ETH", timestamp: "1 day ago", status: "completed", hash: "0xijkl...mnop" },
 ];
 
-const WalletSettings: React.FC<WalletSettingsProps> = ({ isWalletConnected }) => {
+const WalletSettings: React.FC<WalletSettingsProps> = () => {
   const [showChangeWallet, setShowChangeWallet] = useState(false);
 
   return (

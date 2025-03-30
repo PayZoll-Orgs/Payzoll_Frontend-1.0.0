@@ -3,13 +3,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Scale, FileText, Download, AlertTriangle,
-  Shield, CheckCircle, XCircle, ExternalLink
+  Scale, FileText, Download, AlertTriangle, CheckCircle,
 } from 'lucide-react';
 
 const ComplianceSettings: React.FC = () => {
   const [region, setRegion] = useState<string>('us');
-  const [complianceMode, setComplianceMode] = useState<string>('standard');
+  //
 
   const complianceStatus = [
     {

@@ -3,11 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/employerDashboard/Sidebar";
-import QuickActions from "@/components/employerDashboard/QuickAction";
-import OverviewMetrics from "@/components/employerDashboard/OverviewMetrics";
-import GraphSection from "@/components/employerDashboard/GraphSection";
-import BalanceSection from "@/components/employerDashboard/BalanceSection";
+import EmployerHeader from "@/components/employerDashboard/EmployerHeader";
+
+
+
 import RecentActivity from "@/components/employerDashboard/RecentActivity";
+import EmployeeProfile from "@/components/employerDashboard/EmployeeProfile";
 
 const EmployerDashboard: React.FC = () => {
   return (
@@ -60,12 +61,11 @@ const EmployerDashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex-1 ml-64 p-8 relative">
+        <EmployerHeader />
         <div className="max-w-[1600px] mx-auto space-y-6">
-          {/* Quick Actions */}
-          <QuickActions isWalletConnected={false} />
-
+         
           {/* Main Grid Layout */}
-          <div className="grid grid-cols-12 gap-6">
+          
             {/* First Row: Metrics and Balance */}
             <motion.div
               className="col-span-12 lg:col-span-4"
@@ -73,36 +73,13 @@ const EmployerDashboard: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <OverviewMetrics type="employees" />
+              <EmployeeProfile />
             </motion.div>
 
-            <motion.div
-              className="col-span-12 lg:col-span-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <OverviewMetrics type="salary" />
-            </motion.div>
-
-            <motion.div
-              className="col-span-12 lg:col-span-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <BalanceSection />
-            </motion.div>
-
+            <div className="grid grid-cols-12 gap-6">
             {/* Second Row: Graph and Recent Activity */}
-            <motion.div
-              className="col-span-12 lg:col-span-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <GraphSection />
-            </motion.div>
+           
+         
 
             <motion.div
               className="col-span-12 lg:col-span-6"

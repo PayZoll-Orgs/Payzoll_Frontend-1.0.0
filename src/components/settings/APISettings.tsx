@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { 
-  Code, Key, Copy, Eye, EyeOff, 
+  Key, Copy, Eye, EyeOff, 
   Plus, Trash2, RefreshCcw, AlertTriangle 
 } from "lucide-react";
 

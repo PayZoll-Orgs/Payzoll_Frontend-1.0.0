@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { Award, TrendingUp, Lock, ArrowUpRight } from "lucide-react";
+import { Award } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -23,7 +22,7 @@ const tokenPriceData = [
   { date: "Jun", price: 3.5 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: any) => { 
   if (active && payload && payload.length) {
     return (
       <div className="bg-gray-900 p-3 rounded-lg border border-gray-700">

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Shield, Smartphone, Key, Lock, Laptop, AlertTriangle, CheckCircle } from "lucide-react";
+import { Shield, Smartphone, Laptop, } from "lucide-react";
 
 interface Device {
   id: number;

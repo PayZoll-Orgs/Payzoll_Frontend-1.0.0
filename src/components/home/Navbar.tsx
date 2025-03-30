@@ -48,7 +48,7 @@ const Links = () => (
   <div className="hidden items-center gap-2 md:flex">
     <GlassLink text="Home" link="#home" />
     <GlassLink text="Features" link="/Features" />
-    <GlassLink text="How it Works" link="#howitworks" />
+    <GlassLink text="How it Works" link="/working" />
     <GlassLink text="Pricing" link="/Pricing" />
   </div>
 );
@@ -128,7 +128,7 @@ const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
         <div className="flex flex-col items-start gap-4 pl-4">
           <TextLink text="Home" link="#home" />
           <TextLink text="Features" link="/Features" />
-          <TextLink text="How it Works" link="#howitworks" />
+          <TextLink text="How it Works" link="/working" />
           <TextLink text="Pricing" link="/Pricing" />
         </div>
       </div>

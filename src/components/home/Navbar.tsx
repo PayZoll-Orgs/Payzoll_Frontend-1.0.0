@@ -4,10 +4,14 @@ import { motion } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
 import useMeasure from "react-use-measure";
 import Image from "next/image";
-import Link from "next/link"; // Import Link from next/link
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "../ui/MovingBorder";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  console.log("Current path (navbar):", pathname);
+  
   return (
     <section>
       <GlassNavigation />
@@ -39,51 +43,36 @@ const GlassNavigation = () => {
 };
 
 const Logo = () => (
-  <div className="relative z-10">
+  <Link href="/" className="relative z-10">
     <Image src="/images/logonew.png" alt="Logo" width={120} height={120} />
-  </div>
+  </Link>
 );
 
-const Links = () => (
-  <div className="hidden items-center gap-2 md:flex">
-    <GlassLink text="Home" link="#home" />
-    <GlassLink text="Features" link="/Features" />
-    <GlassLink text="How it Works" link="/working" />
-    <GlassLink text="Pricing" link="/Pricing" />
-  </div>
-);
-
-const GlassLink = ({ text, link }: { text: string; link: string }) => {
+const Links = () => {
+  const pathname = usePathname();
+  console.log("Links component pathname:", pathname);
+  
   return (
-    <a
-      href={link}
-      className="group relative scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95"
-    >
-      <span className="relative z-10 text-white/90 transition-colors group-hover:text-white">
-        {text}
-      </span>
-      <span className="absolute inset-0 z-0 bg-gradient-to-br from-white/20 to-white/5 opacity-0 transition-opacity group-hover:opacity-100" />
-    </a>
+    <div className="hidden items-center gap-2 md:flex">
+      <GlassLink text="Home" link="/" isActive={pathname === '/'} />
+      <GlassLink text="Features" link="/Features" isActive={pathname === '/Features'} />
+      <GlassLink text="How it Works" link="/working" isActive={pathname === '/working'} />
+      <GlassLink text="Pricing" link="/Pricing" isActive={pathname === '/Pricing'} />
+    </div>
   );
 };
 
-const TextLink = ({ text, link }: { text: string; link: string }) => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const targetElement = document.querySelector(link);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+const GlassLink = ({ text, link, isActive }: { text: string; link: string; isActive?: boolean }) => {
   return (
-    <a
+    <Link
       href={link}
-      onClick={handleClick}
-      className="text-white/90 transition-colors hover:text-white"
+      className={`group relative scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95 ${isActive ? 'bg-white/10' : ''}`}
     >
-      {text}
-    </a>
+      <span className={`relative z-10 ${isActive ? 'text-white' : 'text-white/90'} transition-colors group-hover:text-white`}>
+        {text}
+      </span>
+      <span className="absolute inset-0 z-0 bg-gradient-to-br from-white/20 to-white/5 opacity-0 transition-opacity group-hover:opacity-100" />
+    </Link>
   );
 };
 
@@ -108,6 +97,7 @@ const Buttons = ({
     <button
       onClick={() => setMenuOpen((pv) => !pv)}
       className="ml-2 block scale-100 text-3xl text-white/90 transition-all hover:scale-105 hover:text-white active:scale-95 md:hidden"
+      aria-label="Toggle menu"
     >
       <FiMenu />
     </button>
@@ -116,6 +106,8 @@ const Buttons = ({
 
 const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
   const [ref, { height }] = useMeasure();
+  const pathname = usePathname();
+  
   return (
     <motion.div
       initial={false}
@@ -126,10 +118,18 @@ const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
     >
       <div ref={ref} className="flex flex-col items-start px-4 pb-4">
         <div className="flex flex-col items-start gap-4 pl-4">
-          <TextLink text="Home" link="#home" />
-          <TextLink text="Features" link="/Features" />
-          <TextLink text="How it Works" link="/working" />
-          <TextLink text="Pricing" link="/Pricing" />
+          <Link href="/" className={`text-white/90 transition-colors hover:text-white ${pathname === '/' ? 'text-white' : ''}`}>
+            Home
+          </Link>
+          <Link href="/Features" className={`text-white/90 transition-colors hover:text-white ${pathname === '/Features' ? 'text-white' : ''}`}>
+            Features
+          </Link>
+          <Link href="/working" className={`text-white/90 transition-colors hover:text-white ${pathname === '/working' ? 'text-white' : ''}`}>
+            How it Works
+          </Link>
+          <Link href="/Pricing" className={`text-white/90 transition-colors hover:text-white ${pathname === '/Pricing' ? 'text-white' : ''}`}>
+            Pricing
+          </Link>
         </div>
       </div>
     </motion.div>

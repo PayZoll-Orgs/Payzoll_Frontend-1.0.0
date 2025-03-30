@@ -19,32 +19,32 @@ const Working: React.FC = () => {
       title: "Enterprise Verification",
       description:
         "Complete streamlined KYC/AML verification for your company and team members across jurisdictions with our advanced validation protocol.",
-      highlight: "from-emerald-500 to-teal-600",
-      bgHighlight: "from-emerald-500/5 to-teal-600/5",
+      highlight: "from-[#3B4058] to-[#93c5fd]",
+      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
     },
     {
       video: "/images/multi.mp4", // Replace with your video path
       title: "Multi-Chain Funding",
       description:
         "Deposit funds using any blockchain token or network. Our protocol automatically detects and secures your assets in your enterprise vault.",
-      highlight: "from-blue-500 to-indigo-600",
-      bgHighlight: "from-blue-500/5 to-indigo-600/5",
+      highlight: "from-[#3B4058] to-[#93c5fd]",
+      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
     },
     {
       video: "/images/stable.mp4", // Replace with your video path
       title: "Automated Conversion & Scheduling",
       description:
         "Our smart contracts handle token swaps, cross-chain bridges, and establish recurring payment streams with programmable distribution logic.",
-      highlight: "from-violet-500 to-purple-600",
-      bgHighlight: "from-violet-500/5 to-purple-600/5",
+      highlight: "from-[#3B4058] to-[#93c5fd]",
+      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
     },
     {
       video: "/images/stok.mp4", // Replace with your video path
       title: "Seamless Distribution & Off-ramping",
       description:
         "Recipients receive funds instantly with customizable off-ramp options—direct to bank accounts, crypto wallets, or mobile payment systems.",
-      highlight: "from-pink-500 to-rose-600",
-      bgHighlight: "from-pink-500/5 to-rose-600/5",
+      highlight: "from-[#3B4058] to-[#93c5fd]",
+      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
     },
   ];
 
@@ -61,7 +61,7 @@ const Working: React.FC = () => {
   return (
     <section
       id="Working"
-      className="py-24 bg-black relative overflow-hidden font-jetbrains"
+      className="py-24 pt-40 bg-black relative overflow-hidden font-jetbrains"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -69,13 +69,17 @@ const Working: React.FC = () => {
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px)
+              linear-gradient(to right, rgba(147, 197, 253, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(147, 197, 253, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
             animation: "gradientMove 20s linear infinite",
           }}
         />
+      </div>
+      
+      <div className="absolute inset-0 flex justify-center items-center">
+        <div className="w-[70%] h-[60%] bg-blue-300/16 blur-3xl rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -83,9 +87,9 @@ const Working: React.FC = () => {
         <div className="text-center mb-16">
         <div className="text-brandBlue/80 flex flex-col ">
       <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
-  <span className="text-[#c8ceee]">SIMPLE FOUR-STEP PROCESS</span>
-  <span className="text-gray-300"></span>
-  </h2>
+<span className="text-[#c8ceee]">SIMPLE FOUR-STEP PROCESS</span>
+<span className="text-gray-300"></span>
+</h2>
       </div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Experience seamless payroll management with our enterprise-grade
@@ -97,7 +101,7 @@ const Working: React.FC = () => {
         <div className="flex justify-between mb-20 relative max-w-4xl mx-auto">
           <div className="absolute h-1 bg-gray-800 left-0 right-0 top-4 -z-10"></div>
           <div
-            className="absolute h-1 bg-gradient-to-r from-indigo-500 to-purple-500 left-0 top-4 -z-10 transition-all duration-500"
+            className="absolute h-1 bg-gradient-to-r from-[#3B4058] to-[#93c5fd] left-0 top-4 -z-10 transition-all duration-500"
             style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
           ></div>
 
@@ -144,7 +148,7 @@ const Working: React.FC = () => {
         {/* Content Area */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <div className="relative">
-            <div className="relative bg-black rounded-2xl overflow-hidden">
+            <div className="relative bg-black rounded-2xl overflow-hidden border border-[#93c5fd]/20">
               <div className="relative h-[400px]">
                 {steps.map((step, index) => (
                   <div
@@ -195,12 +199,12 @@ const Working: React.FC = () => {
               >
                 <div className="mb-4">
                   <span
-                    className={`inline-block px-4 py-2 text-sm font-semibold rounded-full bg-gradient-to-r ${step.bgHighlight} border border-gray-700`}
+                    className={`inline-block px-4 py-2 text-sm font-semibold rounded-full bg-gradient-to-r ${step.bgHighlight} border border-[#93c5fd]/30`}
                   >
                     Step {index + 1}
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-6">
+                <h3 className="text-3xl font-bold text-[#c8ceee] mb-6">
                   {step.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed text-lg mb-8">

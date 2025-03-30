@@ -49,7 +49,7 @@ const Links = () => (
     <GlassLink text="Home" link="#home" />
     <GlassLink text="Features" link="/Features" />
     <GlassLink text="How it Works" link="#howitworks" />
-    <GlassLink text="Pricing" link="#pricing" />
+    <GlassLink text="Pricing" link="/Pricing" />
   </div>
 );
 
@@ -129,7 +129,7 @@ const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
           <TextLink text="Home" link="#home" />
           <TextLink text="Features" link="/Features" />
           <TextLink text="How it Works" link="#howitworks" />
-          <TextLink text="Pricing" link="#pricing" />
+          <TextLink text="Pricing" link="/Pricing" />
         </div>
       </div>
     </motion.div>

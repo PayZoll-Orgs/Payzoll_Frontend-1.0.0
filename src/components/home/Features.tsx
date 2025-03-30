@@ -42,17 +42,17 @@ const cardData = [
 
 function Features(): React.JSX.Element {
   return (
-    <section className="mt-[10vw] flex min-h-[20vh] w-full flex-col items-center gap-y-[5rem] p-6 sm:mt-[1vh] md:gap-y-[9.69rem] landscape:mt-[30vh]">
+    <section className="mt-40 flex min-h-[20vh] w-full flex-col items-center gap-y-[5rem] p-6 sm:mt-40 md:gap-y-[9.69rem] landscape:mt-40">
       <div className="text-brandBlue/80 flex flex-col gap-y-[0.81rem]">
-      <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
-  <span className="text-[#c8ceee]">WHY CHOOSE PAYZOLL?</span>
-  <span className="text-gray-300"></span>
-</h2>
+        <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+          <span className="text-[#c8ceee]">WHY CHOOSE PAYZOLL?</span>
+          <span className="text-gray-300"></span>
+        </h2>
       </div>
 
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:gap-9">
         {cardData.map((card, index) => {
-          const { heading, description, imageSrc } = card
+          const { heading, description } = card
           return (
             // eslint-disable-next-line react/no-array-index-key -- safe
             <Card key={index}>

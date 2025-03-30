@@ -58,7 +58,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-black relative min-h-screen flex flex-col items-center justify-center">
+    <section id="pricing" className="py-20 pt-40 bg-black relative min-h-screen flex flex-col items-center justify-center">
       {/* Background effects */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
       <div className="absolute inset-0 flex justify-center items-center">

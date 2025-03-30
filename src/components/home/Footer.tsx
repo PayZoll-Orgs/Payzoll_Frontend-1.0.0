@@ -42,11 +42,11 @@ const Footer: React.FC = () => {
     <footer className="relative bg-gradient-to-b from-gray-900 to-black text-gray-300 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-indigo-900/20 via-purple-900/20 to-purple-900/20 backdrop-blur-sm border border-indigo-500/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-[#14161E]/80 to-[#0c0e14]/80 backdrop-blur-sm border border-[#93c5fd]/20 rounded-2xl p-8">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-12">
-                <h3 className="text-2xl font-bold text-white mb-2">Stay updated</h3>
-                <p className="text-gray-300">Get the latest news and updates from PayZoll</p>
+                <h3 className="text-2xl font-bold text-[#c8ceee] mb-2">Stay updated</h3>
+                <p className="text-gray-400">Get the latest news and updates from PayZoll</p>
               </div>
               <form onSubmit={handleSubmit} className="w-full md:w-auto">
                 <div className="flex">
@@ -56,11 +56,11 @@ const Footer: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full md:w-64 px-4 py-3 rounded-l-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full md:w-64 px-4 py-3 rounded-l-lg bg-black border border-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-[#93c5fd]"
                   />
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-4 py-3 rounded-r-lg flex items-center transition-all duration-300"
+                    className="bg-gradient-to-r from-[#3B4058] to-[#93c5fd] hover:shadow-lg hover:shadow-[#93c5fd]/20 px-4 py-3 rounded-r-lg flex items-center transition-all duration-300"
                   >
                     <span className="text-white font-medium">Subscribe</span>
                     <ArrowRight className="ml-2 h-5 w-5 text-white transition-transform duration-300" />
@@ -74,8 +74,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <div className="space-y-6">
             <div className="flex items-center">
-              <Wallet2 className="h-8 w-8 text-indigo-500" />
-              <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
+              <Wallet2 className="h-8 w-8 text-[#93c5fd]" />
+              <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#93c5fd] via-[#93c5fd] to-[#93c5fd]">
                 PayZoll
               </span>
             </div>

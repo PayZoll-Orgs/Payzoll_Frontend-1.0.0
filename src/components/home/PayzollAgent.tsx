@@ -22,7 +22,7 @@ export default function Home() {
         </p>
 
         <div className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
-          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-6">
+          <Button className="bg-gradient-to-r from-[#3B4058] to-[#93c5fd] hover:shadow-lg hover:shadow-[#93c5fd]/20 text-white rounded-full px-6">
             Open Docs
             <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>

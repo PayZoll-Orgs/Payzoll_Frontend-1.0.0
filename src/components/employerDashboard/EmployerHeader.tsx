@@ -24,9 +24,9 @@ const EmployerHeader: React.FC<[]> = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
           <h1 className="text-5xl font-bold logo-gradient-text">
-            Employer Dashboard
+            Employee Dashboard
           </h1>
-          <p className="text-gray-400 mt-1">Manage your employees quickly!</p>
+          <p className="text-gray-400 mt-1"></p>
         </div>
 
         <div className="flex items-center space-x-4 w-full sm:w-auto">

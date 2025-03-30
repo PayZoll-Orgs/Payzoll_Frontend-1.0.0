@@ -20,6 +20,7 @@ interface Employee {
   designation: string;
   salary: { $numberDecimal: string };
   wallet: string;
+  email?: string; // Email field in Employee interface
 }
 
 interface AddEmployeeModalProps {
@@ -48,34 +49,33 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({
     email: "",
   });
 
-  // Populate form when editing an employee
-  useEffect(() => {
-    if (editEmployee) {
-      // Split name into first and last name
-      const nameParts = editEmployee.name.split(" ");
-      const firstName = nameParts[0] || "";
-      const lastName = nameParts.slice(1).join(" ") || "";
+useEffect(() => {
+  if (editEmployee) {
+    // Split name into first and last name
+    const nameParts = editEmployee.name.split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
 
-      setFormData({
-        firstName,
-        lastName,
-        designation: editEmployee.designation,
-        walletAddress: editEmployee.wallet,
-        monthlySalary: editEmployee.salary.$numberDecimal,
-        email: "",
-      });
-    } else {
-      // Reset form when adding a new employee
-      setFormData({
-        firstName: "",
-        lastName: "",
-        designation: "",
-        walletAddress: "",
-        monthlySalary: "",
-        email: "",
-      });
-    }
-  }, [editEmployee]);
+    setFormData({
+      firstName,
+      lastName,
+      designation: editEmployee.designation,
+      walletAddress: editEmployee.wallet,
+      monthlySalary: editEmployee.salary.$numberDecimal,
+      email: editEmployee.email || "", // Use email from editEmployee
+    });
+  } else {
+    // Reset form when adding
+    setFormData({
+      firstName: "",
+      lastName: "",
+      designation: "",
+      walletAddress: "",
+      monthlySalary: "",
+      email: "",
+    });
+  }
+}, [editEmployee]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -136,6 +136,7 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({
 
   return (
     <AnimatePresence>
+      {isOpen && (
       <motion.div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={onClose}>
         <motion.div className="bg-crypto-card w-full max-w-xl mx-4 rounded-2xl border border-gray-800 overflow-hidden" onClick={(e) => e.stopPropagation()}>
           <div className="p-6 border-b border-gray-800 flex items-center justify-between">
@@ -255,7 +256,7 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({
           </form>
         </motion.div>
       </motion.div>
-    
+    )}
       <BulkUploadModal isOpen={isBulkUploadOpen} onClose={() => setIsBulkUploadOpen(false)} />
     </AnimatePresence>
   );

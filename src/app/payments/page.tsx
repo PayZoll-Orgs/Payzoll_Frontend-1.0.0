@@ -51,7 +51,7 @@ const PaymentsPage: React.FC = () => {
             totalSalaryPaid={payrollHistory.reduce((sum, item) => sum + parseFloat(item.totalAmount.$numberDecimal || "0"), 0)}
           />
           
-            <div className="col-span-12 mt-0 lg:col-span-8 space-y-6">
+            <div className="col-span-12 mt-8 lg:col-span-8 space-y-6">
              
               <TransactionsLog payrollHistory={payrollHistory} />
             </div>

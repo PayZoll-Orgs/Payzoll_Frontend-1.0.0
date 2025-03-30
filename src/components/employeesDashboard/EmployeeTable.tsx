@@ -21,9 +21,20 @@ interface Employee {
 interface EmployeeTableProps {
   employees: Employee[];
   deleteEmployeeById: (id: string) => void;
+  onEditEmployee?: (employee: Employee) => void;
+  filterDepartment?: string;
+  filterStatus?: string;
+  searchQuery?: string;
 }
 
-const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployeeById }) => {
+const EmployeeTable: React.FC<EmployeeTableProps> = ({ 
+  employees, 
+  deleteEmployeeById, 
+  onEditEmployee,
+  filterDepartment,
+  filterStatus,
+  searchQuery
+}) => {
   const [sortField, setSortField] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,8 +56,8 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployee
 
   const sortedEmployees = useMemo(() => {
     return [...employees].sort((a, b) => {
-      const aValue = sortField === "salary" ? parseFloat(a.salary.$numberDecimal) : a[sortField];
-      const bValue = sortField === "salary" ? parseFloat(b.salary.$numberDecimal) : b[sortField];
+      const aValue = sortField === "salary" ? parseFloat(a.salary.$numberDecimal) : a[sortField as keyof Employee];
+      const bValue = sortField === "salary" ? parseFloat(b.salary.$numberDecimal) : b[sortField as keyof Employee];
       if (typeof aValue === "string" && typeof bValue === "string") {
         return sortDirection === "asc" ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
       }
@@ -104,7 +115,10 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployee
                 <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">{employee.wallet}</td>
                 <td className="px-6 py-4 whitespace-nowrap w-1/5">
                   <div className="flex justify-center items-center space-x-3 opacity-0 group-hover:opacity-100 transition">
-                    <Edit2 className="w-4 h-4 text-yellow-400 cursor-pointer" />
+                    <Edit2 
+                      className="w-4 h-4 text-yellow-400 cursor-pointer" 
+                      onClick={() => onEditEmployee && onEditEmployee(employee)}
+                    />
                     <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" onClick={() => deleteEmployeeById(employee._id)} />
                   </div>
                 </td>
@@ -138,4 +152,4 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployee
   );
 };
 
-export default EmployeeTable;               
+export default EmployeeTable;

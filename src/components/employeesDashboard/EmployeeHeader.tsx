@@ -43,16 +43,15 @@ const EmployeeHeader: React.FC<EmployeeHeaderProps> = ({ onAddEmployee, onSearch
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           </div>
 
-          {/* Quick Add Button */}
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onAddEmployee}
             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-xl hover:shadow-lg hover:shadow-indigo-500/20 transition-all flex items-center space-x-2"
           >
             <UserPlus className="w-5 h-5" />
-            <span>Add Employee</span>
-          </motion.button>
+            {/* <span>Add Employee</span> 
+          </motion.button> */}
         </div>
       </div>
     </div>

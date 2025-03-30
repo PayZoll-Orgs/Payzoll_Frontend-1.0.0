@@ -19,6 +19,18 @@ interface Employee {
   wallet: string;
 }
 
+// Employee Data Interface
+interface EmployeeData {
+  firstName: string;
+  lastName: string;
+  designation: string;
+  phoneNumber: string;
+  walletAddress: string;
+  monthlySalary: string;
+  email: string;
+  status: string;
+}
+
 // Company Interface
 interface Company {
   _id: string;
@@ -64,6 +76,7 @@ const EmployeesPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [companyDetails, setCompanyDetails] = useState<Company[]>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   // Fetch Employees Data (Mock for Now)
   useEffect(() => {
@@ -93,8 +106,14 @@ const EmployeesPage: React.FC = () => {
     setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee._id !== id));
   };
 
+  // Edit Employee handler
+  const handleEditEmployee = (employee: Employee) => {
+    setSelectedEmployee(employee);
+    setShowAddModal(true);
+  };
+
   // Add Employee
-  const onAddEmployee = (employee: { firstName: string; lastName: string; designation: string; monthlySalary: string; walletAddress: string }) => {
+  const onAddEmployee = (employee: EmployeeData) => {
     const newEmployee: Employee = {
       _id: (employees.length + 1).toString(),
       name: `${employee.firstName} ${employee.lastName}`,
@@ -103,6 +122,23 @@ const EmployeesPage: React.FC = () => {
       wallet: employee.walletAddress,
     };
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
+  };
+
+  // Update Employee
+  const handleUpdateEmployee = (id: string, updatedData: EmployeeData) => {
+    setEmployees(prevEmployees => 
+      prevEmployees.map(employee => 
+        employee._id === id 
+          ? {
+              ...employee,
+              name: `${updatedData.firstName} ${updatedData.lastName}`,
+              designation: updatedData.designation,
+              salary: { $numberDecimal: updatedData.monthlySalary },
+              wallet: updatedData.walletAddress
+            }
+          : employee
+      )
+    );
   };
 
   // Compute Salary Data for Pie Chart
@@ -126,18 +162,10 @@ const EmployeesPage: React.FC = () => {
       <main className="flex-1 ml-64 p-8 relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto space-y-6">
           {/* Header Section */}
-          <EmployeeHeader onAddEmployee={() => setShowAddModal(true)} onSearch={setSearchQuery} />
-
-          {/* Company Details
-          <div className="w-full overflow-hidden">
-            <CompanyDetails
-              companydetails={companyDetails}
-              deleteCompanyById={deleteCompanyById}
-              filterDepartment={filterDepartment}
-              filterStatus={filterStatus}
-              searchQuery={searchQuery}
-            />
-          </div> */}
+          <EmployeeHeader onAddEmployee={() => {
+            setSelectedEmployee(null);
+            setShowAddModal(true);
+          }} onSearch={setSearchQuery} />
 
           {/* Employee Table */}
           <div className="w-full overflow-hidden">
@@ -147,12 +175,16 @@ const EmployeesPage: React.FC = () => {
               searchQuery={searchQuery}
               employees={employees}
               deleteEmployeeById={deleteEmployeeById}
+              onEditEmployee={handleEditEmployee}
             />
           </div>
 
           {/* Quick Actions & Pie Chart */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <QuickActions onAddEmployee={() => setShowAddModal(true)} onBulkUpload={() => setShowBulkUploadModal(true)} />
+            <QuickActions onAddEmployee={() => {
+              setSelectedEmployee(null);
+              setShowAddModal(true);
+            }} onBulkUpload={() => setShowBulkUploadModal(true)} />
 
             {/* Pie Chart for Salary Distribution */}
             <div className="w-full h-96 bg-crypto-card p-4 rounded-xl border border-gray-800">
@@ -187,7 +219,16 @@ const EmployeesPage: React.FC = () => {
       </main>
 
       {/* Modals */}
-      <AddEmployeeModal isOpen={showAddModal} onClose={() => setShowAddModal(false)} onAddEmployee={onAddEmployee} />
+      <AddEmployeeModal 
+        isOpen={showAddModal} 
+        onClose={() => {
+          setShowAddModal(false);
+          setSelectedEmployee(null);
+        }} 
+        onAddEmployee={onAddEmployee}
+        onUpdateEmployee={handleUpdateEmployee}
+        editEmployee={selectedEmployee}
+      />
       <BulkUploadModal isOpen={showBulkUploadModal} onClose={() => setShowBulkUploadModal(false)} />
     </div>
   );

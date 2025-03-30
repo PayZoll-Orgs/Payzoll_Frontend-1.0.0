@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "@/components/employerDashboard/Sidebar";
 import EmployeeHeader from "@/components/employeesDashboard/EmployeeHeader";
 import EmployeeTable from "@/components/employeesDashboard/EmployeeTable";
-import QuickActions from "@/components/employeesDashboard/QuickAction";
+import QuickActions from "@/components/employeesDashboard/AuditLogs";
 import AddEmployeeModal from "@/components/employeesDashboard/AddEmployeeModal";
 import BulkUploadModal from "@/components/employeesDashboard/BulkuploadModal";
-import CompanyDetails from "@/components/employeesDashboard/CompanyDetails";
+//import CompanyDetails from "@/components/employeesDashboard/CompanyDetails";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 // Employee Interface
@@ -128,7 +128,7 @@ const EmployeesPage: React.FC = () => {
           {/* Header Section */}
           <EmployeeHeader onAddEmployee={() => setShowAddModal(true)} onSearch={setSearchQuery} />
 
-          {/* Company Details */}
+          {/* Company Details
           <div className="w-full overflow-hidden">
             <CompanyDetails
               companydetails={companyDetails}
@@ -137,7 +137,7 @@ const EmployeesPage: React.FC = () => {
               filterStatus={filterStatus}
               searchQuery={searchQuery}
             />
-          </div>
+          </div> */}
 
           {/* Employee Table */}
           <div className="w-full overflow-hidden">

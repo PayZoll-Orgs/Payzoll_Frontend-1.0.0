@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useMemo } from "react";
@@ -101,7 +102,9 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployee
                 <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">{employee.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">{employee.designation}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">{employee.salary.$numberDecimal} ETH</td>
-                <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">{employee.wallet}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 w-1/5">
+                  <ExternalLink className="w-4 h-4 text-indigo-400 cursor-pointer" />
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap w-1/5">
                   <div className="flex justify-center items-center space-x-3 opacity-0 group-hover:opacity-100 transition">
                     <Edit2 className="w-4 h-4 text-yellow-400 cursor-pointer" />
@@ -114,28 +117,19 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees, deleteEmployee
         </table>
       </div>
 
-      <div className="px-6 py-4 border-t border-gray-800 flex justify-between items-center">
-        <div className="text-sm text-gray-400">
-          Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, sortedEmployees.length)} of {sortedEmployees.length} entries
-        </div>
-        <div className="flex space-x-2">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => setCurrentPage(i + 1)}
-              className={`w-8 h-8 flex items-center justify-center rounded-md text-sm transition-colors ${
-                currentPage === i + 1
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-crypto-dark/50 text-gray-400 hover:bg-crypto-dark hover:text-gray-300'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
+      <div className="pagination mt-4 flex justify-center gap-2">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => setCurrentPage(i + 1)}
+            className={`px-3 py-1 rounded ${currentPage === i + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+          >
+            {i + 1}
+          </button>
+        ))}
       </div>
     </motion.div>
   );
 };
 
-export default EmployeeTable;               
+export default EmployeeTable;

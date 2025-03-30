@@ -2,7 +2,8 @@
 
 import React, { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Briefcase, Wallet, PhoneCall, Mail } from "lucide-react";
+import { X, User, Briefcase, Wallet, PhoneCall, Mail, Upload } from "lucide-react";
+import BulkUploadModal from "./BulkuploadModal";
 
 interface AddEmployeeModalProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ interface EmployeeData {
 }
 
 const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, onAddEmployee }) => {
+  const [isBulkUploadOpen, setIsBulkUploadOpen] = useState(false);
   const [errors, setErrors] = useState<Partial<EmployeeData>>({});
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -85,14 +87,29 @@ const AddEmployeeModal: React.FC<AddEmployeeModalProps> = ({ isOpen, onClose, on
               <SelectField label="Employee Status" name="status" options={["Active", "Pending", "On Leave"]} error={errors.status} />
             </div>
 
-            <div className="flex justify-end space-x-4 pt-4 border-t border-gray-800">
+            
+<div className="flex justify-between pt-4 border-t border-gray-800">
+  {/* Bulk Upload Button - Bottom Left */}
+  <button
+    type="button"
+    onClick={() => setIsBulkUploadOpen(true)}
+    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+  >
+    <Upload className="w-4 h-4" />
+    <span className="text-sm">Bulk Upload</span>
+  </button>
+
+  <div className="flex justify-end space-x-4 pt-4 border-t border-gray-800">
               <button type="button" onClick={onClose} className="px-6 py-2 rounded-xl border border-gray-800 text-gray-400 hover:text-white transition-colors">Cancel</button>
               <button type="submit" className="px-6 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white transition-colors">Add Employee</button>
             </div>
+</div>
           </form>
         </motion.div>
       </motion.div>
-    </AnimatePresence>
+    
+<BulkUploadModal isOpen={isBulkUploadOpen} onClose={() => setIsBulkUploadOpen(false)} />
+</AnimatePresence>
   );
 };
 

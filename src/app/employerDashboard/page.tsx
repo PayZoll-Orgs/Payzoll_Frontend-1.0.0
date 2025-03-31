@@ -12,7 +12,7 @@ import EmployeeProfile from "@/components/employerDashboard/EmployeeProfile";
 
 const EmployerDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-crypto-dark text-white flex">
+    <div className="min-h-screen bg-crypto-dark text-white flex flex-col md:flex-row">
       {/* Background Effects */}
       <div className="fixed inset-0 bg-grid-pattern opacity-[0.02]" />
       <div className="fixed inset-0">
@@ -24,7 +24,7 @@ const EmployerDashboard: React.FC = () => {
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-[500px] h-[500px] rounded-full"
+            className="absolute w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full"
             initial={{ opacity: 0.1 }}
             animate={{
               opacity: [0.1, 0.3, 0.1],
@@ -53,14 +53,16 @@ const EmployerDashboard: React.FC = () => {
       </div>
 
       {/* Sidebar */}
-      <Sidebar
-        isWalletConnected={false}
-        onConnectWallet={() => console.log("TODO")}
-        account={undefined}
-      />
+      <div className="hidden md:block">
+        <Sidebar
+          isWalletConnected={false}
+          onConnectWallet={() => console.log("TODO")}
+          account={undefined}
+        />
+      </div>
 
       {/* Main Content */}
-      <main className="flex-1 ml-64 p-8 relative">
+      <main className="flex-1 md:ml-64 p-4 md:p-8 relative w-full overflow-x-hidden">
         <EmployerHeader />
         <div className="max-w-[1600px] mx-auto space-y-6">
          
@@ -68,7 +70,7 @@ const EmployerDashboard: React.FC = () => {
           
             {/* First Row: Metrics and Balance */}
             <motion.div
-              className="col-span-12 lg:col-span-4"
+              className="w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -76,13 +78,13 @@ const EmployerDashboard: React.FC = () => {
               <EmployeeProfile />
             </motion.div>
 
-            <div className="grid grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* Second Row: Graph and Recent Activity */}
            
          
 
             <motion.div
-              className="col-span-12 lg:col-span-6"
+              className="col-span-1 md:col-span-12 lg:col-span-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}

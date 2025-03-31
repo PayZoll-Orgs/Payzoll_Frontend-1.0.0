@@ -187,10 +187,11 @@ const EmployeesPage: React.FC = () => {
             }} onBulkUpload={() => setShowBulkUploadModal(true)} />
 
             {/* Pie Chart for Salary Distribution */}
-            <div className="w-full h-96 bg-crypto-card p-4 rounded-xl border border-gray-800">
-              <h2 className="text-lg font-semibold text-white text-start mb-4">Salary Distribution by Designation</h2>
+            <div className="bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 hover:border-[#93c5fd]/30 transition-all shadow-lg h-96">
+              <h2 className="text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow mb-4">Salary Distribution by Designation</h2>
+              <p className="text-gray-400 text-xs sm:text-sm font-mono mb-4">Breakdown of salary allocation across roles</p>
               {salaryData.length > 0 ? (
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="80%">
                   <PieChart>
                     <Pie
                       data={salaryData}
@@ -211,7 +212,7 @@ const EmployeesPage: React.FC = () => {
                   </PieChart>
                 </ResponsiveContainer>
               ) : (
-                <p className="text-center text-gray-400">No salary data available.</p>
+                <p className="text-center text-gray-400 font-mono">No salary data available.</p>
               )}
             </div>
           </div>

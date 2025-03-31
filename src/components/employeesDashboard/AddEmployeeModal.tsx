@@ -2,8 +2,9 @@
 
 import React, { FormEvent, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Briefcase, Wallet, PhoneCall, Mail, Upload } from "lucide-react";
+import { X, User, Briefcase, Wallet, Mail, Upload } from "lucide-react";
 import BulkUploadModal from "./BulkuploadModal";
+import "../../styles/gradients.css";
 
 interface EmployeeData {
   firstName: string;
@@ -137,17 +138,37 @@ useEffect(() => {
   return (
     <AnimatePresence>
       {isOpen && (
-      <motion.div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={onClose}>
-        <motion.div className="bg-crypto-card w-full max-w-xl mx-4 rounded-2xl border border-gray-800 overflow-hidden" onClick={(e) => e.stopPropagation()}>
-          <div className="p-6 border-b border-gray-800 flex items-center justify-between">
-            <h2 className="text-xl font-bold">{isEditing ? "Edit Employee" : "Add New Employee"}</h2>
-            <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
-              <X className="w-5 h-5" />
-            </button>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6" 
+        onClick={onClose}
+      >
+        <motion.div 
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.95, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-[#14161E] w-full max-w-xl rounded-2xl border border-[#3B4058]/30 overflow-hidden font-mono shadow-lg"
+        >
+          <div className="p-4 sm:p-5 md:p-6 border-b border-[#3B4058]/30">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg sm:text-xl font-bold text-[#c8ceee] text-shadow-glow">
+                {isEditing ? "Edit Employee" : "Add New Employee"}
+              </h2>
+              <button 
+                onClick={onClose} 
+                className="text-gray-400 hover:text-[#93c5fd] transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
-          <form className="p-6 space-y-6" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-4">
+          <form className="p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <InputField 
                 label="First Name" 
                 name="firstName" 
@@ -167,7 +188,7 @@ useEffect(() => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <InputField 
                 label="Designation" 
                 name="designation" 
@@ -188,7 +209,7 @@ useEffect(() => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <InputField 
                 label="Wallet Address" 
                 name="walletAddress" 
@@ -208,47 +229,31 @@ useEffect(() => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {/* <InputField 
-                label="Phone Number" 
-                name="phoneNumber" 
-                icon={PhoneCall} 
-                placeholder="+1234567890" 
-                error={errors.phoneNumber}
-                value={formData.phoneNumber}
-                onChange={handleInputChange}
-              /> */}
-              {/* <SelectField 
-                label="Employee Status" 
-                name="status" 
-                options={["Active", "Pending", "On Leave"]} 
-                error={errors.status}
-                value={formData.status}
-                onChange={(e) => {
-                  setFormData(prev => ({
-                    ...prev,
-                    status: e.target.value
-                  }));
-                }}
-              /> */}
-            </div>
 
-            <div className="flex justify-between pt-4 border-t border-gray-800">
-              {/* Bulk Upload Button - Bottom Left - Only show when not editing */}
+            <div className="pt-3 sm:pt-4 md:pt-5 mt-3 sm:mt-4 md:mt-5 border-t border-[#3B4058]/30 flex justify-between">
               {!isEditing && (
-                <button
-                  type="button"
-                  onClick={() => setIsBulkUploadOpen(true)}
-                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+                <button 
+                  type="button" 
+                  onClick={() => setIsBulkUploadOpen(true)} 
+                  className="bg-[#1D202D] text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-xl flex items-center space-x-1 sm:space-x-2 shadow-md
+                           hover:bg-[#252837] transition-all border border-[#3B4058]/30 text-xs sm:text-sm"
                 >
-                  <Upload className="w-4 h-4" />
-                  <span className="text-sm">Bulk Upload</span>
+                  <Upload className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#93c5fd]" />
+                  <span className="font-bold">Bulk Upload</span>
                 </button>
               )}
-
-              <div className={`flex justify-end space-x-4 ${isEditing ? "w-full" : ""}`}>
-                <button type="button" onClick={onClose} className="px-6 py-2 rounded-xl border border-gray-800 text-gray-400 hover:text-white transition-colors">Cancel</button>
-                <button type="submit" className="px-6 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white transition-colors">
+              <div className="flex gap-3 ml-auto">
+                <button 
+                  type="button" 
+                  onClick={onClose} 
+                  className="px-4 sm:px-5 md:px-6 py-1 sm:py-2 rounded-xl bg-[#1D202D] text-gray-300 hover:bg-[#252837] transition-colors border border-[#3B4058]/30 text-xs sm:text-sm"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  className="px-4 sm:px-5 md:px-6 py-1 sm:py-2 rounded-xl bg-[#1D202D] text-[#93c5fd] hover:bg-[#252837] transition-colors border border-[#3B4058]/30 text-xs sm:text-sm font-bold"
+                >
                   {isEditing ? "Update Employee" : "Add Employee"}
                 </button>
               </div>
@@ -284,19 +289,19 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange
 }) => (
   <div>
-    <label className="block text-sm text-gray-400 mb-1">{label}</label>
+    <label className="block text-xs sm:text-sm text-gray-400 mb-1 font-mono">{label}</label>
     <div className="relative">
-      {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />}
+      {Icon && <Icon className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]/60" />}
       <input 
         type={type} 
         name={name} 
         value={value}
         onChange={onChange}
-        className={`w-full bg-crypto-dark border ${error ? "border-red-500" : "border-gray-800"} rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-indigo-500 transition-colors`} 
+        className={`w-full bg-[#0c0e14] border ${error ? "border-red-500" : "border-[#3B4058]/30"} rounded-xl py-1 sm:py-2 pl-8 sm:pl-10 pr-3 sm:pr-4 text-white focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50 transition-all font-mono text-xs sm:text-sm`} 
         placeholder={placeholder} 
       />
     </div>
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+    {error && <p className="text-red-500 text-xs mt-1 font-mono">{error}</p>}
   </div>
 );
 
@@ -318,19 +323,23 @@ const SelectField: React.FC<SelectFieldProps> = ({
   onChange
 }) => (
   <div>
-    <label className="block text-sm text-gray-400 mb-1">{label}</label>
-    <select 
-      name={name} 
-      value={value}
-      onChange={onChange}
-      className={`w-full bg-crypto-dark border ${error ? "border-red-500" : "border-gray-800"} rounded-xl py-2 px-4 focus:outline-none focus:border-indigo-500 transition-colors`}
-    >
-      <option value="">Select an option</option>
-      {options.map((option) => (
-        <option key={option} value={option.toLowerCase()}>{option}</option>
-      ))}
-    </select>
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+    <label htmlFor={name} className="block text-xs sm:text-sm text-gray-400 mb-1 font-mono">{label}</label>
+    <div className="relative">
+      <select 
+        id={name}
+        name={name} 
+        value={value}
+        onChange={onChange}
+        className="w-full bg-[#0c0e14] border border-[#3B4058]/30 text-white rounded-xl py-1 sm:py-2 px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50 transition-all font-mono text-xs sm:text-sm" 
+        aria-label={label}
+      >
+        <option value="">Select {label}</option>
+        {options.map((option) => (
+          <option key={option} value={option}>{option}</option>
+        ))}
+      </select>
+    </div>
+    {error && <p className="text-red-500 text-xs mt-1 font-mono">{error}</p>}
   </div>
 );
 

@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { UserPlus, Search, Home } from "lucide-react";
-
+import { Search, Home } from "lucide-react";
+import "../../styles/gradients.css";
 
 interface EmployeeHeaderProps {
   onAddEmployee: () => void;
@@ -14,21 +13,18 @@ const EmployeeHeader: React.FC<EmployeeHeaderProps> = ({ onAddEmployee, onSearch
   return (
     <div className="mb-8">
       {/* Breadcrumbs */}
-      <div className="flex items-center space-x-2 text-sm text-gray-400 mb-4">
-        
-          <Home className="w-4 h-4 mr-1" />
-         
-     
+      <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-400 mb-4 font-mono">
+        <Home className="w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]" />
         <span>/</span>
-        <span className="text-white">Management</span>
+        <span className="text-[#c8ceee]">Management</span>
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-             Management
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#c8ceee] font-mono text-shadow-glow">
+            Management
           </h1>
-          <p className="text-gray-400 mt-1">Manage your workforce and payroll efficiently</p>
+          <p className="text-gray-400 mt-1 font-mono text-xs sm:text-sm">Manage your workforce and payroll efficiently</p>
         </div>
 
         <div className="flex items-center space-x-4 w-full sm:w-auto">
@@ -38,20 +34,21 @@ const EmployeeHeader: React.FC<EmployeeHeaderProps> = ({ onAddEmployee, onSearch
               type="text"
               placeholder="Search employees..."
               onChange={(e) => onSearch(e.target.value)}
-              className="w-full sm:w-64 bg-crypto-card border border-gray-800 rounded-xl py-2 pl-10 pr-4 focus:outline-none focus:border-indigo-500 transition-all"
+              className="w-full sm:w-64 bg-[#0c0e14] border border-[#3B4058]/30 text-white rounded-xl py-1 sm:py-2 pl-8 sm:pl-10 pr-3 sm:pr-4
+                        focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50 transition-all font-mono text-xs sm:text-sm"
             />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]/60" />
           </div>
 
-          {/* <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={onAddEmployee}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-xl hover:shadow-lg hover:shadow-indigo-500/20 transition-all flex items-center space-x-2"
+            className="bg-[#1D202D] text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-xl flex items-center space-x-1 sm:space-x-2 shadow-md
+                     hover:bg-[#252837] transition-all border border-[#3B4058]/30 text-xs sm:text-sm"
+            aria-label="Add employee"
           >
-            <UserPlus className="w-5 h-5" />
-            {/* <span>Add Employee</span> 
-          </motion.button> */}
+            {/* <UserPlus className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#93c5fd]" /> */}
+            <span className="font-bold font-mono">Add Employee</span>
+          </button>
         </div>
       </div>
     </div>

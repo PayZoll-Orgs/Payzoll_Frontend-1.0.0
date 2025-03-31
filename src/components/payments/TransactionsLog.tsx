@@ -13,6 +13,7 @@ const transactions = [
     payment: "$50,000",
     block: "Fx7182736",
     status: "completed",
+    timestamp: "2023-06-15 14:30:22"
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const transactions = [
     payment: "$25,000",
     block: "Fx6782345",
     status: "pending",
+    timestamp: "2023-06-14 09:45:11"
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const transactions = [
     payment: "$75,000",
     block: "Fx3457821",
     status: "failed",
+    timestamp: "2023-06-13 17:22:05"
   },
 ];
 
@@ -50,7 +53,8 @@ const TransactionsLog = () => {
     (t) =>
       t.contract.toLowerCase().includes(search.toLowerCase()) ||
       t.payment.toLowerCase().includes(search.toLowerCase()) ||
-      t.block.toLowerCase().includes(search.toLowerCase())
+      t.block.toLowerCase().includes(search.toLowerCase()) ||
+      t.timestamp.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -106,18 +110,12 @@ const TransactionsLog = () => {
                 <p className="text-xs sm:text-sm text-gray-400 font-mono">{tx.block}</p>
               </div>
               <div className="flex items-center space-x-2 self-end sm:self-auto">
-                <StatusIcon status={tx.status} />
+                {/* <StatusIcon status={tx.status as "completed" | "pending" | "failed"} /> */}
                 <span
                   className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-semibold font-mono
-                              ${
-                                tx.status === "completed"
-                                  ? "bg-green-400/10 text-green-400"
-                                  : tx.status === "pending"
-                                  ? "bg-[#93c5fd]/10 text-[#93c5fd]"
-                                  : "bg-red-400/10 text-red-400"
-                              }`}
+                              bg-green-400/10 text-green-400`}
                 >
-                  {tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}
+                  {tx.timestamp}
                 </span>
               </div>
             </motion.div>

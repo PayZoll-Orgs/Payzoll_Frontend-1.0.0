@@ -11,6 +11,7 @@ import {
   FileCheck,
   Clock
 } from "lucide-react";
+import "../../styles/gradients.css";
 
 interface QuickActionsProps {
   onAddEmployee: () => void;
@@ -24,28 +25,28 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
       title: "Add Employee",
       description: "Add a new team member to your organization",
       icon: UserPlus,
-      color: "from-green-600 to-emerald-600",
+      color: "text-[#93c5fd]",
       onClick: onAddEmployee
     },
     {
       title: "Bulk Upload",
       description: "Import multiple employees from CSV/Excel",
       icon: Upload,
-      color: "from-indigo-600 to-purple-600",
+      color: "text-[#93c5fd]",
       onClick: onBulkUpload
     },
     {
       title: "Process Payroll",
       description: "Run monthly payroll for all employees",
       icon: DollarSign,
-      color: "from-blue-600 to-indigo-600",
+      color: "text-[#93c5fd]",
       onClick: () => console.log("Process payroll")
     },
     {
       title: "Generate Reports",
       description: "Create detailed employee reports",
       icon: FileCheck,
-      color: "from-purple-600 to-pink-600",
+      color: "text-[#93c5fd]",
       onClick: () => console.log("Generate reports")
     }
   ];
@@ -65,21 +66,21 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
   ];
 
   return (
-    <div className="bg-crypto-card border border-gray-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 hover:border-[#93c5fd]/30 transition-all shadow-lg">
+      <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-5 lg:mb-6">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
-            <ClipboardList className="w-5 h-5 text-white" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#1D202D] flex items-center justify-center border border-[#3B4058]/30">
+            <ClipboardList className="w-4 h-4 sm:w-5 sm:h-5 text-[#93c5fd]" />
           </div>
           <div>
-            <h2 className="text-xl font-bold">Quick Actions</h2>
-            <p className="text-sm text-gray-400">Manage your workforce efficiently</p>
+            <h2 className="text-lg sm:text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow">Quick Actions</h2>
+            <p className="text-gray-400 text-xs sm:text-sm font-mono">Manage your workforce efficiently</p>
           </div>
         </div>
       </div>
 
       {/* Quick Action Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6">
         {actionCards.map((card, index) => (
           <motion.button
             key={index}
@@ -87,16 +88,16 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             onClick={card.onClick}
-            className="group bg-crypto-dark/50 rounded-xl p-4 border border-gray-800 hover:border-indigo-500/50 transition-all text-left"
+            className="group bg-[#0c0e14] rounded-xl p-3 sm:p-4 border border-[#3B4058]/30 hover:border-[#93c5fd]/50 transition-all text-left focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50"
           >
             <div className="flex flex-col h-full">
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center transform transition-transform group-hover:scale-110 mb-3`}>
-                <card.icon className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#1D202D] flex items-center justify-center transform transition-transform group-hover:scale-110 mb-2 sm:mb-3 border border-[#3B4058]/30">
+                <card.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#93c5fd]" />
               </div>
-              <h3 className="font-semibold text-white group-hover:text-indigo-300 transition-colors mb-1">{card.title}</h3>
-              <p className="text-sm text-gray-400 flex-grow">{card.description}</p>
-              <div className="flex justify-end mt-3">
-                <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-indigo-400 transition-colors" />
+              <h3 className="font-semibold text-[#c8ceee] group-hover:text-[#93c5fd] transition-colors mb-1 font-mono">{card.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-400 flex-grow font-mono">{card.description}</p>
+              <div className="flex justify-end mt-2 sm:mt-3">
+                <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-[#93c5fd] transition-colors" />
               </div>
             </div>
           </motion.button>
@@ -105,29 +106,29 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
 
       {/* Recent Activity Section */}
       <div>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-white">Recent Activity</h3>
-          <button className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+        <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
+          <h3 className="font-semibold text-[#c8ceee] font-mono text-shadow-glow">Recent Activity</h3>
+          <button className="text-xs sm:text-sm text-[#93c5fd] hover:text-[#93c5fd]/80 transition-colors font-mono">
             View All
           </button>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {recentActivities.map((activity, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1 }}
-              className="bg-crypto-dark/50 rounded-lg p-3 border border-gray-800"
+              className="bg-[#0c0e14] rounded-lg p-2 sm:p-3 border border-[#3B4058]/30 hover:border-[#93c5fd]/30 transition-all"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white text-sm">{activity.action}</p>
-                  <p className="text-gray-400 text-xs">{activity.detail}</p>
+                  <p className="text-[#c8ceee] text-xs sm:text-sm font-mono">{activity.action}</p>
+                  <p className="text-gray-400 text-xs font-mono">{activity.detail}</p>
                 </div>
-                <div className="flex items-center text-gray-400 text-xs">
-                  <Clock className="w-3 h-3 mr-1" />
+                <div className="flex items-center text-gray-400 text-xs font-mono">
+                  <Clock className="w-3 h-3 mr-1 text-[#93c5fd]/60" />
                   {activity.time}
                 </div>
               </div>

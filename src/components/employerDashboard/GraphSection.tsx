@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
+import "../../styles/gradients.css";
 
 const data = [
   { name: "Jan", Engineering: 45000, Marketing: 28000, Sales: 35000 },
@@ -52,35 +53,36 @@ const GraphSection: React.FC = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("All Departments");
 
   return (
-    <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[500px] overflow-hidden hover:border-[#3B4058]/50 transition-all">
+    <div className="bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-6 h-[500px] overflow-hidden hover:border-[#93c5fd]/30 transition-all shadow-lg">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 space-y-4 sm:space-y-0">
         <div>
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-[#c8ceee] font-mono text-shadow-glow">
             Salary Distribution
           </h2>
-          <p className="text-gray-400 text-sm mt-1">Overview by department</p>
+          <p className="text-gray-400 text-sm mt-1 font-mono">Overview by department</p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
           <select
             value={selectedDepartment}
             onChange={(e) => setSelectedDepartment(e.target.value)}
-            className="bg-[#1D202D] text-white border border-[#3B4058]/20 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-[#93c5fd] hover:border-[#3B4058]/50 transition-all cursor-pointer"
+            className="bg-[#0c0e14] text-white border border-[#3B4058]/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50 hover:border-[#3B4058]/50 transition-all cursor-pointer font-mono"
+            aria-label="Select department"
           >
             {departments.map((dept) => (
               <option key={dept} value={dept}>{dept}</option>
             ))}
           </select>
           <div className="flex items-center space-x-2">
-            <Calendar className="w-5 h-5 text-gray-400" />
-            <div className="flex bg-[#1D202D] rounded-lg p-1">
+            <Calendar className="w-5 h-5 text-[#93c5fd]/60" />
+            <div className="flex bg-[#1D202D] rounded-lg p-1 border border-[#3B4058]/30">
               {timeframes.map((timeframe) => (
                 <button
                   key={timeframe}
                   onClick={() => setSelectedTimeframe(timeframe)}
-                  className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                  className={`px-4 py-2 rounded-lg text-sm transition-all font-mono ${
                     selectedTimeframe === timeframe
                       ? "bg-[#93c5fd] text-white"
-                      : "text-gray-400 hover:text-white hover:bg-[#1D202D]/70"
+                      : "text-gray-400 hover:text-white hover:bg-[#252837]"
                   }`}
                 >
                   {timeframe}

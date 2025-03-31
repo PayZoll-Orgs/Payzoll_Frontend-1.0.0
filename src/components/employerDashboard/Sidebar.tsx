@@ -7,11 +7,10 @@ import {
   LayoutDashboard,
   Users,
   BadgeDollarSign,
-  Settings,
   LogOut,
-  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
+import "../../styles/gradients.css";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/employerDashboard" },
@@ -31,7 +30,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false); // State to track loading
 
   const handleLogout = () => {
     localStorage.setItem("token", "null");
@@ -44,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         {/* Company Name */}
         <div className="p-6 border-b border-[#3B4058]/20 flex flex-col gap-y-3">
           <Link href="/employer/dashboard">
-            <h1 className="text-xl font-bold text-white">PayZoll</h1>
+            <h1 className="text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow">PayZoll</h1>
           </Link>
         </div>
 
@@ -58,8 +56,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                 href={item.path}
                 className={`relative flex items-center space-x-3 px-4 py-3 rounded-xl transition-all group border ${
                   isActive
-                    ? "text-white border-[#93c5fd]/50 bg-[#93c5fd]/10"
-                    : "text-gray-400 border-transparent hover:text-white hover:bg-white/5"
+                    ? "text-[#c8ceee] border-[#93c5fd]/50 bg-[#93c5fd]/10"
+                    : "text-gray-400 border-transparent hover:text-[#c8ceee] hover:bg-white/5"
                 }`}
               >
                 {/* Active tab background - Matches border width and height */}
@@ -78,7 +76,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 />
 
                 {/* Text Label */}
-                <span className="relative">{item.label}</span>
+                <span className="relative font-mono">{item.label}</span>
               </Link>
             );
           })}
@@ -88,7 +86,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="p-4 border-t border-[#3B4058]/20">
           {isWalletConnected ? (
             <div className="bg-[#1D202D]/50 p-4 rounded-xl border border-[#3B4058]/20">
-              <div className="text-sm text-gray-400">Connected Wallet</div>
+              <div className="text-sm text-gray-400 font-mono">Connected Wallet</div>
               <div className="text-[#93c5fd] font-mono text-sm truncate">
                 {account}
               </div>
@@ -97,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <button
               onClick={onConnectWallet}
               className="w-full bg-[#93c5fd] text-white py-3 px-4 rounded-xl
-                     hover:bg-[#93c5fd]/90 transition-all duration-200 flex items-center justify-center"
+                     hover:bg-[#93c5fd]/90 transition-all duration-200 flex items-center justify-center font-mono"
             >
               Connect Wallet
             </button>
@@ -106,10 +104,10 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Logout */}
         <button
-          className="flex items-center space-x-3 px-8 py-6 text-gray-400 hover:text-white transition-colors border-t border-[#3B4058]/20"
+          className="flex items-center space-x-3 px-8 py-6 text-gray-400 hover:text-[#c8ceee] transition-colors border-t border-[#3B4058]/20 font-mono"
           onClick={handleLogout}
         >
-          <LogOut className="w-5 h-5" />
+          <LogOut className="w-5 h-5 text-[#93c5fd]/60" />
           <span>Logout</span>
         </button>
       </div>

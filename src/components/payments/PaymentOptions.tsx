@@ -2,27 +2,10 @@
 
 import React from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, TooltipProps, ResponsiveContainer, Legend
 } from "recharts";
 
-
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: { value: number }[];
-  label?: string;
-}
-
-const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-[#14161E] p-2 sm:p-3 rounded-lg border border-[#3B4058]/30 font-mono text-xs sm:text-sm">
-        <p className="text-[#c8ceee] font-semibold">{label}</p>
-        <p className="text-[#93c5fd]">${(payload[0]?.value ?? 0).toLocaleString()}</p>
-      </div>
-    );
-  }
-  return null;
-};
+import { TrendingUp, PieChart as PieChartIcon} from "lucide-react";
 
 const monthlyData = [
   { month: "Jan", amount: 125000 },
@@ -30,23 +13,30 @@ const monthlyData = [
   { month: "Mar", amount: 130000 },
   { month: "Apr", amount: 135000 },
   { month: "May", amount: 142000 },
-  { month: "Jun", amount: 145678 },
-  { month: "Jul", amount: 156342 },
-  { month: "Aug", amount: 110293 },
-  { month: "Sep", amount:  92733 },
-  { month: "Oct", amount: 189373 },
-  { month: "Nov", amount: 199383 },
-  { month: "Dec", amount: 236479 }
+  { month: "Jun", amount: 145678 }
 ];
 
+const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-[#0c0f16]/90 backdrop-blur-sm p-2 sm:p-3 rounded-lg border border-[#22304a]/30 font-mono text-xs sm:text-sm">
+        <p className="text-[#F2F2F2] font-semibold">{label}</p>
+        <p className="text-[#2D8B75]">${(payload[0]?.value ?? 0).toLocaleString()}</p>
+      </div>
+    );
+  }
+  return null;
+};
 
 const PaymentOptions = () => {
   return (
-    <div className="w-full h-1/2 bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-4 hover:border-[#3B4058]/50 transition-all">
-      <h2 className="text-lg font-bold mb-4 text-white">Payment History</h2>
+    <div className="w-full h-1/2 bg-[#131620]/90 backdrop-blur-sm border border-[#22304a]/20 rounded-xl p-4 hover:border-[#22304a]/50 transition-all shadow-lg">
+      <h2 className="text-lg font-bold mb-4 text-[#F2F2F2] font-mono" style={{
+        textShadow: "0 0 5px rgba(45, 139, 117, 0.3), 0 0 10px rgba(45, 139, 117, 0.1)"
+      }}>Payment History</h2>
       <ResponsiveContainer width="100%" height={250}>
         <LineChart data={monthlyData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#3B4058" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#22304a" />
           <XAxis dataKey="month" stroke="#9ca3af" tick={{ fontFamily: 'JetBrains Mono', fontSize: '0.7rem' }} />
           <YAxis 
             stroke="#9ca3af"
@@ -58,10 +48,10 @@ const PaymentOptions = () => {
           <Line
             type="monotone"
             dataKey="amount"
-            stroke="#93c5fd"
+            stroke="#2D8B75"
             strokeWidth={2}
-            dot={{ r: 3, fill: "#93c5fd" }}
-            activeDot={{ r: 6, fill: "#93c5fd" }}
+            dot={{ r: 3, fill: "#2D8B75" }}
+            activeDot={{ r: 6, fill: "#2D8B75" }}
           />
         </LineChart>
       </ResponsiveContainer>

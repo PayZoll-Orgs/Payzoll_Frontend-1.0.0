@@ -34,7 +34,7 @@ const EmployeeStats: React.FC<EmployeeStatsProps> = ({ employees }) => {
       value: totalEmployees,
       change: `+${((newThisMonth / (totalEmployees || 1)) * 100).toFixed(1)}%`,
       icon: Users,
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       message: "from last year",
     },
     {
@@ -42,7 +42,7 @@ const EmployeeStats: React.FC<EmployeeStatsProps> = ({ employees }) => {
       value: newThisMonth,
       change: `+${((newThisMonth / (totalEmployees || 1)) * 100).toFixed(1)}%`,
       icon: UserPlus,
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       message: "from last month",
     },
     {
@@ -51,7 +51,7 @@ const EmployeeStats: React.FC<EmployeeStatsProps> = ({ employees }) => {
       change: "-2%",
       isNegative: true,
       icon: Clock,
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       message: "from last year",
     },
   ];
@@ -64,17 +64,19 @@ const EmployeeStats: React.FC<EmployeeStatsProps> = ({ employees }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
-          className="bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-6 hover:border-[#93c5fd]/30 transition-all shadow-lg"
+          className="bg-[#131620]/90 backdrop-blur-sm border border-[#22304a]/30 rounded-xl p-6 hover:border-[#2D8B75]/30 transition-all shadow-lg"
         >
           <div className="flex items-center justify-between mb-4">
             <div>
               <h3 className="text-gray-400 text-sm font-mono">{stat.title}</h3>
-              <div className="text-3xl font-bold mt-1 text-[#c8ceee] font-mono text-shadow-glow">
+              <div className="text-3xl font-bold mt-1 text-[#F2F2F2] font-mono" style={{
+                textShadow: "0 0 5px rgba(45, 139, 117, 0.3), 0 0 10px rgba(45, 139, 117, 0.2)"
+              }}>
                 {stat.value}
               </div>
             </div>
             <div
-              className="w-12 h-12 rounded-lg bg-[#1D202D] flex items-center justify-center border border-[#3B4058]/30"
+              className="w-12 h-12 rounded-lg bg-[#0c0f16]/80 backdrop-blur-sm flex items-center justify-center border border-[#22304a]/30"
             >
               <stat.icon className={`w-6 h-6 ${stat.color}`} />
             </div>

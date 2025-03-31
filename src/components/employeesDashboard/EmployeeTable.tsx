@@ -115,21 +115,21 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
             type="text"
             placeholder="Search employees..."
             onChange={(e) => setLocalSearchQuery(e.target.value)}
-            className="w-full sm:w-64 bg-[#0c0e14] border border-[#3B4058]/30 text-white rounded-xl py-1 sm:py-2 pl-8 sm:pl-10 pr-3 sm:pr-4
-                      focus:outline-none focus:ring-2 focus:ring-[#93c5fd]/50 transition-all font-mono text-xs sm:text-sm"
+            className="w-full sm:w-64 bg-[#0c0f16] border border-[#22304a]/30 text-white rounded-xl py-1 sm:py-2 pl-8 sm:pl-10 pr-3 sm:pr-4
+                      focus:outline-none focus:ring-2 focus:ring-[#2D8B75]/50 transition-all font-mono text-xs sm:text-sm"
           />
-          <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]/60" />
+          <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-[#2D8B75]/60" />
         </div>
       </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-crypto-card border border-[#3B4058]/30 rounded-xl overflow-hidden hover:border-[#93c5fd]/30 transition-all shadow-lg"
+        className="bg-crypto-card border border-[#22304a]/30 rounded-xl overflow-hidden hover:border-[#2D8B75]/30 transition-all shadow-lg"
       >
         <div className="overflow-x-auto">
           <table className="w-full table-fixed">
-            <thead className="bg-[#14161E] backdrop-blur-sm">
+            <thead className="bg-[#131620] backdrop-blur-sm">
               <tr>
                 {[
                   { label: "Employee Name", key: "name" },
@@ -141,7 +141,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                 ].map(({ label, key }, index) => (
                   <th
                     key={index}
-                    className="px-6 py-4 text-sm font-medium text-[#c8ceee] w-1/6 text-center font-mono"
+                    className="px-6 py-4 text-sm font-medium text-[#F2F2F2] w-1/6 text-center font-mono"
                   >
                     {key ? (
                       <button onClick={() => handleSort(key)} className="flex items-center justify-center space-x-2">
@@ -155,11 +155,11 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#3B4058]/30">
+            <tbody className="divide-y divide-[#22304a]/30">
               {currentEmployees.map((employee) => (
-                <tr key={employee._id} className="hover:bg-[#1D202D] transition-colors group">
+                <tr key={employee._id} className="hover:bg-[#0c0f16] transition-colors group">
                   <td 
-                    className="px-6 py-4 whitespace-nowrap text-center text-gray-400 cursor-pointer hover:text-[#93c5fd] transition-colors font-mono"
+                    className="px-6 py-4 whitespace-nowrap text-center text-gray-400 cursor-pointer hover:text-[#2D8B75] transition-colors font-mono"
                     onClick={() => handleViewDetails(employee)}
                   >
                     {employee.name}
@@ -167,7 +167,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                   <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 font-mono">{employee.designation}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 font-mono">
                     <div className="flex items-center justify-center">
-                      <Mail className="w-4 h-4 mr-2 text-[#93c5fd]" />
+                      <Mail className="w-4 h-4 mr-2 text-[#2D8B75]" />
                       <span className="truncate max-w-[100px] inline-block">
                         {employee.email || "—"}
                       </span>
@@ -180,7 +180,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex justify-center items-center space-x-3 opacity-0 group-hover:opacity-100 transition">
                       <Edit2 
-                        className="w-4 h-4 text-[#93c5fd] cursor-pointer" 
+                        className="w-4 h-4 text-[#2D8B75] cursor-pointer" 
                         onClick={() => onEditEmployee && onEditEmployee(employee)}
                       />
                       <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" onClick={() => deleteEmployeeById(employee._id)} />
@@ -192,7 +192,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
           </table>
         </div>
 
-        <div className="px-6 py-4 border-t border-[#3B4058]/30 flex justify-between items-center">
+        <div className="px-6 py-4 border-t border-[#22304a]/30 flex justify-between items-center">
           <div className="text-sm text-gray-400 font-mono">
             Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, sortedEmployees.length)} of {sortedEmployees.length} entries
           </div>
@@ -203,8 +203,8 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                 onClick={() => setCurrentPage(i + 1)}
                 className={`w-8 h-8 flex items-center justify-center rounded-md text-sm transition-colors font-mono ${
                   currentPage === i + 1
-                    ? 'bg-[#93c5fd] text-[#14161E]'
-                    : 'bg-[#1D202D] text-gray-400 hover:bg-[#252837] hover:text-[#c8ceee]'
+                    ? 'bg-[#2D8B75] text-[#131620]'
+                    : 'bg-[#0c0f16] text-gray-400 hover:bg-[#22304a] hover:text-[#F2F2F2]'
                 }`}
               >
                 {i + 1}

@@ -53,14 +53,14 @@ interface CustomTooltipProps {
   payload?: { name: string; value: number }[];
 }
 
-// Color Palette for Pie Chart
-const COLORS = ["#93c5fd", "#8b5cf6", "#a855f7", "#d946ef", "#ec4899", "#f43f5e"];
+// Color Palette for Pie Chart (updated to match Midnight Emerald theme)
+const COLORS = ["#2D8B75", "#22304a", "#B38D36", "#449C90", "#1A5F4F", "#D4AB57"];
 
 // Custom Tooltip Component
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-gray-800 text-white p-2 rounded-lg shadow-md">
+      <div className="bg-[#0c0f16]/90 backdrop-blur-sm text-[#F2F2F2] p-2 rounded-lg shadow-md border border-[#22304a]/30">
         <p className="font-bold">{payload[0].name}</p>
         <p>Total Salary: {payload[0].value.toLocaleString()} ETH</p>
       </div>
@@ -82,7 +82,7 @@ const EmployeesPage: React.FC = () => {
   // Fetch Employees Data (Mock for Now)
   useEffect(() => {
     const mockEmployees: Employee[] = [
-      { _id: "1", name: "John Doe", designation: "Software Engineer", salary: { $numberDecimal: "5000" }, wallet: "0x1234567890abcdef", email: "jhonDoe@payzoll.com" },
+      { _id: "1", name: "John Doe", designation: "Software Engineer", salary: { $numberDecimal: "5000" }, wallet: "0x1234567890abcdef", email: "doejon@payzoll.com" },
       { _id: "2", name: "Alice Johnson", designation: "Product Manager", salary: { $numberDecimal: "7000" }, wallet: "0xabcdef1234567890", email: "aliceJhonson@payzoll.com" },
     ];
     setEmployees(mockEmployees);
@@ -156,9 +156,16 @@ const EmployeesPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-crypto-dark text-white flex">
+    <div className="min-h-screen bg-[#131620] text-white flex">
+      {/* Background effects */}
+      <div className="fixed inset-0 bg-[#0c0f16]/30 bg-grid-pattern opacity-[0.02]"></div>
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute w-[800px] h-[800px] rounded-full blur-[150px] opacity-10 bg-[#2D8B75] -top-[400px] -right-[400px]"></div>
+        <div className="absolute w-[600px] h-[600px] rounded-full blur-[150px] opacity-5 bg-[#B38D36] bottom-0 -left-[300px]"></div>
+      </div>
+
       {/* Sidebar */}
-      <Sidebar isWalletConnected={false} onConnectWallet={() => { }} account={undefined} />
+      <Sidebar isWalletConnected={false} onConnectWallet={() => {}} account={undefined} />
 
       {/* Main Content */}
       <main className="flex-1 ml-64 p-8 relative overflow-hidden">
@@ -189,8 +196,10 @@ const EmployeesPage: React.FC = () => {
             }} onBulkUpload={() => setShowBulkUploadModal(true)} />
 
             {/* Pie Chart for Salary Distribution */}
-            <div className="bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 hover:border-[#93c5fd]/30 transition-all shadow-lg h-96">
-              <h2 className="text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow mb-4">Salary Distribution by Designation</h2>
+            <div className="bg-[#131620]/90 backdrop-blur-sm border border-[#22304a]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 hover:border-[#2D8B75]/30 transition-all shadow-lg h-96">
+              <h2 className="text-xl font-bold text-[#F2F2F2] font-mono" style={{
+                textShadow: "0 0 5px rgba(45, 139, 117, 0.4), 0 0 10px rgba(45, 139, 117, 0.2)"
+              }}>Salary Distribution by Designation</h2>
               <p className="text-gray-400 text-xs sm:text-sm font-mono mb-4">Breakdown of salary allocation across roles</p>
               {salaryData.length > 0 ? (
                 <ResponsiveContainer width="100%" height="80%">
@@ -222,12 +231,12 @@ const EmployeesPage: React.FC = () => {
       </main>
 
       {/* Modals */}
-      <AddEmployeeModal
-        isOpen={showAddModal}
+      <AddEmployeeModal 
+        isOpen={showAddModal} 
         onClose={() => {
           setShowAddModal(false);
           setSelectedEmployee(null);
-        }}
+        }} 
         onAddEmployee={onAddEmployee}
         onUpdateEmployee={handleUpdateEmployee}
         editEmployee={selectedEmployee}

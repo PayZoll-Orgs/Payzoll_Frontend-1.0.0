@@ -58,9 +58,9 @@ const activities: Activity[] = [
 
 const RecentActivity: React.FC = () => {
   return (
-    <div className="w-full bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-6 hover:border-[#93c5fd]/30 transition-all shadow-lg">
+    <div className="w-full bg-var(--bg-secondary) border border-var(--border-color)/30 rounded-xl p-6 hover:border-var(--accent-primary)/30 transition-all shadow-lg">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow">Recent Activity</h3>
+        <h3 className="text-xl font-bold text-var(--text-primary) font-mono text-shadow-glow">Recent Activity</h3>
         <button 
           className="text-sm text-[#93c5fd] hover:text-[#c8ceee] transition-colors font-mono"
           aria-label="View all activities"

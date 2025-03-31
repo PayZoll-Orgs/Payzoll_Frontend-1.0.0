@@ -52,38 +52,40 @@ const PaymentHistory: React.FC = () => {
   const currentData = paymentHistoryData.slice(startIndex, endIndex);
 
   return (
-    <div className="w-full bg-[#14161E] border border-[#3B4058]/30 rounded-xl p-3 sm:p-4 md:p-6 
-                    hover:border-[#93c5fd]/30 transition-all shadow-lg">
+    <div className="w-full bg-[#131620]/90 backdrop-blur-sm border border-[#22304a]/30 rounded-xl p-3 sm:p-4 md:p-6 
+                    hover:border-[#2D8B75]/30 transition-all shadow-lg">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-3 sm:gap-0">
-        <h2 className="text-lg sm:text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow">Payment History</h2>
+        <h2 className="text-lg sm:text-xl font-bold text-[#F2F2F2] font-mono" style={{
+          textShadow: "0 0 5px rgba(45, 139, 117, 0.4), 0 0 10px rgba(45, 139, 117, 0.2)"
+        }}>Payment History</h2>
         <div className="flex flex-wrap gap-2">
           <button 
-            className="bg-[#1D202D] text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center space-x-1 sm:space-x-2 
-                      hover:bg-[#252837] transition-all border border-[#3B4058]/30 font-mono text-xs sm:text-sm"
+            className="bg-[#0c0f16]/80 backdrop-blur-sm text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center space-x-1 sm:space-x-2 
+                      hover:bg-[#0c0f16] transition-all border border-[#22304a]/30 font-mono text-xs sm:text-sm"
           >
-            <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]" />
+            <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-[#2D8B75]" />
             <span>Jun 2023</span>
           </button>
           <button 
-            className="bg-[#1D202D] text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center 
-                      hover:bg-[#252837] transition-all border border-[#3B4058]/30 font-mono"
+            className="bg-[#0c0f16]/80 backdrop-blur-sm text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center 
+                      hover:bg-[#0c0f16] transition-all border border-[#22304a]/30 font-mono"
             aria-label="Filter payments"
           >
-            <Filter className="w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]" />
+            <Filter className="w-3 h-3 sm:w-4 sm:h-4 text-[#2D8B75]" />
           </button>
           <button 
-            className="bg-[#1D202D] text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center 
-                      hover:bg-[#252837] transition-all border border-[#3B4058]/30 font-mono"
+            className="bg-[#0c0f16]/80 backdrop-blur-sm text-white px-2 sm:px-4 py-1 sm:py-2 rounded-xl flex items-center 
+                      hover:bg-[#0c0f16] transition-all border border-[#22304a]/30 font-mono"
             aria-label="Download payment history"
           >
-            <Download className="w-3 h-3 sm:w-4 sm:h-4 text-[#93c5fd]" />
+            <Download className="w-3 h-3 sm:w-4 sm:h-4 text-[#2D8B75]" />
           </button>
         </div>
       </div>
 
       {/* Table Header - Hidden on mobile, visible on larger screens */}
-      <div className="hidden sm:grid grid-cols-4 gap-2 sm:gap-4 pb-3 border-b border-[#3B4058]/30 mb-4">
+      <div className="hidden sm:grid grid-cols-4 gap-2 sm:gap-4 pb-3 border-b border-[#22304a]/30 mb-4">
         <div className="text-gray-400 font-medium font-mono text-sm sm:text-base">Date</div>
         <div className="text-gray-400 font-medium font-mono text-sm sm:text-base">Recipient</div>
         <div className="text-gray-400 font-medium font-mono text-sm sm:text-base">Amount</div>
@@ -95,7 +97,7 @@ const PaymentHistory: React.FC = () => {
         {currentData.map((payment, index) => (
           <motion.div
             key={payment.id}
-            className="flex flex-col sm:grid sm:grid-cols-4 gap-2 sm:gap-4 py-3 border-b border-[#3B4058]/20 last:border-0"
+            className="flex flex-col sm:grid sm:grid-cols-4 gap-2 sm:gap-4 py-3 border-b border-[#22304a]/20 last:border-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -150,7 +152,7 @@ const PaymentHistory: React.FC = () => {
             className={`p-1 sm:p-2 rounded-lg ${
               currentPage === 1
                 ? "text-gray-600 cursor-not-allowed"
-                : "text-[#93c5fd] hover:bg-[#93c5fd]/10"
+                : "text-[#2D8B75] hover:bg-[#2D8B75]/10"
             } transition-colors flex items-center justify-center font-mono`}
             aria-label="Previous page"
           >
@@ -162,7 +164,7 @@ const PaymentHistory: React.FC = () => {
             className={`p-1 sm:p-2 rounded-lg ${
               currentPage === totalPages
                 ? "text-gray-600 cursor-not-allowed"
-                : "text-[#93c5fd] hover:bg-[#93c5fd]/10"
+                : "text-[#2D8B75] hover:bg-[#2D8B75]/10"
             } transition-colors flex items-center justify-center font-mono`}
             aria-label="Next page"
           >
@@ -174,4 +176,4 @@ const PaymentHistory: React.FC = () => {
   );
 };
 
-export default PaymentHistory; 
+export default PaymentHistory;

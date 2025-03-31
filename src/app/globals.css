@@ -23,6 +23,25 @@
   --background: #000000; /* Changed to black */
   --foreground: #ffffff; /* Changed to white for better contrast */
   --font-mono: 'JetBrains Mono', monospace;
+          /* Base colors */
+  --bg-primary: #131620;
+            /* Main background */
+  --bg-secondary: #0c0f16;
+            /* Darker background for cards, sidebars */
+  --accent-primary: #2D8B75;
+            /* Primary accent (emerald) */
+  --accent-secondary: #B38D36;
+            /* Secondary accent (gold) */
+  --text-primary: #F2F2F2;
+            /* Main text color */
+  --text-secondary: #A9A9A9;
+            /* Secondary/gray text */
+  --border-color: #22304a;
+            /* Border color */
+  --glow-effect: 0 0 5px rgba(45, 139, 117, 0.5), 0 0 10px rgba(45, 139, 117, 0.3);
+            /* Subtle emerald glow */
+    /* styles.css or global.scss */
+    
 }
 
 @theme inline {
@@ -49,8 +68,15 @@ body {
   font-family: var(--font-mono);
 }
 
+.logo-gradient-text {
+  background: linear-gradient(135deg, #22304a, #2D8B75, #B38D36, #2D8B75, #22304a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+}
+
 .text-shadow-glow {
-  text-shadow: 0 0 5px rgba(72, 194, 251, 0.604),
-               0 0 5px rgba(135, 252, 252, 0.236),
-               0 0 5px rgba(41, 84, 253, 0.492);
+  text-shadow: 0 0 5px rgba(45, 139, 117, 0.5), 0 0 10px rgba(45, 139, 117, 0.3);
 }

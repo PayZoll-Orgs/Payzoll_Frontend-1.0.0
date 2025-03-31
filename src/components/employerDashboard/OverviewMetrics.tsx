@@ -50,14 +50,14 @@ const OverviewMetrics: React.FC<OverviewMetricsProps> = ({ type }) => {
 
   if (type === "employees") {
     return (
-      <div className="bg-[#14161E] border border-[#3B4058]/20 rounded-xl p-6 h-[420px] hover:border-[#3B4058]/50 transition-all">
+      <div className="bg-var(--bg-secondary) border border-var(--border-color)/20 rounded-xl p-6 h-[420px] hover:border-var(--border-color)/50 transition-all">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-gray-400 mb-2">Total Employees</h3>
+            <h3 className="text-var(--text-secondary) mb-2">Total Employees</h3>
             <div className="text-4xl font-bold text-white">
               {employees.length}
             </div>
-            <div className="text-green-400 text-sm mt-1">+12% from last month</div>
+            <div className="text-var(--accent-primary) text-sm mt-1">+12% from last month</div>
           </div>
           <Users className="w-10 h-10 text-[#93c5fd]" />
         </div>

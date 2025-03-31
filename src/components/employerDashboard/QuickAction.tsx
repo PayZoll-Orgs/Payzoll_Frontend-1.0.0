@@ -25,31 +25,31 @@ const QuickActions: React.FC<{ isWalletConnected: boolean }> = ({ isWalletConnec
     {
       icon: ArrowLeftRight,
       label: "Swap Crypto",
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       onClick: () => console.log("Swap Crypto clicked"),
     },
     {
       icon: PiggyBank,
       label: "Lending",
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       onClick: () => router.push("/lending"),
     },
     {
       icon: Landmark,
       label: "Stake",
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       onClick: () => router.push("/stake"),
     },
     {
       icon: Users,
       label: "Pay Employees",
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       onClick: () => router.push("/employer/payments"),
     },
     {
       icon: UserPlus,
       label: "Add Employee",
-      color: "text-[#93c5fd]",
+      color: "text-[#2D8B75]",
       onClick: () => router.push("/employer/employees"),
     },
   ];
@@ -62,8 +62,8 @@ const QuickActions: React.FC<{ isWalletConnected: boolean }> = ({ isWalletConnec
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
-          className={`group relative p-4 bg-[#14161E] rounded-xl border border-[#3B4058]/20 
-                     hover:border-[#3B4058]/50 transition-all duration-300 ${
+          className={`group relative p-4 bg-[#131620]/90 backdrop-blur-sm rounded-xl border border-[#22304a]/30 
+                     hover:border-[#22304a]/50 transition-all duration-300 ${
                        !isWalletConnected ? "opacity-50 cursor-not-allowed" : ""
                      }`}
           disabled={!isWalletConnected}
@@ -71,7 +71,7 @@ const QuickActions: React.FC<{ isWalletConnected: boolean }> = ({ isWalletConnec
         >
           <div className="flex flex-col items-center space-y-2">
             <action.icon className={`w-7 h-7 ${action.color} transform group-hover:scale-110 transition-transform`} />
-            <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+            <span className="text-sm text-gray-300 group-hover:text-white transition-colors font-mono">
               {action.label}
             </span>
           </div>

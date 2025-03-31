@@ -4,19 +4,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/employerDashboard/Sidebar";
 import EmployerHeader from "@/components/employerDashboard/EmployerHeader";
-
-
-
 import RecentActivity from "@/components/employerDashboard/RecentActivity";
 import EmployeeProfile from "@/components/employerDashboard/EmployeeProfile";
 
 const EmployerDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-crypto-dark text-white flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#131620] text-white flex flex-col md:flex-row">
       {/* Background Effects */}
       <div className="fixed inset-0 bg-grid-pattern opacity-[0.02]" />
       <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-gradient-radial from-indigo-900/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-radial from-[#2D8B75]/10 via-transparent to-transparent" />
       </div>
 
       {/* Animated Background Orbs */}
@@ -27,7 +24,7 @@ const EmployerDashboard: React.FC = () => {
             className="absolute w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full"
             initial={{ opacity: 0.1 }}
             animate={{
-              opacity: [0.1, 0.3, 0.1],
+              opacity: [0.1, 0.2, 0.1],
               scale: [1, 1.2, 1],
               x: [0, 100, 0],
               y: [0, 50, 0],
@@ -40,10 +37,10 @@ const EmployerDashboard: React.FC = () => {
             style={{
               background: `radial-gradient(circle, ${
                 i === 0
-                  ? "rgba(99,102,241,0.1)"
+                  ? "rgba(45, 139, 117, 0.1)"
                   : i === 1
-                  ? "rgba(139,92,246,0.1)"
-                  : "rgba(168,85,247,0.1)"
+                  ? "rgba(34, 48, 74, 0.1)"
+                  : "rgba(179, 141, 54, 0.1)"
               } 0%, transparent 70%)`,
               left: `${i * 30}%`,
               top: `${i * 20}%`,
@@ -81,8 +78,6 @@ const EmployerDashboard: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* Second Row: Graph and Recent Activity */}
            
-         
-
             <motion.div
               className="col-span-1 md:col-span-12 lg:col-span-12"
               initial={{ opacity: 0, y: 20 }}

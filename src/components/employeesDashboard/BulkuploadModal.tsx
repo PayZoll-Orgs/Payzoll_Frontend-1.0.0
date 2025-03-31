@@ -43,7 +43,7 @@ const BulkUploadModal: React.FC<BulkUploadModalProps> = ({ isOpen, onClose }) =>
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
         onClick={onClose}
       >
         <motion.div
@@ -51,11 +51,13 @@ const BulkUploadModal: React.FC<BulkUploadModalProps> = ({ isOpen, onClose }) =>
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-[#14161E] w-full max-w-xl mx-4 rounded-2xl border border-[#3B4058]/30 overflow-hidden shadow-lg"
+          className="bg-[#131620]/90 backdrop-filter backdrop-blur-md w-full max-w-xl mx-4 rounded-2xl border border-[#22304a]/40 overflow-hidden shadow-xl"
         >
           {/* Header */}
-          <div className="p-6 border-b border-[#3B4058]/30 flex justify-between items-center">
-            <h2 className="text-xl font-bold text-[#c8ceee] font-mono text-shadow-glow">Bulk Upload Employees</h2>
+          <div className="p-6 border-b border-[#22304a]/30 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-[#F2F2F2] font-mono" style={{
+              textShadow: "0 0 5px rgba(45, 139, 117, 0.4), 0 0 10px rgba(45, 139, 117, 0.2)"
+            }}>Bulk Upload Employees</h2>
             <button 
               onClick={onClose} 
               className="text-gray-400 hover:text-white transition-colors"
@@ -78,15 +80,15 @@ const BulkUploadModal: React.FC<BulkUploadModalProps> = ({ isOpen, onClose }) =>
           </div>
 
           {/* Action Buttons */}
-          <div className="p-6 border-t border-[#3B4058]/30 flex justify-end space-x-4">
+          <div className="p-6 border-t border-[#22304a]/30 flex justify-end space-x-4">
             <button 
               onClick={onClose} 
-              className="px-6 py-2 rounded-xl border border-[#3B4058]/30 text-gray-400 hover:text-white hover:border-[#3B4058] transition-colors font-mono text-xs sm:text-sm"
+              className="px-6 py-2 rounded-xl border border-[#22304a]/40 text-gray-400 hover:text-white hover:border-[#22304a] transition-colors font-mono text-xs sm:text-sm bg-[#0c0f16]/60 backdrop-blur-sm"
             >
               Cancel
             </button>
             <button 
-              className="px-6 py-2 rounded-xl bg-[#1D202D] text-white hover:bg-[#252837] transition-all border border-[#3B4058]/30 text-xs sm:text-sm font-bold font-mono"
+              className="px-6 py-2 rounded-xl bg-[#2D8B75] text-white hover:bg-[#2D8B75]/90 transition-all border border-[#2D8B75]/30 text-xs sm:text-sm font-bold font-mono shadow-md shadow-[#2D8B75]/20"
               aria-label="Upload and process file"
             >
               Upload & Process
@@ -99,15 +101,15 @@ const BulkUploadModal: React.FC<BulkUploadModalProps> = ({ isOpen, onClose }) =>
 };
 
 const InfoCard: React.FC = () => (
-  <div className="bg-[#0c0e14] rounded-xl p-4 border border-[#3B4058]/30 flex items-start space-x-4">
-    <div className="w-10 h-10 rounded-lg bg-[#1D202D] flex items-center justify-center border border-[#3B4058]/30">
-      <FileSpreadsheet className="w-5 h-5 text-[#93c5fd]" />
+  <div className="bg-[#0c0f16]/80 backdrop-blur-sm rounded-xl p-4 border border-[#22304a]/30 flex items-start space-x-4">
+    <div className="w-10 h-10 rounded-lg bg-[#131620]/80 flex items-center justify-center border border-[#22304a]/30">
+      <FileSpreadsheet className="w-5 h-5 text-[#2D8B75]" />
     </div>
     <div className="flex-1">
-      <h3 className="font-semibold mb-1 text-[#c8ceee] font-mono">Download Template</h3>
+      <h3 className="font-semibold mb-1 text-[#F2F2F2] font-mono">Download Template</h3>
       <p className="text-sm text-gray-400 mb-2 font-mono">Use our template to ensure your data is formatted correctly</p>
       <button 
-        className="text-[#93c5fd] text-sm hover:text-[#93c5fd]/80 transition-colors font-mono"
+        className="text-[#2D8B75] text-sm hover:text-[#2D8B75]/80 transition-colors font-mono"
         aria-label="Download template file"
       >
         Download Template →
@@ -126,7 +128,11 @@ interface UploadSectionProps {
 
 const UploadSection: React.FC<UploadSectionProps> = ({ dragActive, handleDrag, handleDrop, handleChange, selectedFile }) => (
   <div
-    className={`relative border-2 border-dashed rounded-xl p-8 text-center transition-colors ${dragActive ? "border-[#93c5fd] bg-[#93c5fd]/10" : "border-[#3B4058]/30 hover:border-[#3B4058]"}`}
+    className={`relative border-2 border-dashed rounded-xl p-8 text-center transition-colors backdrop-blur-sm ${
+      dragActive 
+        ? "border-[#2D8B75] bg-[#2D8B75]/10" 
+        : "border-[#22304a]/30 hover:border-[#22304a]"
+    }`}
     onDragEnter={handleDrag}
     onDragLeave={handleDrag}
     onDragOver={handleDrag}
@@ -141,19 +147,19 @@ const UploadSection: React.FC<UploadSectionProps> = ({ dragActive, handleDrag, h
       title="Upload employee data file"
     />
     <div className="space-y-4">
-      <div className="w-16 h-16 rounded-full bg-[#1D202D] mx-auto flex items-center justify-center border border-[#3B4058]/30">
-        <Upload className="w-8 h-8 text-[#93c5fd]" />
+      <div className="w-16 h-16 rounded-full bg-[#0c0f16]/90 mx-auto flex items-center justify-center border border-[#22304a]/30">
+        <Upload className="w-8 h-8 text-[#2D8B75]" />
       </div>
-      <h4 className="font-semibold mb-2 text-[#c8ceee] font-mono">{selectedFile ? selectedFile.name : "Drop your file here"}</h4>
+      <h4 className="font-semibold mb-2 text-[#F2F2F2] font-mono">{selectedFile ? selectedFile.name : "Drop your file here"}</h4>
       <p className="text-sm text-gray-400 font-mono">Support for CSV and Excel files</p>
     </div>
   </div>
 );
 
 const Guidelines: React.FC = () => (
-  <div className="bg-[#0c0e14] rounded-xl p-4 border border-[#3B4058]/30 flex items-start space-x-3">
-    <AlertCircle className="w-5 h-5 text-[#93c5fd] flex-shrink-0 mt-0.5" />
-    <div className="text-sm text-[#c8ceee]">
+  <div className="bg-[#0c0f16]/80 backdrop-blur-sm rounded-xl p-4 border border-[#22304a]/30 flex items-start space-x-3">
+    <AlertCircle className="w-5 h-5 text-[#B38D36] flex-shrink-0 mt-0.5" />
+    <div className="text-sm text-[#F2F2F2]">
       <p className="font-semibold mb-1 font-mono">Important Guidelines:</p>
       <ul className="list-disc pl-4 space-y-1 text-gray-400 font-mono">
         <li>Ensure all required fields are filled</li>

@@ -1,6 +1,7 @@
+// src/components/home/Hero.tsx - Only color changes to emerald
 "use client";
 
-import EncryptButton from "../ui/EncryptBtn"; // Adjust the import path as needed
+import EncryptButton from "../ui/EncryptBtn";
 
 export default function Hero() {
   return (
@@ -8,10 +9,10 @@ export default function Hero() {
       className="relative text-white py-20 flex flex-col items-center text-center mt-40 min-h-screen justify-center overflow-hidden bg-black"
     >
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="w-[70%] h-[60%] bg-blue-300/16 blur-3xl rounded-full"></div>
+        <div className="w-[70%] h-[60%] bg-emerald-500/16 blur-3xl rounded-full"></div>
       </div>
       <h1 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
-        <span className="text-[#c8ceee]">ENCRYPTED. EFFICIENT. EFFORTLESS.</span><span className="text-gray-300"></span>
+        <span className="text-[#d1fae5]">ENCRYPTED. EFFICIENT. EFFORTLESS.</span><span className="text-gray-300"></span>
       </h1>
       <p className="mt-4 text-lg text-gray-400 max-w-2xl relative">
         The modern payroll platform that moves at the speed of your business.
@@ -22,13 +23,13 @@ export default function Hero() {
         <input
           type="email"
           placeholder="Enter your email address"
-          className="w-full md:w-96 px-6 py-3 rounded-full bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full md:w-96 px-6 py-3 rounded-full bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
         {/* Fixed Shape Oval Box */}
-        <div className="flex items-center justify-center w-64 h-12 border-brandBlue/[8%] rounded-full border p-[0.31rem]">
+        <div className="flex items-center justify-center w-64 h-12 border-emerald-500/[8%] rounded-full border p-[0.31rem]">
           <EncryptButton
             TARGET_TEXT="Join the waitlist"
-            className="w-full h-full flex items-center justify-center bg-transparent text-white font-semibold transition-all hover:text-blue-300"
+            className="w-full h-full flex items-center justify-center bg-transparent text-white font-semibold transition-all hover:text-emerald-400"
           >
             JOIN WAITLIST
           </EncryptButton>
@@ -37,7 +38,7 @@ export default function Hero() {
 
       <div className="mt-24 w-full max-w-5xl relative">
         <img
-          src="/images/dashboard.png" // Replace with actual image path
+          src="/images/dashboard.png"
           alt="Preview"
           className="rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
         />
@@ -58,7 +59,7 @@ export default function Hero() {
           font-family: 'JetBrains Mono', monospace;
         }
         .hover\:text-blue-300:hover {
-          color: #93c5fd; /* Tailwind's blue-300 color */
+          color: #34D399; /* Emerald-400 */
         }
       `}</style>
     </div>

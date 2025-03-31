@@ -42,14 +42,14 @@ const EmployeeHeader: React.FC<EmployeeHeaderProps> = ({ onAddEmployee, onSearch
             <Search className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-[#2D8B75]/60" />
           </div>
 
-          <button
+          {/* <button
             onClick={onAddEmployee}
             className="bg-[#0c0f16] text-white px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-xl flex items-center space-x-1 sm:space-x-2 shadow-md
-                     hover:bg-[#22304a] transition-all border border-[#22304a]/30 text-xs sm:text-sm"
+            hover:bg-[#22304a] transition-all border border-[#22304a]/30 text-xs sm:text-sm"
             aria-label="Add employee"
           >
             <span className="font-bold font-mono">Add Employee</span>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

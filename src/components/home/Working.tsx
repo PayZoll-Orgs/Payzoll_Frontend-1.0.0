@@ -1,8 +1,9 @@
+// src/components/home/Working.tsx - Only color changes to emerald
 "use client";
 import React, { useState, useEffect } from "react";
 
 interface Step {
-  video: string; // Path to the video file
+  video: string;
   title: string;
   description: string;
   highlight: string;
@@ -15,36 +16,36 @@ const Working: React.FC = () => {
 
   const steps: Step[] = [
     {
-      video: "/images/verf.mp4", // Replace with your video path
+      video: "/images/verf.mp4",
       title: "Enterprise Verification",
       description:
         "Complete streamlined KYC/AML verification for your company and team members across jurisdictions with our advanced validation protocol.",
-      highlight: "from-[#3B4058] to-[#93c5fd]",
-      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
+      highlight: "from-emerald-600 to-emerald-400",
+      bgHighlight: "from-emerald-600/5 to-emerald-400/5",
     },
     {
-      video: "/images/multi.mp4", // Replace with your video path
+      video: "/images/multi.mp4",
       title: "Multi-Chain Funding",
       description:
         "Deposit funds using any blockchain token or network. Our protocol automatically detects and secures your assets in your enterprise vault.",
-      highlight: "from-[#3B4058] to-[#93c5fd]",
-      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
+      highlight: "from-emerald-600 to-emerald-400",
+      bgHighlight: "from-emerald-600/5 to-emerald-400/5",
     },
     {
-      video: "/images/stable.mp4", // Replace with your video path
+      video: "/images/stable.mp4",
       title: "Automated Conversion & Scheduling",
       description:
         "Our smart contracts handle token swaps, cross-chain bridges, and establish recurring payment streams with programmable distribution logic.",
-      highlight: "from-[#3B4058] to-[#93c5fd]",
-      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
+      highlight: "from-emerald-600 to-emerald-400",
+      bgHighlight: "from-emerald-600/5 to-emerald-400/5",
     },
     {
-      video: "/images/stok.mp4", // Replace with your video path
+      video: "/images/stok.mp4",
       title: "Seamless Distribution & Off-ramping",
       description:
         "Recipients receive funds instantly with customizable off-ramp options—direct to bank accounts, crypto wallets, or mobile payment systems.",
-      highlight: "from-[#3B4058] to-[#93c5fd]",
-      bgHighlight: "from-[#3B4058]/5 to-[#93c5fd]/5",
+      highlight: "from-emerald-600 to-emerald-400",
+      bgHighlight: "from-emerald-600/5 to-emerald-400/5",
     },
   ];
 
@@ -69,8 +70,8 @@ const Working: React.FC = () => {
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(147, 197, 253, 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(147, 197, 253, 0.1) 1px, transparent 1px)
+              linear-gradient(to right, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
             animation: "gradientMove 20s linear infinite",
@@ -79,18 +80,18 @@ const Working: React.FC = () => {
       </div>
       
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="w-[70%] h-[60%] bg-blue-300/16 blur-3xl rounded-full"></div>
+        <div className="w-[70%] h-[60%] bg-emerald-500/16 blur-3xl rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-        <div className="text-brandBlue/80 flex flex-col ">
-      <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
-<span className="text-[#c8ceee]">SIMPLE FOUR-STEP PROCESS</span>
-<span className="text-gray-300"></span>
-</h2>
-      </div>
+        <div className="text-emerald-500/80 flex flex-col ">
+          <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+            <span className="text-[#d1fae5]">SIMPLE FOUR-STEP PROCESS</span>
+            <span className="text-gray-300"></span>
+          </h2>
+        </div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Experience seamless payroll management with our enterprise-grade
             blockchain solution
@@ -101,7 +102,7 @@ const Working: React.FC = () => {
         <div className="flex justify-between mb-20 relative max-w-4xl mx-auto">
           <div className="absolute h-1 bg-gray-800 left-0 right-0 top-4 -z-10"></div>
           <div
-            className="absolute h-1 bg-gradient-to-r from-[#3B4058] to-[#93c5fd] left-0 top-4 -z-10 transition-all duration-500"
+            className="absolute h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 left-0 top-4 -z-10 transition-all duration-500"
             style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
           ></div>
 
@@ -148,7 +149,7 @@ const Working: React.FC = () => {
         {/* Content Area */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
           <div className="relative">
-            <div className="relative bg-black rounded-2xl overflow-hidden border border-[#93c5fd]/20">
+            <div className="relative bg-black rounded-2xl overflow-hidden border border-emerald-500/20">
               <div className="relative h-[400px]">
                 {steps.map((step, index) => (
                   <div
@@ -199,12 +200,12 @@ const Working: React.FC = () => {
               >
                 <div className="mb-4">
                   <span
-                    className={`inline-block px-4 py-2 text-sm font-semibold rounded-full bg-gradient-to-r ${step.bgHighlight} border border-[#93c5fd]/30`}
+                    className={`inline-block px-4 py-2 text-sm font-semibold rounded-full bg-gradient-to-r ${step.bgHighlight} border border-emerald-500/30`}
                   >
                     Step {index + 1}
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold text-[#c8ceee] mb-6">
+                <h3 className="text-3xl font-bold text-[#d1fae5] mb-6">
                   {step.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed text-lg mb-8">

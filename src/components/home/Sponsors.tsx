@@ -7,10 +7,10 @@ const Sponsors = () => {
     <section className="bg-black py-12">
       {/* Heading */}
       <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
-  <span className="text-[#c8ceee]">OUR TRUSTED SPONSORS</span>
-  <span className="text-gray-300"></span>
-</h2>
+        <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
+          <span className="text-[#c8ceee]">OUR TRUSTED SPONSORS</span>
+          <span className="text-gray-300"></span>
+        </h2>
       </div>
 
       {/* Top Row */}
@@ -84,8 +84,8 @@ const LogoItem = ({
       <Image
         src={imageSrc}
         alt="Sponsor Logo"
-        width={96} // Set a consistent width
-        height={96} // Set a consistent height
+        width={96}
+        height={96}
         className="object-contain"
       />
     </a>
@@ -110,7 +110,7 @@ const LogoItemsTop = () => (
 
 const LogoItemsBottom = () => (
   <>
-     <LogoItem imageSrc="/images/spon1.png" />
+    <LogoItem imageSrc="/images/spon1.png" />
     <LogoItem imageSrc="/images/spon2.png" />
     <LogoItem imageSrc="/images/spon3.png" />
     <LogoItem imageSrc="/images/spon4.png" />

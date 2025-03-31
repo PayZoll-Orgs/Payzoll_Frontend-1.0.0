@@ -1,82 +1,85 @@
+/* src/app/globals.css */
+
+
 /* Use font-face instead of Google Fonts import for better performance */
+
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono'), 
-       url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono Bold'), 
-       url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono Bold'), url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 @import "tailwindcss";
-
 :root {
-  --background: #000000; /* Changed to black */
-  --foreground: #ffffff; /* Changed to white for better contrast */
-  --font-mono: 'JetBrains Mono', monospace;
-          /* Base colors */
-  --bg-primary: #131620;
-            /* Main background */
-  --bg-secondary: #0c0f16;
-            /* Darker background for cards, sidebars */
-  --accent-primary: #2D8B75;
-            /* Primary accent (emerald) */
-  --accent-secondary: #B38D36;
-            /* Secondary accent (gold) */
-  --text-primary: #F2F2F2;
-            /* Main text color */
-  --text-secondary: #A9A9A9;
-            /* Secondary/gray text */
-  --border-color: #22304a;
-            /* Border color */
-  --glow-effect: 0 0 5px rgba(45, 139, 117, 0.5), 0 0 10px rgba(45, 139, 117, 0.3);
-            /* Subtle emerald glow */
-    /* styles.css or global.scss */
-    
+    --background: #080220;
+    /* Deep rich purple-black */
+    --foreground: #ffffff;
+    /* Pure white for text */
+    --font-mono: 'JetBrains Mono', monospace;
+    /* Base colors */
+    --bg-primary: #0F0A1A;
+    /* Main background - deep purple */
+    --bg-secondary: #1A1225;
+    /* Darker background for cards, sidebars */
+    --accent-primary: #8E2DE2;
+    /* Primary accent (purple) */
+    --accent-secondary: #F5A623;
+    /* Secondary accent (golden yellow) */
+    --text-primary: #F9FAFB;
+    /* Main text color - almost white */
+    --text-secondary: #9CA3AF;
+    /* Secondary/gray text */
+    --border-color: #3D2A75;
+    /* Border color - rich purple */
+    --glow-effect: 0 0 5px rgba(142, 45, 226, 0.5), 0 0 10px rgba(142, 45, 226, 0.3);
+    /* Purple glow */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000; /* Changed to black */
-    --foreground: #ffffff; /* Changed to white for better contrast */
-  }
+     :root {
+        --background: #000000;
+        /* Deep rich purple-black */
+        --foreground: #ffffff;
+        /* Pure white for text */
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .font-mono {
-  font-family: var(--font-mono);
+    font-family: var(--font-mono);
 }
 
 .logo-gradient-text {
-  background: linear-gradient(135deg, #22304a, #2D8B75, #B38D36, #2D8B75, #22304a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 200%;
+    background: linear-gradient(135deg, #3D2A75, #8E2DE2, #F5A623, #8E2DE2, #3D2A75);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
 }
 
 .text-shadow-glow {
-  text-shadow: 0 0 5px rgba(45, 139, 117, 0.5), 0 0 10px rgba(45, 139, 117, 0.3);
+    text-shadow: 0 0 5px rgba(142, 45, 226, 0.5), 0 0 10px rgba(142, 45, 226, 0.3);
 }

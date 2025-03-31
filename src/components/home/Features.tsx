@@ -42,25 +42,38 @@ const cardData = [
 
 function Features(): React.JSX.Element {
   return (
-    <section className="mt-40 flex min-h-[20vh] w-full flex-col items-center gap-y-[5rem] p-6 sm:mt-40 md:gap-y-[9.69rem] landscape:mt-40">
-      <div className="text-brandBlue/80 flex flex-col gap-y-[0.81rem]">
+    <section className="mt-40 flex min-h-[20vh] w-full flex-col items-center gap-y-[5rem] p-6 sm:mt-40 md:gap-y-[9.69rem] landscape:mt-40 bg-black relative">
+      {/* Background Grid - Adding from testimonial */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(45, 139, 117, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(45, 139, 117, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col gap-y-[0.81rem] relative z-10">
         <h2 className="text-3xl md:text-5xl font-light relative text-shadow-glow">
           <span className="text-[#c8ceee]">WHY CHOOSE PAYZOLL?</span>
           <span className="text-gray-300"></span>
         </h2>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:gap-9">
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3 2xl:gap-9 relative z-10">
         {cardData.map((card, index) => {
           const { heading, description } = card
           return (
-            // eslint-disable-next-line react/no-array-index-key -- safe
             <Card key={index}>
               <div className="flex flex-col h-full p-6">
-                <h3 className="text-xl font-medium mb-3 text-[#c8ceee]">{heading}</h3>
-                <p className="text-sm text-[#9394A1] leading-relaxed">{description}</p>
+                <h3 className="text-xl font-medium mb-3 text-[#2D8B75]">{heading}</h3>
+                <p className="text-sm text-[#A9A9A9] leading-relaxed">{description}</p>
                 <div className="mt-auto pt-4">
-                  {/* <div className="w-12 h-1 bg-gradient-to-r from-[#4f56ff] to-[#c8ceee] rounded-full"></div> */}
+                  <div className="w-12 h-1 bg-gradient-to-r from-[#2D8B75] to-[#45B69C] rounded-full"></div>
                 </div>
               </div>
             </Card>

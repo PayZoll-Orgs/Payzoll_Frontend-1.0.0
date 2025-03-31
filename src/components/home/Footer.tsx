@@ -1,3 +1,4 @@
+// src/components/home/Footer.tsx - Only color changes to emerald
 "use client";
 
 import React, { useState } from "react";
@@ -42,10 +43,10 @@ const Footer: React.FC = () => {
     <footer className="relative bg-gradient-to-b from-gray-900 to-black text-gray-300 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-[#14161E]/80 to-[#0c0e14]/80 backdrop-blur-sm border border-[#93c5fd]/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-[#14161E]/80 to-[#0c0e14]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-emerald-500/50 transition-all">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-6 md:mb-0 md:mr-12">
-                <h3 className="text-2xl font-bold text-[#c8ceee] mb-2">Stay updated</h3>
+                <h3 className="text-2xl font-bold text-[#d1fae5] mb-2">Stay updated</h3>
                 <p className="text-gray-400">Get the latest news and updates from PayZoll</p>
               </div>
               <form onSubmit={handleSubmit} className="w-full md:w-auto">
@@ -56,11 +57,11 @@ const Footer: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full md:w-64 px-4 py-3 rounded-l-lg bg-black border border-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-[#93c5fd]"
+                    className="w-full md:w-64 px-4 py-3 rounded-l-lg bg-black border border-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-[#3B4058] to-[#93c5fd] hover:shadow-lg hover:shadow-[#93c5fd]/20 px-4 py-3 rounded-r-lg flex items-center transition-all duration-300"
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 px-4 py-3 rounded-r-lg flex items-center transition-all duration-300"
                   >
                     <span className="text-white font-medium">Subscribe</span>
                     <ArrowRight className="ml-2 h-5 w-5 text-white transition-transform duration-300" />
@@ -74,8 +75,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <div className="space-y-6">
             <div className="flex items-center">
-              <Wallet2 className="h-8 w-8 text-[#93c5fd]" />
-              <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#93c5fd] via-[#93c5fd] to-[#93c5fd]">
+              <Wallet2 className="h-8 w-8 text-emerald-500" />
+              <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-emerald-600">
                 PayZoll
               </span>
             </div>
@@ -121,21 +122,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-16 pt-8 border-t border-gray-800">
-  <h3 className="text-white font-semibold mb-6 text-lg">Contact Us</h3>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-    {["Founder", "Support", "Marketing", "HR"].map((role, index) => (
-      <div key={index}>
-        <h4 className="text-white font-medium mb-2">{role}</h4>
-        <a
-          href={`mailto:${role.toLowerCase()}@payzoll.in`}
-          className="text-gray-400 hover:text-white"
-        >
-          {role.toLowerCase()}@payzoll.in
-        </a>
-      </div>
-    ))}
-  </div>
-</div>
+          <h3 className="text-white font-semibold mb-6 text-lg">Contact Us</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {["Help"].map((role, index) => (
+              <div key={index}>
+                <h4 className="text-white font-medium mb-2">{role}</h4>
+                <a 
+                  href={`mailto:${role.toLowerCase()}@payzoll.in`}
+                  className="text-gray-400 hover:text-white"
+                >
+                  {role.toLowerCase()}@payzoll.in
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} PayZoll. All rights reserved.</p>
@@ -155,7 +156,7 @@ const Footer: React.FC = () => {
 
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-500 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+        className="fixed bottom-8 right-8 bg-emerald-500 hover:bg-emerald-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
         aria-label="Back to top"
       >
         <ChevronUp className="h-6 w-6 text-white" />

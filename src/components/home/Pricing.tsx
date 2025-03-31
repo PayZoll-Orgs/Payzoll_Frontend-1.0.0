@@ -81,14 +81,14 @@ const Pricing = () => {
               key={index}
               className={`rounded-2xl p-8 border ${
                 tier.isPopular
-                  ? 'border-[#93c5fd]/30 bg-gradient-to-b from-[#14161E] to-[#0c0e14] shadow-xl shadow-[#93c5fd]/10 transform hover:scale-105 transition-all duration-300'
-                  : 'border-gray-800 bg-[#14161E] hover:border-[#93c5fd]/30 transition-all duration-300'
+                  ? 'border-[#2D8B75]/30 bg-gradient-to-b from-[#14161E] to-[#0c0e14] shadow-xl shadow-[#2D8B75]/10 transform hover:scale-105 transition-all duration-300'
+                  : 'border-gray-800 bg-[#14161E] hover:border-[#2D8B75]/30 transition-all duration-300'
               }`}
             >
               <div className="text-center mb-8">
-                <h3 className={`text-2xl font-bold mb-2 ${tier.isPopular ? 'text-[#93c5fd]' : 'text-white'} font-mono`}>{tier.name}</h3>
+                <h3 className={`text-2xl font-bold mb-2 ${tier.isPopular ? 'text-[#2D8B75]' : 'text-white'} font-mono`}>{tier.name}</h3>
                 <div className={`text-4xl font-bold mb-2 ${tier.isPopular ? 'text-white' : 'text-white'} font-mono`}>{tier.price}</div>
-                <div className={tier.isPopular ? 'text-[#93c5fd]/80' : 'text-gray-400'}>
+                <div className={tier.isPopular ? 'text-[#2D8B75]/80' : 'text-gray-400'}>
                   {tier.period}
                 </div>
               </div>
@@ -98,7 +98,7 @@ const Pricing = () => {
                   <li key={featureIndex} className="flex items-center">
                     <Check 
                       className={`h-5 w-5 mr-2 ${
-                        tier.isPopular ? 'text-[#93c5fd]' : 'text-[#93c5fd]/60'
+                        tier.isPopular ? 'text-[#2D8B75]' : 'text-[#2D8B75]/60'
                       }`}
                     />
                     <span className={tier.isPopular ? 'text-white' : 'text-gray-400'}>
@@ -111,8 +111,8 @@ const Pricing = () => {
               <button
                 className={`w-full py-3 rounded-full text-center transition-all font-mono ${
                   tier.isPopular
-                    ? 'bg-gradient-to-r from-[#3B4058] to-[#93c5fd] text-white hover:shadow-lg hover:shadow-[#93c5fd]/20'
-                    : 'bg-[#1D202D] border border-[#3B4058]/30 text-white hover:bg-[#2d3045] hover:border-[#93c5fd]/40'
+                    ? 'bg-gradient-to-r from-[#22304a] to-[#2D8B75] text-white hover:shadow-lg hover:shadow-[#2D8B75]/20'
+                    : 'bg-[#1D202D] border border-[#3B4058]/30 text-white hover:bg-[#2d3045] hover:border-[#2D8B75]/40'
                 }`}
               >
                 Get Started
@@ -130,4 +130,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing; 
+export default Pricing;

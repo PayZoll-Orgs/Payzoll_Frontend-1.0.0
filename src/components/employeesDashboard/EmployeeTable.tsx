@@ -168,7 +168,9 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({
                   <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 font-mono">
                     <div className="flex items-center justify-center">
                       <Mail className="w-4 h-4 mr-2 text-[#93c5fd]" />
-                      <span>{employee.email || "—"}</span>
+                      <span className="truncate max-w-[100px] inline-block">
+                        {employee.email || "—"}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center text-gray-400 font-mono">{employee.salary.$numberDecimal} $</td>

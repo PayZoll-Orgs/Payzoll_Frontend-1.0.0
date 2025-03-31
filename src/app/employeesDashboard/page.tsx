@@ -17,6 +17,7 @@ interface Employee {
   designation: string;
   salary: { $numberDecimal: string };
   wallet: string;
+  email?: string;
 }
 
 // Employee Data Interface
@@ -81,8 +82,8 @@ const EmployeesPage: React.FC = () => {
   // Fetch Employees Data (Mock for Now)
   useEffect(() => {
     const mockEmployees: Employee[] = [
-      { _id: "1", name: "John Doe", designation: "Software Engineer", salary: { $numberDecimal: "5000" }, wallet: "0x1234567890abcdef" },
-      { _id: "2", name: "Alice Johnson", designation: "Product Manager", salary: { $numberDecimal: "7000" }, wallet: "0xabcdef1234567890" },
+      { _id: "1", name: "John Doe", designation: "Software Engineer", salary: { $numberDecimal: "5000" }, wallet: "0x1234567890abcdef", email: "jhonDoe@payzoll.com" },
+      { _id: "2", name: "Alice Johnson", designation: "Product Manager", salary: { $numberDecimal: "7000" }, wallet: "0xabcdef1234567890", email: "aliceJhonson@payzoll.com" },
     ];
     setEmployees(mockEmployees);
   }, []);
@@ -120,22 +121,23 @@ const EmployeesPage: React.FC = () => {
       designation: employee.designation,
       salary: { $numberDecimal: employee.monthlySalary },
       wallet: employee.walletAddress,
+      email: employee.email,
     };
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
   };
 
   // Update Employee
   const handleUpdateEmployee = (id: string, updatedData: EmployeeData) => {
-    setEmployees(prevEmployees => 
-      prevEmployees.map(employee => 
-        employee._id === id 
+    setEmployees(prevEmployees =>
+      prevEmployees.map(employee =>
+        employee._id === id
           ? {
-              ...employee,
-              name: `${updatedData.firstName} ${updatedData.lastName}`,
-              designation: updatedData.designation,
-              salary: { $numberDecimal: updatedData.monthlySalary },
-              wallet: updatedData.walletAddress
-            }
+            ...employee,
+            name: `${updatedData.firstName} ${updatedData.lastName}`,
+            designation: updatedData.designation,
+            salary: { $numberDecimal: updatedData.monthlySalary },
+            wallet: updatedData.walletAddress
+          }
           : employee
       )
     );
@@ -156,7 +158,7 @@ const EmployeesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-crypto-dark text-white flex">
       {/* Sidebar */}
-      <Sidebar isWalletConnected={false} onConnectWallet={() => {}} account={undefined} />
+      <Sidebar isWalletConnected={false} onConnectWallet={() => { }} account={undefined} />
 
       {/* Main Content */}
       <main className="flex-1 ml-64 p-8 relative overflow-hidden">
@@ -220,12 +222,12 @@ const EmployeesPage: React.FC = () => {
       </main>
 
       {/* Modals */}
-      <AddEmployeeModal 
-        isOpen={showAddModal} 
+      <AddEmployeeModal
+        isOpen={showAddModal}
         onClose={() => {
           setShowAddModal(false);
           setSelectedEmployee(null);
-        }} 
+        }}
         onAddEmployee={onAddEmployee}
         onUpdateEmployee={handleUpdateEmployee}
         editEmployee={selectedEmployee}

@@ -39,20 +39,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const initAuth = async () => {
       setIsLoading(true);
       try {
+        console.log("Initializing auth context");
+        
         // Check if user is authenticated
-        const isAuth = authService.isAuthenticated();
-        if (isAuth) {
+        if (authService.isAuthenticated()) {
           const userData = authService.getCurrentUser();
+          console.log("Found authenticated user:", userData);
           setUser(userData);
           setIsAuthenticated(true);
+        } else {
+          console.log("No authenticated user found");
         }
         
         // Check if wallet is connected
-        const isConnected = await walletService.isConnected();
-        if (isConnected) {
-          const address = await walletService.getAddress();
-          setWalletAddress(address);
-          setIsWalletConnected(true);
+        try {
+          const isConnected = await walletService.isConnected();
+          if (isConnected) {
+            const address = await walletService.getAddress();
+            console.log("Found connected wallet:", address);
+            setWalletAddress(address);
+            setIsWalletConnected(true);
+          } else {
+            console.log("No connected wallet found");
+          }
+        } catch (walletError) {
+          console.error("Error checking wallet connection:", walletError);
         }
       } catch (error) {
         console.error("Error initializing auth:", error);
@@ -106,9 +117,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     
     try {
+      console.log("Attempting to login with credentials:", credentials);
       const response = await authService.login(credentials);
       setUser(response.user);
       setIsAuthenticated(true);
+      
+      console.log("Login successful, user:", response.user);
       
       // Redirect based on user role
       if (response.user.role === "employer") {
@@ -131,6 +145,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     
     try {
+      console.log("Attempting to login with wallet");
       if (!isWalletConnected) {
         await connectWallet();
       }
@@ -142,6 +157,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       
       const { signature, address, message } = signResult;
+      console.log("Got wallet signature:", signature.substring(0, 20) + "...");
       
       // Login with wallet
       const response = await authService.loginWithWallet({
@@ -152,6 +168,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setUser(response.user);
       setIsAuthenticated(true);
+      
+      console.log("Wallet login successful, user:", response.user);
       
       // Redirect to dashboard
       if (response.user.role === "employer") {
@@ -178,7 +196,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       // In a real app, you might auto-login after registration
       // For now, redirect to login page
-      router.push("/login?mode=login");
+      router.push("/");
     } catch (error) {
       console.error("Registration failed:", error);
       throw error;
@@ -200,7 +218,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setWalletAddress(null);
     setIsWalletConnected(false);
     
-    router.push("/login?mode=login");
+    router.push("/");
   };
 
   /**

@@ -45,8 +45,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       onClose();
       reset();
       
-      // Router will handle redirect in the auth context
+      // Redirect will be handled by the auth context
     } catch (err) {
+      console.error("Login error:", err);
       setError(err instanceof Error ? err.message : "Login failed. Please try again.");
     } finally {
       setIsLoading(false);
@@ -64,8 +65,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       onClose();
       reset();
       
-      // Router will handle redirect in the auth context
+      // Redirect will be handled by the auth context
     } catch (err) {
+      console.error("Wallet login error:", err);
       setError(err instanceof Error ? err.message : "Wallet login failed. Please try again.");
     } finally {
       setIsLoading(false);
@@ -91,6 +93,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       setError(null);
     }
   }, [isOpen, reset]);
+
+  // Debug logging
+  useEffect(() => {
+    console.log("Login Modal isOpen:", isOpen);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

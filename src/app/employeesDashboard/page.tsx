@@ -165,7 +165,7 @@ const EmployeesPage: React.FC = () => {
       </div>
 
       {/* Sidebar */}
-      <Sidebar isWalletConnected={false} onConnectWallet={() => {}} account={undefined} />
+      <Sidebar isWalletConnected={false} onConnectWallet={() => { }} account={undefined} />
 
       {/* Main Content */}
       <main className="flex-1 ml-64 p-8 relative overflow-hidden">
@@ -231,12 +231,12 @@ const EmployeesPage: React.FC = () => {
       </main>
 
       {/* Modals */}
-      <AddEmployeeModal 
-        isOpen={showAddModal} 
+      <AddEmployeeModal
+        isOpen={showAddModal}
         onClose={() => {
           setShowAddModal(false);
           setSelectedEmployee(null);
-        }} 
+        }}
         onAddEmployee={onAddEmployee}
         onUpdateEmployee={handleUpdateEmployee}
         editEmployee={selectedEmployee}

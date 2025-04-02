@@ -35,20 +35,20 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
       color: "text-[#2D8B75]",
       onClick: onBulkUpload
     },
-    {
-      title: "Process Payroll",
-      description: "Run monthly payroll for all employees",
-      icon: DollarSign,
-      color: "text-[#2D8B75]",
-      onClick: () => console.log("Process payroll")
-    },
-    {
-      title: "Generate Reports",
-      description: "Create detailed employee reports",
-      icon: FileCheck,
-      color: "text-[#2D8B75]",
-      onClick: () => console.log("Generate reports")
-    }
+    // {
+    //   title: "Process Payroll",
+    //   description: "Run monthly payroll for all employees",
+    //   icon: DollarSign,
+    //   color: "text-[#2D8B75]",
+    //   onClick: () => console.log("Process payroll")
+    // },
+    // {
+    //   title: "Generate Reports",
+    //   description: "Create detailed employee reports",
+    //   icon: FileCheck,
+    //   color: "text-[#2D8B75]",
+    //   onClick: () => console.log("Generate reports")
+    // }
   ];
 
   // Define recent activity items
@@ -107,7 +107,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
       </div>
 
       {/* Recent Activity Section */}
-      <div>
+      {/* <div>
         <div className="flex items-center justify-between mb-2 sm:mb-3 md:mb-4">
           <h3 className="font-semibold text-[#F2F2F2] font-mono" style={{
             textShadow: "0 0 5px rgba(45, 139, 117, 0.3), 0 0 10px rgba(45, 139, 117, 0.2)"
@@ -139,7 +139,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ onAddEmployee, onBulkUpload
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

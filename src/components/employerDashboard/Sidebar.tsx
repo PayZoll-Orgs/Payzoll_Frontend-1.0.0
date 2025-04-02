@@ -13,7 +13,7 @@ import Link from "next/link";
 import "../../styles/gradients.css";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "/employerDashboard" },
+  // { icon: LayoutDashboard, label: "Dashboard", path: "/employerDashboard" },
   { icon: Users, label: "Employees", path: "/employeesDashboard" },
   { icon: BadgeDollarSign, label: "Payments", path: "/payments" },
 ];
@@ -85,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         </nav>
 
         {/* Wallet Connection */}
-        <div className="p-4 border-t border-[#22304a]/20">
+        {/* <div className="p-4 border-t border-[#22304a]/20">
           {isWalletConnected ? (
             <div className="bg-[#131620]/70 backdrop-blur-sm p-4 rounded-xl border border-[#22304a]/20">
               <div className="text-sm text-gray-400 font-mono">Connected Wallet</div>
@@ -102,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               Connect Wallet
             </button>
           )}
-        </div>
+        </div> */}
 
         {/* Logout */}
         <button

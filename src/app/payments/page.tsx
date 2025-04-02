@@ -7,6 +7,9 @@ import PaymentsOverview from "@/components/payments/PaymentOverview";
 import PaymentOptions from "@/components/payments/PaymentOptions";
 import TransactionsLog from "@/components/payments/TransactionsLog";
 import QuickPayModal from "@/components/payments/QuickPayModal";
+import PaymentDashboard from "@/components/payments/PaymentDashboard";
+
+
 
 // Define types for our data models
 interface Employee {
@@ -57,24 +60,29 @@ const PaymentsPage: React.FC = () => {
       <main className="flex-1 lg:ml-64 p-4 md:p-6 lg:p-8 pt-16 lg:pt-8 relative">
         <div className="max-w-[1600px] my-0 mx-auto">
           <PaymentsHeader onQuickPay={() => setShowQuickPayModal(true)} />
-          
-          <div className="mt-6">
+
+          {/* CHANGES made to remove the model payment */}
+          {/* <div className="mt-6">
             <PaymentsOverview
               employees={employees.length}
               totalSalary={totalSalary.toString()}
               totalSalaryPaid={payrollHistory.reduce((sum, item) => sum + parseFloat(item.totalAmount.$numberDecimal || "0"), 0)}
             />
+          </div> */}
+
+          {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-6"> */}
+          <div className="col-span-1 lg:col-span-8 space-y-4 md:space-y-6">
+            <PaymentDashboard />
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mt-6">
-            <div className="col-span-1 lg:col-span-8 space-y-4 md:space-y-6">
-              <TransactionsLog />
-            </div>
-            
-            <div className="col-span-1 lg:col-span-4 space-y-4 md:space-y-6">
+          <div className="col-span-1 lg:col-span-8 space-y-4 md:space-y-6">
+            <TransactionsLog />
+          </div>
+
+
+          {/* <div className="col-span-1 lg:col-span-4 space-y-4 md:space-y-6">
               <PaymentOptions />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </main>
       <QuickPayModal

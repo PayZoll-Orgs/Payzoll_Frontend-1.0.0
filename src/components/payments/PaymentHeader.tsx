@@ -35,14 +35,14 @@ const PaymentsHeader: React.FC<PaymentsHeaderProps> = ({ onQuickPay }) => {
 
         <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
           {/* Quick Pay Button with gradient background */}
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onQuickPay}
             className="bg-gradient-to-r from-[#22304a] to-[#2D8B75] text-white px-4 md:px-6 py-2 rounded-xl flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-[#2D8B75]/20 transition-all w-full sm:w-auto font-mono"
           >
             <span className="font-bold text-sm md:text-base">Quick Pay</span>
-          </motion.button>
+          </motion.button> */}
         </div>
       </div>
     </div>

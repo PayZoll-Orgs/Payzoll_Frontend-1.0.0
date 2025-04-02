@@ -2,7 +2,9 @@
 
 import React from "react";
 import { Home } from "lucide-react";
+import { motion } from "framer-motion";
 import "../../styles/gradients.css";
+import { imageOptimizer } from "next/dist/server/image-optimizer";
 
 const EmployerHeader: React.FC = () => {
   return (
@@ -22,8 +24,8 @@ const EmployerHeader: React.FC = () => {
             Employee Dashboard
           </h1>
           <p className="text-gray-400 mt-1 font-mono text-xs sm:text-sm">Manage your company and payroll efficiently</p>
+          
         </div>
-
         <div className="flex items-center space-x-4 w-full sm:w-auto">
         </div>
       </div>

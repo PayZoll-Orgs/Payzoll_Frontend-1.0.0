@@ -6,6 +6,8 @@ import Sidebar from "@/components/employerDashboard/Sidebar";
 import EmployerHeader from "@/components/employerDashboard/EmployerHeader";
 import RecentActivity from "@/components/employerDashboard/RecentActivity";
 import EmployeeProfile from "@/components/employerDashboard/EmployeeProfile";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
+import { useAuth } from "@/contexts/AuthContext";
 
 const EmployerDashboard: React.FC = () => {
   return (

@@ -13,6 +13,8 @@ import PaymentSection from "@/components/employeeDashboard/PaymentSection";
 import ESOPSection from "@/components/employeeDashboard/ESOPSection";
 import AnalyticsSection from "@/components/employeeDashboard/AnalyticsSection";
 import RecentActivity from "@/components/employeeDashboard/RecentActivity";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function EmployeeDashboard() {
   const [isWalletConnected, setIsWalletConnected] = useState(false);

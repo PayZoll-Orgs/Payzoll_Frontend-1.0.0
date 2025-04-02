@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
-import { Wallet, X, User, Mail } from "lucide-react";
+import { Wallet, X, User, Mail, Loader2 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   name: string;
-  walletAdd: string;
   email: string;
+  password: string;
 }
 
 interface RegisterModalProps {
@@ -17,13 +19,55 @@ interface RegisterModalProps {
 }
 
 const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+  const { register: registerUser, connectWallet, walletAddress, isWalletConnected } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  
+  const { 
+    register, 
+    handleSubmit, 
+    setValue,
+    formState: { errors }, 
+    reset 
+  } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log("Form Submitted", data);
-    // Handle form submission (API call, state update, etc.)
-    onClose();
-    reset();
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // Create user data with password for registration
+      const userData = {
+        name: data.name,
+        email: data.email,
+        password: data.password || Math.random().toString(36).slice(2), // Use random password if not provided
+        walletAddress: walletAddress,
+        role: "employer" // Default role
+      };
+      
+      // Register the user
+      await registerUser(userData);
+      
+      // Close the modal and reset form
+      onClose();
+      reset();
+      
+      // Redirect to login
+      router.push("/login?mode=login");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleConnectWallet = async () => {
+    try {
+      await connectWallet();
+    } catch (error) {
+      setError("Failed to connect wallet. Please try again.");
+    }
   };
 
   // Prevent scrolling when modal is open
@@ -42,6 +86,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (!isOpen) {
       reset();
+      setError(null);
     }
   }, [isOpen, reset]);
 
@@ -71,10 +116,21 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
             {/* Header */}
             <div className="p-6 border-b border-[#22304a] flex items-center justify-between">
               <h2 className="text-xl font-bold text-[#F2F2F2]">Register</h2>
-              <button onClick={onClose} className="text-[#A9A9A9] hover:text-[#F2F2F2] transition-colors">
+              <button 
+                onClick={onClose} 
+                className="text-[#A9A9A9] hover:text-[#F2F2F2] transition-colors"
+                disabled={isLoading}
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
+
+            {/* Error Message */}
+            {error && (
+              <div className="mx-6 mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-500 text-sm">
+                {error}
+              </div>
+            )}
 
             {/* Form Content */}
             <div className="p-6">
@@ -88,6 +144,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                       <input
                         type="text"
                         placeholder="Enter your full name"
+                        disabled={isLoading}
                         {...register("name", { required: "Name is required" })}
                         className="w-full p-3 pl-10 border border-[#22304a]/70 rounded-xl bg-[#131620] text-[#F2F2F2] focus:border-[#2D8B75] focus:outline-none transition-colors"
                       />
@@ -104,6 +161,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     <input
                       type="email"
                       placeholder="Enter your email"
+                      disabled={isLoading}
                       {...register("email", {
                         required: "Email is required",
                         pattern: {
@@ -116,46 +174,80 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                   </div>
                   {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>}
                 </div>
+                
+                {/* Password Input (Optional - added new) */}
+                <div>
+                  <label className="text-sm text-[#A9A9A9] mb-2 block">Password (Optional)</label>
+                  <div className="relative">
+                    <input
+                      type="password"
+                      placeholder="Create a password or connect wallet"
+                      disabled={isLoading}
+                      {...register("password")}
+                      className="w-full p-3 pl-3 border border-[#22304a]/70 rounded-xl bg-[#131620] text-[#F2F2F2] focus:border-[#2D8B75] focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <p className="text-xs text-[#A9A9A9] mt-1">If not provided, we'll generate a secure password for you</p>
+                </div>
 
-                {/* Wallet Address - Separate Field Below */}
+                {/* Wallet Connection */}
                 <div className="pt-6 border-t border-[#22304a]/50">
                   <label className="text-sm text-[#A9A9A9] mb-2 block">Connect Wallet Address</label>
                   <div className="relative">
-                    <input 
-                      type="hidden"
-                      {...register("walletAdd", { required: "Wallet address is required" })}
-                    />
-                    <button
-                      type="button"
-                      className="w-full flex items-center justify-between p-4 border border-[#22304a]/70 rounded-xl bg-[#131620] hover:bg-[#0c0f16] text-[#F2F2F2] transition-all group"
-                      onClick={() => {
-                        // Replace with actual wallet connection logic
-                        console.log("Connect wallet clicked");
-                      }}
-                    >
-                      <div className="flex items-center">
+                    {!isWalletConnected ? (
+                      <button
+                        type="button"
+                        disabled={isLoading}
+                        className="w-full flex items-center justify-between p-4 border border-[#22304a]/70 rounded-xl bg-[#131620] hover:bg-[#0c0f16] text-[#F2F2F2] transition-all group"
+                        onClick={handleConnectWallet}
+                      >
+                        <div className="flex items-center">
+                          <Wallet className="w-5 h-5 text-[#2D8B75] mr-3" />
+                          <span className="font-medium">
+                            {isLoading ? "Connecting..." : "Connect Wallet"}
+                          </span>
+                        </div>
+                        <div className="bg-[#2D8B75]/10 group-hover:bg-[#2D8B75]/20 p-2 rounded-lg transition-colors">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5V19M5 12H19" stroke="#2D8B75" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                      </button>
+                    ) : (
+                      <div className="w-full flex items-center p-4 border border-[#22304a]/70 rounded-xl bg-[#131620] text-[#F2F2F2]">
                         <Wallet className="w-5 h-5 text-[#2D8B75] mr-3" />
-                        <span className="font-medium">Connect Wallet</span>
+                        <span className="font-mono text-sm truncate flex-1">
+                          {walletAddress}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setIsWalletConnected(false)}
+                          className="ml-2 p-1 rounded-lg bg-[#2D8B75]/10 hover:bg-[#2D8B75]/20 text-[#2D8B75]"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
                       </div>
-                      <div className="bg-[#2D8B75]/10 group-hover:bg-[#2D8B75]/20 p-2 rounded-lg transition-colors">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 5V19M5 12H19" stroke="#2D8B75" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                    </button>
+                    )}
                   </div>
-                  {errors.walletAdd && <p className="text-red-400 text-sm mt-1">{errors.walletAdd.message}</p>}
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full mt-6 bg-gradient-to-r from-[#2D8B75] to-[#B38D36] text-[#F2F2F2] py-3 px-4 rounded-xl hover:shadow-lg hover:shadow-[#2D8B75]/20 transition-all duration-300 flex items-center justify-center"
+                  disabled={isLoading}
+                  className="w-full mt-6 bg-gradient-to-r from-[#2D8B75] to-[#B38D36] text-[#F2F2F2] py-3 px-4 rounded-xl hover:shadow-lg hover:shadow-[#2D8B75]/20 transition-all duration-300 flex items-center justify-center disabled:opacity-70"
                   style={{
                     boxShadow: "0 0 5px rgba(45, 139, 117, 0.5)"
                   }}
                 >
-                  Register Now
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Registering...
+                    </>
+                  ) : (
+                    "Register Now"
+                  )}
                 </button>
               </form>
             </div>

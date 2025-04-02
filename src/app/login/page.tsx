@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Wallet2 } from "lucide-react";
-import LoginForm from "@/components/login/LoginForm";
-import SignupForm from "@/components/login/SignupForm";
+import EnhancedLoginForm from "@/components/login/EnhancedLoginForm";
+import EnhancedSignupForm from "@/components/login/EnhancedSignupForm";
 import WelcomeSection from "@/components/login/WelcomeSection";
 
 const LoginPage: React.FC = () => {
@@ -91,7 +91,7 @@ const LoginPage: React.FC = () => {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                {isLogin ? <LoginForm /> : <SignupForm />}
+                {isLogin ? <EnhancedLoginForm /> : <EnhancedSignupForm />}
               </motion.div>
             </AnimatePresence>
 

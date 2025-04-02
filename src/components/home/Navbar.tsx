@@ -6,13 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import RegisterModal from "./RegisterModal";
+import LoginModal from "./LoginModal";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { isAuthenticated, user, logout, walletAddress } = useAuth();
   
   // Track scroll position for navbar styling
   useEffect(() => {
@@ -24,12 +28,20 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleOpenRegisterModal = () => {
+    setIsRegisterModalOpen(true);
   };
   
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
+  
+  const handleOpenLoginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+  
+  const handleCloseLoginModal = () => {
+    setIsLoginModalOpen(false);
   };
 
   const navigateToPage = (route) => {
@@ -102,18 +114,19 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3 md:gap-5">
-            {/* Connect Wallet Button */}
+            {/* Connect Wallet Button - Now opens login modal */}
             <button 
-              className="hidden md:flex items-center justify-center px-5 py-2 bg-[#131620]/60 border border-[#22304a]/50 rounded-full transition-all duration-300"
+              onClick={handleOpenLoginModal}
+              className="hidden md:flex items-center justify-center px-5 py-2 bg-[#131620]/60 border border-[#22304a]/50 rounded-full transition-all duration-300 hover:border-[#2D8B75]/50"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2D8B75] to-[#B38D36] font-medium text-sm">
-                Connect Wallet
+                Sign In
               </span>
             </button>
 
             {/* Register Button */}
             <button
-              onClick={handleOpenModal}
+              onClick={handleOpenRegisterModal}
               className="relative overflow-hidden flex items-center justify-center px-6 py-2.5 bg-[#131620]/60 border border-[#22304a]/50 rounded-full transition-all duration-300 hover:bg-[#131620]/80 hover:shadow-sm hover:shadow-[#2D8B75]/30 group"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2D8B75] to-[#B38D36] font-medium text-sm mr-1">
@@ -172,11 +185,16 @@ const Navbar = () => {
             
             <div className="h-px w-full bg-[#22304a]/50 my-2"></div>
             
+            {/* Mobile login button */}
             <button 
-              className="w-full flex items-center justify-center px-4 py-3 bg-[#131620]/60 border border-[#22304a]/50 rounded-xl transition-all"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleOpenLoginModal();
+              }}
+              className="w-full flex items-center justify-center px-4 py-3 bg-[#131620]/60 border border-[#22304a]/50 rounded-xl transition-all hover:border-[#2D8B75]/50"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2D8B75] to-[#B38D36] font-semibold">
-                Connect Wallet
+                Sign In
               </span>
             </button>
           </div>
@@ -184,7 +202,10 @@ const Navbar = () => {
       </nav>
       
       {/* Register Modal */}
-      <RegisterModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <RegisterModal isOpen={isRegisterModalOpen} onClose={handleCloseRegisterModal} />
+      
+      {/* Login Modal */}
+      <LoginModal isOpen={isLoginModalOpen} onClose={handleCloseLoginModal} />
     </>
   );
 };
